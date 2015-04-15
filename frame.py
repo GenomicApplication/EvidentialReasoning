@@ -1,4 +1,5 @@
 from analysis import *
+from Fuse import *
 
 
 class Frames:
@@ -84,6 +85,7 @@ class Frames:
         relation2 = splitter2[length_ofFrameInfo2].split(',')
 
         cross.translate(frameInfo1, relations1, frameInfo2, relations2)
+
 
         string = ''
 

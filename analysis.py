@@ -1,4 +1,4 @@
-
+from Fuse import *
 
 class Analysis:
 
@@ -79,6 +79,9 @@ class Analysis:
         print(self.translatedFrame1)
         print(self.translatedFrame2)
         self.newFrame = "FOD:" + frame1[0] + 'x' + frame2[0] + ': NO:' + '0' + string1 + string2
+
+        newFuse = fuse
+        newFuse.fuse(self.translatedFrame1,self.translatedFrame2)
 
         return self.translatedFrame1, self.translatedFrame2, self.newFrame
 

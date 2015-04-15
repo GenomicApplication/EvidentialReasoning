@@ -3,6 +3,7 @@ from parseDataToClass import *
 from compatibilityRelation import *
 from frame import *
 from analysis import *
+from Fuse import *
 
 def main():
 
@@ -38,6 +39,9 @@ def main():
     outputTextFile.get_relations(parse.FOD, parse.dir_path)
     print(parse.dir_path)
 
+    analysis = Analysis()
+    newFuse = fuse()
+    print(newFuse.fuse(analysis.translatedFrame1,analysis.translatedFrame2)
 
 
 '''

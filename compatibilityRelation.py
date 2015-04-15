@@ -12,7 +12,7 @@ class CompatibilityRelations:
 
         print("In CR.py")
 
-        outputText = open(input_dir_path + 'Output.txt', 'w')
+        outputText = raw_open(input_dir_path + 'Output.txt', 'w')
 
         splitter = crossProductFrame[0].split(':')
 

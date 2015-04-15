@@ -41,22 +41,8 @@ def main():
 
     analysis = Analysis()
     newFuse = fuse()
-    print(newFuse.fuse(analysis.translatedFrame1,analysis.translatedFrame2)
-
-
-'''
-    relations = CompatibilityRelations()
-    relations.organize_relations(parse.CR)
-    print("Compatibility relations\n")
-    print(relations.compatibilityInfo)
-    print(relations.relatedTo)
-'''
-
-
-
+    print(newFuse.fuse(analysis.translatedFrame1,analysis.translatedFrame2))
 
 
 if __name__ == "__main__":
     main()
-
-

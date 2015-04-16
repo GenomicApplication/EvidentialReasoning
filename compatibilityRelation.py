@@ -10,8 +10,6 @@ class CompatibilityRelations:
     #relations in there.
     def get_relations(self, crossProductFrame, input_dir_path):
 
-        print("In CR.py")
-
         fileName = input("What did you want to name the output text file? :")
         outputText = open(input_dir_path.strip('Input.txt') + fileName, 'w')
 
@@ -26,6 +24,7 @@ class CompatibilityRelations:
         outputText.write("The compatibility relations are: \n")
 
         count = 1
+
         for elements in relations:
             outputText.write('CR' + str(count) + ': Q# :' + elements + '\n')
             count = count + 1
@@ -35,7 +34,6 @@ class CompatibilityRelations:
         self.dir_path = input_dir_path + fileName
 
         print("Open the file at :   " + self.dir_path  + " and make the proper relations to the question frame." )
-
 
         return self.dir_path
 

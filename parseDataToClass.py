@@ -13,11 +13,10 @@ class ParseDataToClass:
         pass
 
     def openInputFile(self):
-
         #open file, if path does not exist, print error message
         try:
-            self.dir_path = raw_input("Enter the path to the Input.txt file:")
-            inFile = open(self.dir_path, 'r')
+            dir_path = str(input("Enter the path to the Input.txt file:   "))
+            inFile = open(dir_path, 'r')
 
             #parse the file by keywords: Question, frame, and compatibility relations = CR
             for line in inFile:

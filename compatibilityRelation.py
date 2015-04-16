@@ -12,7 +12,8 @@ class CompatibilityRelations:
 
         print("In CR.py")
 
-        outputText = open(input_dir_path + 'Output.txt', 'w')
+        fileName = input("What did you want to name the output text file? :")
+        outputText = open(input_dir_path.strip('Input.txt') + fileName, 'w')
 
         splitter = crossProductFrame[0].split(':')
 
@@ -25,11 +26,14 @@ class CompatibilityRelations:
 
         count = 1
         for elements in relations:
-            outputText.write('CR' + str(count) + ': fill the answers here :' + elements + '\n')
+            outputText.write('CR' + str(count) + ': Q# :' + elements + '\n')
             count = count + 1
+
         outputText.close()
-        self.dir_path = input_dir_path + 'Output.txt'
-        print("Open the file at :   " + self.dir_path + "Outout.txt" + "and make the proper relations to the question frame." )
+
+        self.dir_path = input_dir_path + fileName
+
+        print("Open the file at :   " + self.dir_path  + " and make the proper relations to the question frame." )
 
 
         return self.dir_path

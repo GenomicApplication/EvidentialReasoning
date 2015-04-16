@@ -1,5 +1,5 @@
-Please make your connect you relations. You have : 1296 relations to make. 
-Compatibility Relations are: 
+Please make your connect you relations. You have : 1296 relations to make.
+Replace the # with the answer number.The compatibility relations are:
 CR1:Q1: EN1 PA1 PR1
 CR2:Q2: EN1 PA1PR2
 CR3:Q3: EN1 PA1PR3

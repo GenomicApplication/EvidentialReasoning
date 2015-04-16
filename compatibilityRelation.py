@@ -22,7 +22,8 @@ class CompatibilityRelations:
         length_of_CR = len(relations)
 
         outputText.write("Please make your connect you relations. You have : " + str(length_of_CR)   + " relations to make. \n")
-        outputText.write("Compatibility Relations are: \n")
+        outputText.write("Replace the # with the answer number.")
+        outputText.write("The compatibility relations are: \n")
 
         count = 1
         for elements in relations:

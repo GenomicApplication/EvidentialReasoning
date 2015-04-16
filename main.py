@@ -38,7 +38,7 @@ def main():
     outputTextFile = CompatibilityRelations()
     outputTextFile.get_relations(parse.FOD, parse.dir_path)
     print(parse.dir_path)
-
+    parse.openInputFile()
 
 if __name__ == "__main__":
     main()

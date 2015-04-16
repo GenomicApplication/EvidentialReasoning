@@ -86,6 +86,7 @@ class Analysis:
 
     # Dempster's combination rule
     def fuse(self,translatedFrame1, translatedFrame2):
+
         pass
 
     def interpret(self):

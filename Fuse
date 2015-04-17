@@ -1,37 +1,70 @@
-import numpy as np
+massA = {('ad', 'ae', 'af'): 0.2, ('cd', 'ce') : 0.3, ('theta') : 0.5}
 
-# a = np.array([1,0,0])
-#b = np.array([0,1,0])
-#print np.cross(a,b)
-massA = {('ad', 'ae', 'af'): 0.2, ('cd', 'ce', 'cf'): 0.3, 'theta': 0.5}
+massB = {('ad', 'bd', 'cd', 'ae', 'be', 'ce'): 0.4, ('af', 'bf', 'cf'): 0.3, ('theta'): 0.3}
 
-massB = {('ad', 'bd', 'cd', 'ae', 'be', 'ce'): 0.4, ('af', 'bf', 'cf'): 0.3, 'theta': 0.3}
 
 def fuse(massA, massB):
 	i = 0
-	for keys in massA:
-		a = 0
-		print (keys, massB.keys()[a])
-		if keys == "theta" or massB.keys()[a] == 'theta':
-			result = massA.values()[i] * massB.values()[a]
-			print result
-
-		elif any(keys in massB.keys()[a] for keys in massB.keys()):
-			result1 = massA.values()[i] * massB.values()[a]
-			print result1
-
-		elif any(keys not in massB.keys()[a] for keys in massB.keys()):
-			k = massA.values()[i] * massB.values()[a]
-			result2 = 1/(1-k)
-			print result2
-	i = i + 1
-	a = a + 1
-
-
-
-
+	a = 0
+	sum1=[]
+	sumk = []
+	match = []
+	for key,value in massB.items():
+		for keys, values in massA.items():
+			print (keys, key)
+			if keys == "theta" or key == 'theta':
+				print (values)
+				print (value)
+				result = (value * values)
+				print (result)
+				sum1.append(result)
+			elif keys != "theta" or key != "theta" :
+				count = 0
+				count1 = 0
+				for patterns in keys:
+					for pattern in key:
+						if patterns == pattern:
+							print (pattern, patterns)
+							print ("found a match!")
+							count = count + 1
+							print count
+							if count == 1:
+								print (values)
+								print (value)
+								result1 = int(value * values)
+								print (result1)
+								sum1.append(result1)
+						else:
+							print (pattern, patterns)
+							print ("No Match")
+							count1 = count1 + 1
+							print (count1)
+							if count1 == 1:
+								print (value)
+								print (values)
+								result2 = (1-(value * values))
+								print (result2)
+								sumk.append(result2)
+		i = i + 1
+		a = a + 1
+	print (sum1)
+	sum1 = sum(sum1)
+	print (sum1)
+	print (sumk)
+	sumk = sum(sumk)
+	print int(sumk)
+	K = 1/sumk
+	print ("K = ",K)
+	if sumk != 0:
+		m1x2 = K * sum1
+		print ("The mass of 1 and 2 is : ", (m1x2))
+	else:
+		m1x2 = sum1
+		print ("The mass of 1 and 2 is : ", (m1x2))
 
 fuse(massA, massB)
+
+
 
 
 

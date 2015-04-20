@@ -20,8 +20,6 @@ class CompatibilityRelations:
             print(value)
             self.answerDictionary[key] = value
 
-        print(self.answerDictionary)
-
         return self.answerDictionary
 
 

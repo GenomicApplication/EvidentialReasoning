@@ -10,9 +10,6 @@ class CompatibilityRelations:
     #relations in there.
     def get_relations(self,parsedCR):
 
-        print("Printing from CR")
-        print(parsedCR)
-
         for elements in parsedCR:
 
             splitter = elements.split(':')

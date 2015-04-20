@@ -15,9 +15,6 @@ class CompatibilityRelations:
             splitter = elements.split(':')
             key = splitter[1]
             value = splitter[2].split(',')
-            print(splitter)
-            print(key)
-            print(value)
             self.answerDictionary[key] = value
 
         return self.answerDictionary

@@ -99,14 +99,17 @@ class Analysis:
 
         return self.translatedFrame1, self.translatedFrame2, self.newFrame, self.beliefValuesDictionary
 
+
     def set_beliefValuesDictionary(self, key, value):
         print("print in function")
         self.beliefValuesDictionary[key] = value
+
 
     # Dempster's combination rule
     def fuse(self,translatedFrame1, translatedFrame2):
 
         pass
+
 
     def interpret(self):
         pass

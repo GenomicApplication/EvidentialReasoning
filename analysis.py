@@ -93,6 +93,7 @@ class Analysis:
 
         print(self.translatedFrame1)
         print(self.translatedFrame2)
+        print(self.beliefValuesDictionary)
 
         self.newFrame = "FOD:" + frame1[0] + 'x' + frame2[0] + ': NO:' + '0' + string1 + string2
 

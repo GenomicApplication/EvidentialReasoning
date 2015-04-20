@@ -23,12 +23,16 @@ def main():
     print(frames.mainFrame)
     print(frames.mainPropositions)
 
+    count_dictionary_occurrence = 0
+
     while countFOD != 0:
         try:
-            frames.get_crossProductFrames(parse.FOD[0], parse.FOD[1])
+            frames.get_crossProductFrames(parse.FOD[0], parse.FOD[1],count_dictionary_occurrence)
             parse.FOD.remove(parse.FOD[0])
             parse.FOD.remove(parse.FOD[0])
             parse.FOD.insert(0, frames.insertFrame)
+            count_dictionary_occurrence = count_dictionary_occurrence + 1
+
         except IndexError:
             break
 
@@ -38,6 +42,7 @@ def main():
     CR = CompatibilityRelations()
     CR.get_relations(parse.CR)
     print(CR.answerDictionary)
+
 
 
 

@@ -1,41 +1,31 @@
 
 class CompatibilityRelations:
 
-    dir_path = ''
+    answerDictionary = {}
 
     def __init__(self):
         pass
 
     #Opens up a new file in the same location as the Input.txt file and prints the
     #relations in there.
-    def get_relations(self, crossProductFrame, input_dir_path):
+    def get_relations(self,parsedCR):
 
-        fileName = input("What did you want to name the output text file? :")
-        outputText = open(input_dir_path.strip('Input.txt') + fileName, 'w')
+        print("Printing from CR")
+        print(parsedCR)
 
-        splitter = crossProductFrame[0].split(':')
+        for elements in parsedCR:
 
-        length_ofCPF = len(splitter) - 1
-        relations = splitter[length_ofCPF].split(',')
-        length_of_CR = len(relations)
+            splitter = elements.split(':')
+            key = splitter[1]
+            value = splitter[2].split(',')
+            print(splitter)
+            print(key)
+            print(value)
+            self.answerDictionary[key] = value
 
-        outputText.write("Please make your connect you relations. You have : " + str(length_of_CR)   + " relations to make. \n")
-        outputText.write("Replace the # with the answer number.")
-        outputText.write("The compatibility relations are: \n")
+        print(self.answerDictionary)
 
-        count = 1
-
-        for elements in relations:
-            outputText.write('CR' + str(count) + ': Q# :' + elements + '\n')
-            count = count + 1
-
-        outputText.close()
-
-        self.dir_path = input_dir_path + fileName
-
-        print("Open the file at :   " + self.dir_path  + " and make the proper relations to the question frame." )
-
-        return self.dir_path
+        return self.answerDictionary
 
 
 

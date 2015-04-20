@@ -53,7 +53,7 @@ class ParseDataToClass:
 
     # packages two arrays into a dictionary
     def parseDataToQuestionFrame(self, str):
-        splitter = str.split(':',2)
+        splitter = str.split(':')
         key = splitter[0]
         question = splitter[1]
         answers = [splitter[2:len(splitter)]]

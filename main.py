@@ -35,10 +35,12 @@ def main():
     print("printing from main")
     print(parse.FOD)
 
-    outputTextFile = CompatibilityRelations()
-    outputTextFile.get_relations(parse.FOD, parse.dir_path)
-    print(parse.dir_path)
-    parse.openInputFile()
+    CR = CompatibilityRelations()
+    CR.get_relations(parse.CR)
+    print(CR.answerDictionary)
+
+
+
 
 if __name__ == "__main__":
     main()

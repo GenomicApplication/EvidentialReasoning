@@ -29,7 +29,6 @@ class Analysis:
             print("Please recheck the input text file and make sure all values are correct.")
 
 
-
     def translate(self,frame1, relations1, frame2, relations2):
         print("Entered Translating Operation\n")
 

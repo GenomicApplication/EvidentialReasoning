@@ -22,7 +22,7 @@ class Frames:
 
 
     #to get the cross product frames after discount and translating operations
-    def get_crossProductFrames(self, FOD1, FOD2, count_dictionary_occurrence):
+    def get_crossProductFrames(self, FOD1, FOD2):
 
         cross = Analysis()
         relations1 = []
@@ -52,8 +52,6 @@ class Frames:
                 splitter1[x] = discounts1.discount(alpha1, mass1)
                 splitter1[3] = 0
                 splitter1[2] = "NO"
-                #print(discounts1.discounted)
-                #print('\n')
                 x = x + 2
 
 
@@ -63,8 +61,6 @@ class Frames:
                 splitter2[y] = discounts2.discount(alpha2, mass2)
                 splitter2[3] = 0
                 splitter2[2] = "NO"
-                #print(discounts2.discounted)
-                #print('\n')
                 y = y + 2
 
             else:
@@ -84,8 +80,7 @@ class Frames:
         relations2.append(splitter2[length_ofFrameInfo2].split(','))
         relation2 = splitter2[length_ofFrameInfo2].split(',')
 
-        cross.translate(frameInfo1, relations1, frameInfo2, relations2, count_dictionary_occurrence)
-
+        cross.translate(frameInfo1, relations1, frameInfo2, relations2)
 
         string = ''
 

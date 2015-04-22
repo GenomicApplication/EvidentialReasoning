@@ -5,7 +5,7 @@ class Analysis:
     translatedFrame1 = {}
     translatedFrame2 = {}
     newFrame = ''
-    beliefValuesDictionary = {}
+
 
     def __init__(self):
         pass
@@ -30,7 +30,7 @@ class Analysis:
 
 
 
-    def translate(self,frame1, relations1, frame2, relations2, count_dictionary_occurrence):
+    def translate(self,frame1, relations1, frame2, relations2):
         print("Entered Translating Operation\n")
 
         x = 3
@@ -51,6 +51,8 @@ class Analysis:
         self.translatedFrame1.clear()
         self.translatedFrame2.clear()
 
+        #iterate through an unknown length of the Frame 1, and collect all the belief values
+        #record the translated frame in a dictionary
         while x < length_ofFrame1:
             try:
                 for j in relations2:
@@ -62,15 +64,12 @@ class Analysis:
                     theta = float(1 - mass)
                     self.translatedFrame1["theta"] = theta
                     string1 = string1 + ':' + str(frame1[x]) + ':' + key
-
-                    if count_dictionary_occurrence == 0:
-                        self.set_beliefValuesDictionary(proposition,value)
-                        print(self.beliefValuesDictionary)
-
                     x = x + 2
             except:
                 break
 
+        #iterate through an unknown length of the Frame 2, and collect all the belief values
+        #record the translated frame in a dictionary
         while y < length_ofFrame2:
             try:
                 for i in relations1:
@@ -81,31 +80,19 @@ class Analysis:
                     self.translatedFrame2[key2] = float(frame2[y])
                     theta2 = float(1 - mass2)
                     self.translatedFrame2["theta"] = theta2
-                    string2 = string2 + ':' + str(frame2[y]) + ':' + key2
-
-                    if count_dictionary_occurrence == 0:
-                        self.set_beliefValuesDictionary(proposition,value)
-                        print(self.beliefValuesDictionary)
-
                     y = y + 2
             except:
                 break
 
         print(self.translatedFrame1)
         print(self.translatedFrame2)
-        print(self.beliefValuesDictionary)
 
         self.newFrame = "FOD:" + frame1[0] + 'x' + frame2[0] + ': NO:' + '0' + string1 + string2
 
-        return self.translatedFrame1, self.translatedFrame2, self.newFrame, self.beliefValuesDictionary
+        return self.translatedFrame1, self.translatedFrame2, self.newFrame
 
 
-    def set_beliefValuesDictionary(self, key, value):
-        print("print in function")
-        self.beliefValuesDictionary[key] = value
-
-
-    # Dempster's combination rule
+    #Dempster's combination rule
     def fuse(self,translatedFrame1, translatedFrame2):
 
         pass

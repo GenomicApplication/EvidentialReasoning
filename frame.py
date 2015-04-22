@@ -45,6 +45,7 @@ class Frames:
 
         #iterates through the FOD list and check for discounting operation
         while y < length_ofFOD2 or x < length_ofFOD1:
+
             #accounts for the discount operation before crossing the frames
             if discountOption1 == 'YES' and x < length_ofFOD1:
                 mass1 = splitter1[x].strip()

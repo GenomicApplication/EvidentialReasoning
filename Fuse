@@ -1,39 +1,51 @@
 massA = {('ad', 'ae', 'af'): 0.2, ('cd', 'ce') : 0.3, ('theta') : 0.5}
 
 massB = {('ad', 'bd', 'cd', 'ae', 'be', 'ce'): 0.4, ('af', 'bf', 'cf'): 0.3, ('theta'): 0.3}
-
+y = []
 
 def fuse(massA, massB):
 	i = 0
 	a = 0
 	sum1=[]
 	sumk = []
-	match = []
 	for key,value in massB.items():
 		for keys, values in massA.items():
 			print (keys, key)
-			if keys == "theta" or key == 'theta':
+			if keys == 'theta' or key == 'theta':
 				print (values)
 				print (value)
 				result = (value * values)
 				print (result)
 				sum1.append(result)
+				if key == "theta" and keys == "theta":
+					x = ("theta"),(result)
+					y.append(x)
+				elif key == "theta" and keys != "theta":
+					x = (keys), result
+					y.append(x)
+				elif key != "theta" and keys == "theta":
+					x = (key), result
+					y.append(x)
 			elif keys != "theta" or key != "theta" :
 				count = 0
 				count1 = 0
+				match = []
 				for patterns in keys:
 					for pattern in key:
 						if patterns == pattern:
-							print (pattern, patterns)
+							print (pattern, patterns) 
 							print ("found a match!")
 							count = count + 1
-							print count
+							print (count)
 							if count == 1:
 								print (values)
 								print (value)
-								result1 = int(value * values)
+								result1 = (value * values)
 								print (result1)
 								sum1.append(result1)
+								x = (match,(result1))
+								y.append(x)
+							match.append(pattern)
 						else:
 							print (pattern, patterns)
 							print ("No Match")
@@ -47,23 +59,23 @@ def fuse(massA, massB):
 								sumk.append(result2)
 		i = i + 1
 		a = a + 1
+	print (y)
 	print (sum1)
 	sum1 = sum(sum1)
 	print (sum1)
 	print (sumk)
 	sumk = sum(sumk)
-	print int(sumk)
+	print (sumk)
 	K = 1/sumk
-	print ("K = ",K)
+	print "K = ",K
 	if sumk != 0:
 		m1x2 = K * sum1
-		print ("The mass of 1 and 2 is : ", (m1x2))
+		print "The mass of 1 and 2 is : ", (m1x2)
 	else:
 		m1x2 = sum1
-		print ("The mass of 1 and 2 is : ", (m1x2))
-
+		print "The mass of 1 and 2 is : ", (m1x2)
+	
 fuse(massA, massB)
-
 
 
 

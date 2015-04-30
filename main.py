@@ -40,6 +40,13 @@ def main():
     CR.get_relations(parse.CR)
     print(CR.answerDictionary)
 
+    interpret = Analysis()
+    newDirectory = parse.dir_path.strip("Input.txt")
+
+
+    interpret.interpret(interpret.b, newDirectory)
+
+
 
 
 

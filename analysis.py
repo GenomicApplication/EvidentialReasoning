@@ -243,7 +243,7 @@ class Analysis:
                                 p = p + 1
                             else:
                                 string7 = string7 + ',' + temp_array2[p]
-                                w = w + 1
+                                p = p + 1
                         print("ORGANIZED STRING IN 2")
                         print(string7)
 
@@ -286,7 +286,7 @@ class Analysis:
         print(self.translatedFrame2)
         print("Exiting translate operation \n")
 
-        #self.fuse(self.translatedFrame1, self.translatedFrame2)
+        self.fuse(self.translatedFrame1, self.translatedFrame2)
 
         return self.translatedFrame1, self.translatedFrame2, self.newFrame
 

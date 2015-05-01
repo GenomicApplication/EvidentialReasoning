@@ -9,14 +9,14 @@ def main():
 
     parse = ParseDataToClass()
     parse.openInputFile()
-    '''
+
     print("Parsed Information for frames, CR, Question, AND FOD \n")
     print(parse.questionFrame)
     print (parse.frames)
     print(parse.CR)
     print(parse.FOD)
     print('\n')
-    '''
+
     countFOD = len(parse.FOD)
     frames = Frames()
     frames.organize_frames(parse.frames)

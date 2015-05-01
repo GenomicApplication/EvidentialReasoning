@@ -20,8 +20,8 @@ def main():
     countFOD = len(parse.FOD)
     frames = Frames()
     frames.organize_frames(parse.frames)
-    #print(frames.mainFrame)
-    #print(frames.mainPropositions)
+    print(frames.mainFrame)
+    print(frames.mainPropositions)
 
     CR = CompatibilityRelations()
     CR.get_relations(parse.CR)
@@ -39,10 +39,10 @@ def main():
     print("Printing the final frame")
     print(parse.FOD)
 
-    #interpret = Analysis()
-    #newDirectory = parse.dir_path.strip("Input.txt")
+    interpret = Analysis()
+    newDirectory = parse.dir_path.strip("Input.txt")
 
-    #interpret.interpret(interpret.b, newDirectory)
+    interpret.interpret(interpret.b, newDirectory)
 
     interpret = Analysis()
     newDirectory = parse.dir_path.strip("Input.txt")

@@ -359,34 +359,102 @@ class Analysis:
 
 
 
-    def interpret(self, b):
-        with open("Output.txt", 'w') as file:
-            for item in b:
-                file.write("{}\n".format(item))
-
-        open("Output.txt", 'r')
-        print (b)
-        support = 0
+    def interpret(self, b, crossed_frame):
+        #for line in crossed_frame:
+            #if 'Q' in line:
         val = []
         for keys,values in b:
             val.append(values)
-            val = sum(val)
-        for keys, values in b:
-            counter = (Counter(keys) in b)
-            print (keys)
-            print (values)
-            if counter == True:
-                print ('sum all')
-                support = sum(values)
-                print ("Support : %.4f" % support)
-                plausibility = abs((1-((val)-values)))
-                print ("Plausibility: %.4f" % plausibility)
-                EI = ["%.4f" % support, "%.4f" % plausibility]
-                print ("EI:", EI)
-            else:
-                support = values
-                print ("Support : %.4f" % support)
-                plausibility = abs((1-((val)-values)))
-                print ("Plausibility: %.4f" % plausibility)
-                EI = ["%.4f" % support, "%.4f" % plausibility]
-                print ("EI:", EI)
+        val = sum(val)
+        for key, value in crossed_frame.items():
+            if 'Q' in key:
+                value1 = (value[0])
+                s1 = set(value1.split(' '))
+                for keys, values in b:
+                    if 'PR' in keys:
+                        print (keys)
+                        s2 = set(keys.split(' '))
+                        counter = (Counter(keys) in b)
+                        print (keys)
+                        print (values)
+                        if counter == True:
+                            print ('sum all')
+                            support = sum(values)
+                            print ("Support : %.4f" % support)
+                            plausibility = abs((1-((val)-values)))
+                            print ("Plausibility: %.4f" % plausibility)
+                            EI = ["%.4f" % support, "%.4f" % plausibility]
+                            print ("EI:", EI)
+                        else:
+                            support = values
+                            print ("Support : %.4f" % support)
+                            plausibility = abs((1-((val)-values)))
+                            print ("Plausibility: %.4f" % plausibility)
+                            EI = ["%.4f" % support, "%.4f" % plausibility]
+                            print ("EI:", EI)
+                        if any(s1.intersection(s2)):
+                            value = value1[:value1.find('/')]
+                            print (value)
+                        elif any(s1.difference(s2)):
+                            for key, value in crossed_frame.items():
+                                if 'Q' in key:
+                                    value1 = (value[1])
+                                    s1 = set(value1.split(' '))
+                                    for keys, values in b:
+                                        if 'PR' in keys:
+                                            print (keys)
+                                            s2 = set(keys.split(' '))
+                                            counter = (Counter(keys) in b)
+                                            print (keys)
+                                            print (values)
+                                            if counter == True:
+                                                print ('sum all')
+                                                support = sum(values)
+                                                print ("Support : %.4f" % support)
+                                                plausibility = abs((1-((val)-values)))
+                                                print ("Plausibility: %.4f" % plausibility)
+                                                EI = ["%.4f" % support, "%.4f" % plausibility]
+                                                print ("EI:", EI)
+                                            else:
+                                                support = values
+                                                print ("Support : %.4f" % support)
+                                                plausibility = abs((1-((val)-values)))
+                                                print ("Plausibility: %.4f" % plausibility)
+                                                EI = ["%.4f" % support, "%.4f" % plausibility]
+                                                print ("EI:", EI)
+                                            if any(s1.intersection(s2)):
+                                                value = value1[:value1.find('/')]
+                                                print (value)
+                                            elif any(s1.intersection.s2):
+                                                for key, value in crossed_frame.items():
+                                                    if 'Q' in key:
+                                                        value1 = (value[2])
+                                                        s1 = set(value1.split(' '))
+                                                        for keys, values in b:
+                                                            if 'PR' in keys:
+                                                                print (keys)
+                                                                s2 = set(keys.split(' '))
+                                                                counter = (Counter(keys) in b)
+                                                                print (keys)
+                                                                print (values)
+                                                                if counter == True:
+                                                                    print ('sum all')
+                                                                    support = sum(values)
+                                                                    print ("Support : %.4f" % support)
+                                                                    plausibility = abs((1-((val)-values)))
+                                                                    print ("Plausibility: %.4f" % plausibility)
+                                                                    EI = ["%.4f" % support, "%.4f" % plausibility]
+                                                                    print ("EI:", EI)
+                                                                else:
+                                                                    support = values
+                                                                    print ("Support : %.4f" % support)
+                                                                    plausibility = abs((1-((val)-values)))
+                                                                    print ("Plausibility: %.4f" % plausibility)
+                                                                    EI = ["%.4f" % support, "%.4f" % plausibility]
+                                                                    print ("EI:", EI)
+                                                                if any(s1.intersection(s2)):
+                                                                    value = value1[:value1.find('/')]
+                                                                    print (value)
+
+
+

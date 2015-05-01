@@ -56,7 +56,7 @@ class ParseDataToClass:
         splitter = str.split(':')
         key = splitter[0]
         question = splitter[1]
-        answers = [splitter[2:len(splitter)]]
+        answers = splitter[2:len(splitter)]
         self.questionFrame = {key:[question,answers]}
 
         return self.questionFrame

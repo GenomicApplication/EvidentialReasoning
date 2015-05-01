@@ -16,13 +16,13 @@ class Frames:
     def organize_frames(self,frames):
         for elements in frames:
             splitter = elements.split(":")
-            self.mainFrame.append(splitter[1:4])
-            self.mainPropositions.append(splitter[5].split('/'))
+            self.mainFrame.append(splitter[1:3])
+            self.mainPropositions.append(splitter[3].split('/'))
         return self.mainFrame, self.mainPropositions
 
 
     #to get the cross product frames after discount and translating operations
-    def get_crossProductFrames(self, FOD1, FOD2):
+    def get_crossProductFrames(self, FOD1, FOD2, compatibilityRelationsDictionary):
 
         cross = Analysis()
         relations1 = []
@@ -81,11 +81,12 @@ class Frames:
         relations2.append(splitter2[length_ofFrameInfo2].split(','))
         relation2 = splitter2[length_ofFrameInfo2].split(',')
 
-        cross.translate(frameInfo1, relations1, frameInfo2, relations2)
+        cross.translate(frameInfo1,frameInfo2, compatibilityRelationsDictionary)
 
         string = ''
 
         count = 1
+
         #appends the cross product propositions to a new FOD frame
         for i in relation1:
             for j in relation2:
@@ -96,7 +97,8 @@ class Frames:
                     string = string + ',' + i + j
                     count = count + 1
 
-        self.insertFrame = cross.newFrame + ':' + frameInfo1[0] + 'x' + frameInfo2[0] + ':' + string
-
+        self.insertFrame = cross.newFrame + ':' + frameInfo1[0] + ' X ' + frameInfo2[0] + ':' + string
+        print("Printing from frame.py")
+        print(self.insertFrame)
         return cross.translate, self.insertFrame
 

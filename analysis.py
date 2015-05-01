@@ -1,25 +1,34 @@
 
-
-import itertools
-import re
-from parseDataToClass import *
-from main import *
 from collections import Counter
 
+''' This class serves as the four major operations of discount, translate, fuse, and interpret
+
+def discount needs an alpha and mass parameter to adjust the impact
+
+def translate takes in 4 parameters, two frames at a time, with its relations = propositions
+
+def fuse uses the Dempster's combination rule to perform orthogonal sum to derive a new mass density
+across intersections and normalizes evidence that does not intersect
+
+def interpret uses the combined translated frame along with the mass densities derived from fuse
+to interpret the evidence pertaining to answers of the question frame
+'''
 
 class Analysis:
+
     translatedFrame1 = {}
     translatedFrame2 = {}
     newFrame = ''
     b = []
 
+
     def __init__(self):
         pass
 
-
+    #adjust the impact based on new evidence
     def discount(self, alpha, mass):
         try:
-            # print("Entered discount operation")
+            #print("Entered discount operation")
             alpha = float(alpha)
             mass = float(mass)
 
@@ -30,13 +39,14 @@ class Analysis:
                 self.discounted = float(alpha) * float(mass)
                 return self.discounted
 
-        except (TypeError, ValueError):
+        except (TypeError,ValueError):
             print("Must be a numeric value and not a string value.\n")
             print("Please recheck the input text file and make sure all values are correct.")
 
 
-    def translate(self, frame1, relations1, frame2, relations2):
-        print("Entered Translating Operation\n")
+    # combines the two frames to arrive at a new cross product frame
+    def translate(self,frame1,frame2,compatibilityRelations):
+        print("Entered Translate Operation\n")
 
         x = 3
         y = 3
@@ -47,54 +57,236 @@ class Analysis:
         theta = 0
         theta2 = 0
 
-        string1 = ''
-        string2 = ''
-
         length_ofFrame1 = len(frame1)
         length_ofFrame2 = len(frame2)
+
+        print("PRINTING FRAMES ")
+        print(frame1)
+        print(frame2)
+
+        strToMatch1x2 =   frame1[0] + ' X ' + frame2[0]
+        strToMatch2x1 =   frame2[0] + ' X ' + frame1[0]
+
+        print("PRINTING FRAMES TO MATCH")
+        print(strToMatch1x2)
+        print(strToMatch2x1)
 
         self.translatedFrame1.clear()
         self.translatedFrame2.clear()
 
-        # iterate through an unknown length of the Frame 1, and collect all the belief values
-        # record the translated frame in a dictionary
+
+        #iterate through an unknown length of the Frame 1, and collect all the belief values
+        #Finally, record the translated frame in a dictionary
         while x < length_ofFrame1:
             try:
-                for j in relations2:
-                    proposition = frame1[x + 1]
-                    key = proposition + ' v ' + str(j)
-                    value = float(frame1[x])
-                    mass = float(mass) + value
-                    self.translatedFrame1[key] = float(frame1[x])
-                    theta = float(1 - mass)
-                    self.translatedFrame1["theta"] = theta
-                    string1 = string1 + ':' + str(frame1[x]) + ':' + key
-                    x = x + 2
+                proposition = frame1[x+1]
+                print("PRINTING PRPOSITIONS 1")
+                print(proposition)
+                value = float(frame1[x])
+                mass = float(mass) + value
+                theta = float(1 - mass)
+
+                for key1,value1 in compatibilityRelations.items():
+                    print("PRINTING KEY 1")
+                    print(key1)
+                    print("PRINTING strToMatch1x2")
+                    print(strToMatch1x2)
+
+                    if key1 == strToMatch1x2:
+                        print("MATCH FOR 1X2 IS FOUND")
+                        print(key1)
+                        splitter = proposition.split('U')
+                        length_of_splitter = len(splitter)
+                        i = 0
+                        dic = {}
+                        print("PRINTING PROPOSITION")
+                        print(proposition)
+                        print("PRINTING SPLITTER")
+                        print(splitter)
+
+                        while i < length_of_splitter:
+                            string = splitter[i].strip()
+                            print("PRINTING THE PROPOSITION FOUND IN FRAME 1")
+                            print(string)
+
+                            for elements in value1:
+                                print("PRINTING ELEMENTS for value 1")
+                                print(elements)
+                                if elements.find(string) != -1:
+                                    print(string + " Exists")
+                                    newString = elements.strip(string)
+                                    newString = newString.strip('/')
+                                    print("PRINTING NEW STRING")
+                                    print(newString)
+
+                                    if elements.find('v') != -1:
+                                        h = newString
+                                        dic[h] = 1
+                                    else:
+                                        h = newString.split(',')
+
+                                        for each in h:
+                                            print(each)
+                                            dic[each] = 1
+                            i = i + 1
+
+                            print("printing dictionary at the end of 1st while")
+                            print(dic)
+
+                        temp_array = []
+
+                        for key3,value3 in dic.items():
+                            temp_array.append(key3)
+                            print("PRINTING TEMP ARRAY")
+                            print(temp_array)
+                        temp_array.sort()
+                        print("SORTED ARRAY")
+                        print(temp_array)
+
+                        len_of_temp_array = len(temp_array)
+                        w = 0
+                        string6 = ''
+
+                        while w < len_of_temp_array:
+                            if string6 == '':
+                                string6 = temp_array[w]
+                                w = w + 1
+                            else:
+                                string6 = string6 + ',' + temp_array[w]
+                                w = w +1
+
+                        print("ORGANIZED STRING")
+                        print(string6)
+
+                        key4 = proposition + ' v (' + string6 + ')'
+                        self.translatedFrame1[key4] = value
+                        self.translatedFrame1["theta"] = theta
+
+                x = x + 2
+
             except:
                 break
+
 
         #iterate through an unknown length of the Frame 2, and collect all the belief values
         #record the translated frame in a dictionary
         while y < length_ofFrame2:
+            print("ENTERED 2ND WHILE LOOP")
             try:
-                for i in relations1:
-                    proposition = frame2[y + 1]
-                    key2 = proposition + ' v ' + str(i)
-                    value = float(frame2[y])
-                    mass2 = float(mass2) + value
-                    self.translatedFrame2[key2] = float(frame2[y])
-                    theta2 = float(1 - mass2)
-                    self.translatedFrame2["theta"] = theta2
-                    y = y + 2
+                proposition2 = frame2[y+1]
+                value2 = float(frame2[y])
+                mass2 = float(mass2) + value2
+                theta2 = float(1 - mass2)
+
+                for key3,value3 in compatibilityRelations.items():
+                    if key3 == strToMatch2x1:
+                        print("PRINTING KEY IN SECOND WHILE LOOP")
+                        print(key3)
+                        print('PRINTING VALUE IN SECOND WHILE LOOP')
+                        print(value3)
+                        splitter2 = proposition2.split('U')
+                        length_of_splitter2 = len(splitter2)
+                        m = 0
+                        dic2 = {}
+
+                        while m < length_of_splitter2:
+                            string2 = splitter2[m].strip()
+                            print("PRINTING THE STRING FOUND IN FRAME 2")
+                            print(string2)
+
+                            for elements2 in value3:
+                                print("printing elements 2")
+                                print (elements2)
+
+                                if elements2.find(string2) != -1:
+                                    print("A MATCH IS FOUND IN 2")
+                                    newString2 = elements2.strip(string2 + '/')
+                                    print("Printing newString 2")
+                                    print(newString2)
+
+                                    if elements2.find('v') != -1:
+                                        f = newString2
+                                        dic2[f] = 1
+                                    else:
+                                        f = newString2.split(',')
+                                        print("printing f in loop2")
+                                        print(f)
+
+                                        for each2 in f:
+                                            print('each2 in while loop 2')
+                                            print(each2)
+                                            dic2[each2] = 1
+                            m = m + 1
+
+                            print("PRINTING DICTIONARY 2")
+                            print(dic2)
+
+                        temp_array2 = []
+
+                        for key4,value4 in dic2.items():
+                            print("PRINTING KEY IN 2")
+                            print(key4)
+                            temp_array.append(key4)
+                            print("PRINTING TEMP ARRAY 2")
+                            print(temp_array2)
+                        temp_array2.sort()
+                        print('SORTED ARRAY 2')
+                        print(temp_array2)
+
+                        len_of_temp_array2 = len(temp_array)
+                        p = 0
+                        string7 = ''
+
+                        while p < len_of_temp_array2:
+                            if string7 == '':
+                                string7 = temp_array2[p]
+                                p = p + 1
+                            else:
+                                string7 = string7 + ',' + temp_array2[p]
+                                w = w + 1
+                        print("ORGANIZED STRING IN 2")
+                        print(string7)
+
+                        key5 = proposition2 + ' v (' + string7 + ')'
+                        self.translatedFrame2[key5] = value2
+                        self.translatedFrame2["theta"] = theta2
+                y = y + 2
             except:
                 break
 
+        comboString1 = ''
+
+        for key6,value6 in self.translatedFrame1.items():
+            if key6 != 'theta':
+                print("PRINTING KEY 6")
+                print(key6)
+                if comboString1 == '':
+                    comboString1 = ':' + str(value6) + ':' + key6
+                else:
+                    comboString1 = comboString1 + ':' + str(value6) + ':' + key6
+
+        comboString2 = ''
+
+        for key8,value8 in self.translatedFrame2.items():
+            if key8 != 'theta':
+                print("PRINTING KEY 8")
+                print(key8)
+                if comboString2 == '':
+                    comboString2 = ':' + str(value8) + ':' + key8
+                else:
+                    comboString2 = comboString2 + ':' + str(value8) + ':' + key8
+
+        self.newFrame = 'FOD:' +  frame1[0] + ' X ' + frame2[0] + ': NO : 0' + comboString1 + comboString2
+        print("PRINTING NEW FRAME")
+        print(self.newFrame)
+
+        print("Translated Frame 1 is : ")
         print(self.translatedFrame1)
+        print("Translated Frame 2 is : " )
         print(self.translatedFrame2)
+        print("Exiting translate operation \n")
 
-        self.fuse(self.translatedFrame1, self.translatedFrame2)
-
-        self.newFrame = "FOD:" + frame1[0] + 'x' + frame2[0] + ': NO:' + '0' + string1 + string2
+        #self.fuse(self.translatedFrame1, self.translatedFrame2)
 
         return self.translatedFrame1, self.translatedFrame2, self.newFrame
 
@@ -105,6 +297,7 @@ class Analysis:
         a = 0
         sum1 = []
         sumk = []
+
         for key, value in massB.items():
             for keys, values in massA.items():
                 print(((keys)), ((key)))
@@ -169,11 +362,13 @@ class Analysis:
 
 
 
-    def interpret(self, b, newDirectory ):
+    def interpret(self, b, newDirectory):
+
         output_dir =open(newDirectory + "Output.txt", 'w')
         print (b)
         support = 0
         val = []
+
         for keys,values in b:
             print (keys)
             print (values)
@@ -200,8 +395,3 @@ class Analysis:
                 print (("Plausibility: "),plausibility)
                 EI = [support, plausibility]
                 print ("EI:", EI)
-
-
-
-
-

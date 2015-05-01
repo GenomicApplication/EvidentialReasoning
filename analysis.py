@@ -114,8 +114,9 @@ class Analysis:
                                 print(elements)
                                 if elements.find(string) != -1:
                                     print(string + " Exists")
-                                    newString = elements.strip(string)
-                                    newString = newString.strip('/')
+                                    newString = elements.strip(string + '/')
+                                    print("STRIPPED STRING")
+                                    print(newString)
                                     print("PRINTING NEW STRING")
                                     print(newString)
 
@@ -201,7 +202,7 @@ class Analysis:
                                 if elements2.find(string2) != -1:
                                     print("A MATCH IS FOUND IN 2")
                                     newString2 = elements2.strip(string2 + '/')
-                                    print("Printing newString 2")
+                                    print("Printing STRIPPE STRING IN 2")
                                     print(newString2)
 
                                     if elements2.find('v') != -1:
@@ -226,14 +227,14 @@ class Analysis:
                         for key4,value4 in dic2.items():
                             print("PRINTING KEY IN 2")
                             print(key4)
-                            temp_array.append(key4)
+                            temp_array2.append(key4)
                             print("PRINTING TEMP ARRAY 2")
                             print(temp_array2)
                         temp_array2.sort()
                         print('SORTED ARRAY 2')
                         print(temp_array2)
 
-                        len_of_temp_array2 = len(temp_array)
+                        len_of_temp_array2 = len(temp_array2)
                         p = 0
                         string7 = ''
 
@@ -252,8 +253,9 @@ class Analysis:
                         self.translatedFrame2["theta"] = theta2
                 y = y + 2
             except:
+                print("Breaking out of the 2nd while loop")
                 break
-
+        print("broke out of the 2nd while loop")
         comboString1 = ''
 
         for key6,value6 in self.translatedFrame1.items():
@@ -264,7 +266,8 @@ class Analysis:
                     comboString1 = ':' + str(value6) + ':' + key6
                 else:
                     comboString1 = comboString1 + ':' + str(value6) + ':' + key6
-
+        print("PRINTING COMBO STRING 1")
+        print(comboString1)
         comboString2 = ''
 
         for key8,value8 in self.translatedFrame2.items():
@@ -275,6 +278,9 @@ class Analysis:
                     comboString2 = ':' + str(value8) + ':' + key8
                 else:
                     comboString2 = comboString2 + ':' + str(value8) + ':' + key8
+
+        print("PRINTING COMBO STRING 2")
+        print(comboString2)
 
         self.newFrame = 'FOD:' +  frame1[0] + ' X ' + frame2[0] + ': NO : 0' + comboString1 + comboString2
         print("PRINTING NEW FRAME")

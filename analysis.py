@@ -2,17 +2,14 @@
 from collections import Counter
 
 ''' This class serves as the four major operations of discount, translate, fuse, and interpret
-
 def discount needs an alpha and mass parameter to adjust the impact
-
 def translate takes in 4 parameters, two frames at a time, with its relations = propositions
-
 def fuse uses the Dempster's combination rule to perform orthogonal sum to derive a new mass density
 across intersections and normalizes evidence that does not intersect
-
 def interpret uses the combined translated frame along with the mass densities derived from fuse
 to interpret the evidence pertaining to answers of the question frame
 '''
+
 
 class Analysis:
 
@@ -308,10 +305,8 @@ class Analysis:
             for keys, values in massA.items():
                 print(((keys)), ((key)))
                 if keys == 'theta' or key == 'theta':
-                    print(values)
-                    print(value)
                     result = (value * values)
-                    print(result)
+                    print("%.4f" % result)
                     sum1.append(result)
                     if key == "theta" and keys == "theta":
                         x = ("theta"), (result)
@@ -330,20 +325,16 @@ class Analysis:
                     s2 = set(keys.split(' '))
                     if any(s1.intersection(s2)):
                         print("found a match!")
-                        print(values)
-                        print(value)
                         result1 = (value * values)
-                        print(result1)
+                        print("%.4f" % result1)
                         sum1.append(result1)
                         x = (key, result1)
                         self.b.append(x)
                         break
                     else:
                         print("No Match")
-                        print(value)
-                        print(values)
                         result2 = (1 - (value * values))
-                        print(result2)
+                        print("%.4f" % result2)
                         sumk.append(result2)
                         x = (key, result2)
                         self.b.append(x)
@@ -361,27 +352,25 @@ class Analysis:
             K = 1 / sumk
             print("K = ", K)
             m1x2 = K * sum1
-            print("The mass of 1 and 2 is : ", (m1x2))
+            print("The mass of 1 and 2 is : %.4f" % (m1x2))
         else:
             m1x2 = sum1
-            print("The mass of 1 and 2 is : ", (m1x2))
+            print("The mass of 1 and 2 is : %.4f" % (m1x2))
 
 
 
-    def interpret(self, b, newDirectory):
+    def interpret(self, b):
+        with open("Output.txt", 'w') as file:
+            for item in b:
+                file.write("{}\n".format(item))
 
-        output_dir =open(newDirectory + "Output.txt", 'w')
+        open("Output.txt", 'r')
         print (b)
         support = 0
         val = []
-
         for keys,values in b:
-            print (keys)
-            print (values)
             val.append(values)
-            print (val)
-        val = sum(val)
-        print (val)
+            val = sum(val)
         for keys, values in b:
             counter = (Counter(keys) in b)
             print (keys)
@@ -389,15 +378,15 @@ class Analysis:
             if counter == True:
                 print ('sum all')
                 support = sum(values)
-                print (("Support : "), support)
+                print ("Support : %.4f" % support)
                 plausibility = abs((1-((val)-values)))
-                print (("Plausibility: "),plausibility)
-                EI = [support, plausibility]
+                print ("Plausibility: %.4f" % plausibility)
+                EI = ["%.4f" % support, "%.4f" % plausibility]
                 print ("EI:", EI)
             else:
                 support = values
-                print (("Support : "), support)
+                print ("Support : %.4f" % support)
                 plausibility = abs((1-((val)-values)))
-                print (("Plausibility: "),plausibility)
-                EI = [support, plausibility]
+                print ("Plausibility: %.4f" % plausibility)
+                EI = ["%.4f" % support, "%.4f" % plausibility]
                 print ("EI:", EI)

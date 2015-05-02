@@ -188,6 +188,7 @@ class Analysis:
         print("Translated frames are: ")
         print(self.translatedFrame1)
         print(self.translatedFrame2)
+        print('\n')
 
         self.fuse(self.translatedFrame1, self.translatedFrame2)
 

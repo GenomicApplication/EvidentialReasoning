@@ -63,8 +63,7 @@ class Analysis:
         self.translatedFrame1.clear()
         self.translatedFrame2.clear()
 
-
-        #iterate through an unknown length of the Frame 1, and collect all the belief values
+        #Iterate through an unknown length of the Frame 1, and collect all the belief values
         #Finally, record the translated frame in a dictionary
         while x < length_ofFrame1:
             try:
@@ -116,8 +115,8 @@ class Analysis:
                 break
 
 
-        #iterate through an unknown length of the Frame 2, and collect all the belief values
-        #record the translated frame in a dictionary
+        #Iterate through an unknown length of Frame 2 and collect all the belief values.
+        #Then, record the translated frame in a dictionary
         while y < length_ofFrame2:
             try:
                 proposition2 = frame2[y + 1]
@@ -185,11 +184,12 @@ class Analysis:
                     propForNewFrame2 = str(value5) + ':' + key5 + ':' + propForNewFrame2
 
         self.newFrame = 'FOD:' + strToMatch1x2 + ':NO: 0:' + propForNewFrame1 + ':' + propForNewFrame2
-        self.fuse(self.translatedFrame1, self.translatedFrame2)
 
         print("Translated frames are: ")
         print(self.translatedFrame1)
         print(self.translatedFrame2)
+
+        self.fuse(self.translatedFrame1, self.translatedFrame2)
 
         return self.translatedFrame1, self.translatedFrame2, self.newFrame
 

@@ -1,5 +1,9 @@
 from analysis import *
 
+'''
+def organize_frames organizes frames into a list with frame information and a list with all the propositions
+
+'''
 
 
 class Frames:
@@ -98,7 +102,6 @@ class Frames:
                     count = count + 1
 
         self.insertFrame = cross.newFrame + ':' + frameInfo1[0] + ' X ' + frameInfo2[0] + ':' + string
-        print("Printing from frame.py")
-        print(self.insertFrame)
+
         return cross.translate, self.insertFrame
 

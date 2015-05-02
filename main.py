@@ -9,14 +9,14 @@ def main():
 
     parse = ParseDataToClass()
     parse.openInputFile()
-    '''
-    print("Parsed Information for frames, CR, Question, AND FOD \n")
+
+    print("Information from the Input.txt are being parsed \n")
     print(parse.questionFrame)
     print (parse.frames)
     print(parse.CR)
     print(parse.FOD)
     print('\n')
-    '''
+
     countFOD = len(parse.FOD)
     frames = Frames()
     frames.organize_frames(parse.frames)
@@ -36,18 +36,10 @@ def main():
         except IndexError:
             break
 
-    print("Printing the final frame")
     print(parse.FOD)
 
     interpret = Analysis()
     newDirectory = parse.dir_path.strip("Input.txt")
-
-    interpret.interpret(interpret.b, newDirectory)
-
-    interpret = Analysis()
-    newDirectory = parse.dir_path.strip("Input.txt")
-
-
     interpret.interpret(interpret.b, newDirectory)
 
 

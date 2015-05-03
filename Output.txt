@@ -62,23 +62,23 @@ The initial mass density assigned to the propositions are :
 		Proposition                   Mass
 		___________________________________
 
-		theta for EN frame            0.20
 		EN1 U EN2                     0.70
+		theta for EN frame            0.20
 		EN3                           0.10
 		___________________________________
-		Total of mass is :            1
+		Total of mass is :            1.00
 
 
-		PA2                           0.10
 		theta for PA frame            0.40
+		PA2                           0.10
 		PA1                           0.50
 		___________________________________
-		Total of mass is :            1
+		Total of mass is :            1.00
 
 
 		theta for PR frame            0.60
 		PR5                           0.40
 		___________________________________
-		Total of mass is :            1
+		Total of mass is :            1.00
 
 

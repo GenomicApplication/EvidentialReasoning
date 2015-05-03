@@ -68,6 +68,7 @@ def main():
         x = 4
         sum = 0
         temp_dic = {}
+        total = 0
 
         while x < len_of_f:
             sum = sum + float(f[x])
@@ -76,6 +77,7 @@ def main():
             x = x + 2
 
         theta = 1 - sum
+        total = format(sum + theta,'1.2f')
         temp_dic['theta for ' + f[1] + ' frame'] = format(theta,'1.2f')
 
 
@@ -83,7 +85,7 @@ def main():
             output.write('\t\t{0:30}{1}\n'.format(k.strip(),v))
 
         output.write('\t\t{0}'.format("___________________________________\n"))
-        output.write('\t\t{0:30}'.format("Total of mass is :            1\n\n\n"))
+        output.write('\t\t{0:30}{1}'.format("Total of mass is :            ", str(total) + "\n\n\n"))
 
     #crosses the frames and finds the new cross product frame
     while countFOD != 0:

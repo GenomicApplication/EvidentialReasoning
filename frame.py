@@ -1,5 +1,4 @@
 from analysis import *
-import main
 
 '''
 # Author Tami Hong Le

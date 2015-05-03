@@ -19,7 +19,7 @@ class ParseDataToClass:
             if DEBUG:
                 self.dir_path = "test.txt"
             else:
-                self.dir_path = input("Enter the path to the text file:   ")
+                self.dir_path = input("Enter the text file with .txt:   ")
 
             inFile = open(self.dir_path, 'r')
 

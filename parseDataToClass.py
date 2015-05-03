@@ -1,5 +1,6 @@
 # Author Tami Hong Le
 # 3/7/2015
+from utils import *
 
 class ParseDataToClass:
 
@@ -15,8 +16,12 @@ class ParseDataToClass:
     def openInputFile(self):
         #open file, if path does not exist, print error message
         try:
-            dir_path = input("Enter the path to the text file:   ")
-            inFile = open(dir_path, 'r')
+            if DEBUG:
+                self.dir_path = "test.txt"
+            else:
+                self.dir_path = input("Enter the path to the text file:   ")
+
+            inFile = open(self.dir_path, 'r')
 
             #parse the file by keywords: Question, frame, and compatibility relations = CR
             for line in inFile:

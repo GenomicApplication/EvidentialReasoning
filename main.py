@@ -4,13 +4,11 @@ from compatibilityRelation import *
 from frame import *
 from analysis import *
 
-
 def main():
-
     parse = ParseDataToClass()
     parse.openInputFile()
 
-    print("Information from the Input.txt are being parsed \n")
+    print("Information from the Input.txt are parsed :\n")
     print(parse.questionFrame)
     print (parse.frames)
     print(parse.CR)
@@ -32,6 +30,8 @@ def main():
             parse.FOD.remove(parse.FOD[0])
             parse.FOD.remove(parse.FOD[0])
             parse.FOD.insert(0, frames.insertFrame)
+            print("PRINTING INsERT FRAME")
+            print(frames.insertFrame)
 
         except IndexError:
             break
@@ -39,8 +39,12 @@ def main():
     print(parse.FOD)
 
     interpret = Analysis()
-    newDirectory = parse.dir_path.strip("Input.txt")
-    interpret.interpret(interpret.b, newDirectory)
+    #newDirectory = parse.dir_path.strip("Input.txt")
+    #interpret.interpret(interpret.b, newDirectory)
+
+    #printing the file to an Output.txt file
+    out_dir_path = parse.dir_path.strip("Input.txt")
+    output = open(out_dir_path + "Output.txt", 'w')
 
 
 

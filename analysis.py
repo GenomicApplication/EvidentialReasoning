@@ -1,5 +1,6 @@
 
 from collections import Counter
+from utils import dprint
 
 ''' This class serves as the four major operations of discount, translate, fuse, and interpret
 def discount needs an alpha and mass parameter to adjust the impact
@@ -44,6 +45,9 @@ class Analysis:
     # combines the two frames to arrive at a new cross product frame
     def translate(self, frame1, frame2, compatibilityRelations):
         print("Entered Translate Operation\n")
+        dprint("PRINTING FRAMES 1 AND 2")
+        dprint(frame1)
+        dprint(frame2)
 
         x = 3
         y = 3
@@ -73,7 +77,13 @@ class Analysis:
                 theta = float(1 - mass)
 
                 for key1,value1 in compatibilityRelations.items():
+                    dprint("Printing key 1")
+                    dprint(key1)
+                    dprint("Value :")
+                    dprint(value1)
+
                     if key1 == strToMatch1x2:
+                        dprint("Found a match in strToMatch1x2 " + strToMatch1x2 + ' and ' + "key : " + key1)
                         splitter = proposition.split('U')
                         length_of_splitter = len(splitter)
                         i = 0
@@ -81,32 +91,68 @@ class Analysis:
                         temp_dic = {}
                         comboString = ''
 
+                        dprint("Splitter length: " + str(length_of_splitter))
                         while i < length_of_splitter:
                             string = splitter[i].strip()
+                            string = string.split('v')
+                            string = string[0].strip()
+
+                            dprint("string is :" + string)
 
                             for elements in value1:
+                                dprint("PRINTING ELEMENTS IN 1")
+                                dprint(elements)
+
                                 if elements.find(string) != -1:
+                                    dprint("FOUND  a matching proposition")
                                     temp = elements.split('/')
+                                    dprint("printing temp")
+                                    dprint(temp)
 
                                     if elements.find('v') != -1:
-                                        prop = temp[1]
-                                        temp_dic[prop] = 1
+                                        dprint("Found the v in the string so do not split")
+
+                                        for j in temp[1].split(','):
+                                            temp_dic[j.strip()] = 1
+                                            dprint("Temp_dic is:")
+                                            dprint(temp_dic)
                                     else:
+                                        dprint("Did not find 'v'")
+                                        dprint("temp[1]:" + temp[1])
                                         prop =  temp[1].split(',')
+                                        dprint("PROP is : ")
+                                        dprint(prop)
+
                                         for each in prop:
-                                            temp_dic[each] = 1
+                                            dprint("Printing each prop in the list")
+                                            dprint(each)
+                                            temp_dic[each.strip()] = 1
+                                            dprint("Temp_dic is:")
+                                            dprint(temp_dic)
                             i = i + 1
+                            dprint("i: " + str(i))
 
                         for k,v in temp_dic.items():
+                            dprint("PRINTING TEMP DIC 1")
+                            dprint(k)
                             temp_array.append(k)
-                            temp_array.sort()
+                            dprint("Temp_array is :")
+                            dprint(temp_array)
+
+                        temp_array.sort()
 
                         for item in temp_array:
+                            dprint("Itemd is :")
+                            dprint(item)
                             if comboString == '':
                                 comboString = item
+                                dprint("comboString is empty so comboString is item :" + item)
                             else:
                                 comboString = comboString + ',' + item
+                                dprint(" comboString isn't empty, here's the new string :")
+                                dprint(comboString)
                         finalString =  proposition.strip() + ' v ' + comboString
+                        dprint("Final string: " + finalString)
                         self.translatedFrame1[finalString] = value
                         self.translatedFrame1["theta"] = theta
                 x = x + 2
@@ -135,23 +181,23 @@ class Analysis:
 
                         while l < length_of_splitter2:
                             string2 = splitter2[l].strip()
-
                             for elements2 in value3:
                                 if elements2.find(string2) != -1:
                                     temp2 = elements2.split('/')
 
                                     if elements2.find('v') != -1:
-                                        prop2 = temp2[1]
+                                        prop2 = temp2[1].strip()
                                         temp_dic2[prop2] = 1
                                     else:
                                         prop2 =  temp2[1].split(',')
                                         for each2 in prop2:
-                                            temp_dic2[each2] = 1
+                                            temp_dic2[each2.strip()] = 1
                             l = l + 1
 
                         for k2,v2 in temp_dic2.items():
                             temp_array2.append(k2)
-                            temp_array2.sort()
+
+                        temp_array2.sort()
 
                         for item2 in temp_array2:
                             if comboString2 == '':
@@ -159,6 +205,7 @@ class Analysis:
                             else:
                                 comboString2 = comboString2 + ',' + item2
                         finalString2 =  proposition2.strip() + ' v ' + comboString2
+                        dprint("Final string2: " + finalString2)
                         self.translatedFrame2[finalString2] = value2
                         self.translatedFrame2["theta"] = theta2
                 y = y + 2
@@ -190,7 +237,7 @@ class Analysis:
         print(self.translatedFrame2)
         print('\n')
 
-        self.fuse(self.translatedFrame1, self.translatedFrame2)
+        #self.fuse(self.translatedFrame1, self.translatedFrame2)
 
         return self.translatedFrame1, self.translatedFrame2, self.newFrame
 
@@ -261,7 +308,7 @@ class Analysis:
             print("The mass of 1 and 2 is : %.4f" % (m1x2))
 
 
-
+    '''
     def interpret(self, b, crossed_frame):
         #for line in crossed_frame:
             #if 'Q' in line:
@@ -358,6 +405,6 @@ class Analysis:
                                                                 if any(s1.intersection(s2)):
                                                                     value = value1[:value1.find('/')]
                                                                     print (value)
-
+    '''
 
 

@@ -237,7 +237,7 @@ class Analysis:
         print(self.translatedFrame2)
         print('\n')
 
-        self.fuse(self.translatedFrame1, self.translatedFrame2)
+        #self.fuse(self.translatedFrame1, self.translatedFrame2)
 
         return self.translatedFrame1, self.translatedFrame2, self.newFrame
 
@@ -308,7 +308,6 @@ class Analysis:
             print("The mass of 1 and 2 is : %.4f" % (m1x2))
 
 
-    '''
     def interpret(self, b, crossed_frame):
         #for line in crossed_frame:
             #if 'Q' in line:
@@ -405,6 +404,3 @@ class Analysis:
                                                                 if any(s1.intersection(s2)):
                                                                     value = value1[:value1.find('/')]
                                                                     print (value)
-    '''
-
-

@@ -55,6 +55,7 @@ CR1 is the compatibility relation 1. Stored in array index 0.
 
 "{(EN1),(CL1,CL2,CL3)} ; " where '{}' is the set propositions of one frame to the propositions of another frame. Here, EN is the ENVIRONMENT frame and CL is the cleaniliness frame. The numbers trailing after EN and CL are the proposition numbers that are organized in the same manner as the declaration of EN and CL under branch (B1). Every ';'  that are after '}' seperates the relationships.
 
+Testing
 
 
 

@@ -40,11 +40,11 @@ class ParseDataToClass:
                     self.parseDataToFOD(line)
 
                 else:
-                    print ("Recheck your Input.txt file for consistency.\n")
-                    print ("Question should use the abbreviation 'Question:' ")
-                    print ("Frames should be named ""Frames"":")
-                    print ("Compatibility relations should use the abbreviation 'CR:' \n")
-                    print ("The error exist in line --->     " + line)
+                    print("Recheck your Input.txt file for consistency.\n")
+                    print("Question should use the abbreviation 'Question:' ")
+                    print("Frames should be named ""Frames"":")
+                    print("Compatibility relations should use the abbreviation 'CR:' \n")
+                    print("The error exist in line --->     " + line)
                     inFile.close()
                     break
 

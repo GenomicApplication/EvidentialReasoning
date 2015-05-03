@@ -243,69 +243,85 @@ class Analysis:
 
 
 
-    # Dempster's combination rule
     def fuse(self, massA, massB):
         print("Entered fuse operation")
-        i = 0
-        a = 0
         sum1 = []
         sumk = []
+        final_dic = []
+        print ("\nFrames")
+        print ('massA Frame: ', massA)
+        print ('massB Frame: ', massB)
 
+        print ('\nOrthogonal Sum begins here for massA and massB:')
         for key, value in massB.items():
             for keys, values in massA.items():
                 print(((keys)), ((key)))
                 if keys == 'theta' or key == 'theta':
                     result = (value * values)
-                    print("%.4f" % result)
+                    x = (key, result)
+                    print ((key, keys), ": %.4f" % result)
                     sum1.append(result)
-                    if key == "theta" and keys == "theta":
-                        x = ("theta"), (result)
-                        self.b.append(x)
-                    elif key == "theta" and keys != "theta":
-                        x = keys, result
-                        self.b.append(x)
-                    elif key != "theta" and keys == "theta":
-                        x = key, result
-                        self.b.append(x)
+                    self.b.append(x)
+                elif key == "theta" and keys == "theta":
+                    result = (value * values)
+                    print ((key, keys), ": %.4f" % result)
+                    sum1.append(result)
+                    x = (key, result)
+                    self.b.append(x)
+                    final_dic.append(x)
+                elif key == "theta" and keys != "theta":
+                    result = (value * values)
+                    print ((key, keys), ": %.4f" % result)
+                    sum1.append(result)
+                    x = (key, result)
+                    self.b.append(x)
+                elif key != "theta" and keys == "theta":
+                    result = (value * values)
+                    print ((key, keys), ": %.4f" % result)
+                    sum1.append(result)
+                    x = (key, result)
+                    self.b.append(x)
                 elif keys != "theta" and key != "theta":
-                    count = 0
-                    count1 = 0
-                    print ("here")
-                    s1 = set(key.split(' '))
-                    s2 = set(keys.split(' '))
-                    if any(s1.intersection(s2)):
-                        print("found a match!")
+                    s1 = (re.split('[,vU\s]+', key))
+                    s2 = (re.split('[,vU\s]+', keys))
+                    if any(set(s1).intersection(s2)):
+                        intersect = (set(s1).intersection(s2))
                         result1 = (value * values)
-                        print("%.4f" % result1)
+                        print(intersect, ': %.4f' % result1)
                         sum1.append(result1)
                         x = (key, result1)
                         self.b.append(x)
-                        break
-                    else:
-                        print("No Match")
-                        result2 = (1 - (value * values))
-                        print("%.4f" % result2)
+                    elif set(s1).difference(s2):
+                        diff = (set(s1).difference(s2))
+                        result2 = (value * values)
+                        print(diff, ": %.4f" % result2)
                         sumk.append(result2)
                         x = (key, result2)
                         self.b.append(x)
-
-            i = i + 1
-            a = a + 1
-        print(self.b)
-        print(sum1)
+        print('Dictionary after orthogonal sum: ', self.b)
+        for keys, values in self.b:
+            if "PR" in keys:
+                x = (keys, values)
+                final_dic.append(x)
+        print ("Final frame dictionary: ", final_dic)
         sum1 = sum(sum1)
-        print(sum1)
-        print(sumk)
-        sumk = sum(sumk)
-        print(sumk)
-        if sumk != 0:
-            K = 1 / sumk
-            print("K = ", K)
-            m1x2 = K * sum1
-            print("The mass of 1 and 2 is : %.4f" % (m1x2))
-        else:
-            m1x2 = sum1
-            print("The mass of 1 and 2 is : %.4f" % (m1x2))
+        sum2 = 1
+        for i in sumk:
+            sum2 *= i
+            return sum2
+        if sum2 != 0:
+            sum3 = (float(1)-(float(sum2)))
+            print (sum3)
+            if sum3 == 0:
+                K = 1
+                print ('K = ', K)
+                massAxB = K * sum1
+                print("The mass of 1 and 2 is : ", (massAxB))
+            if sum3 != 0:
+                K = float(1)/float(sum3)
+                print("K = ", K)
+                massAxB = K * sum1
+                print("The mass of 1 and 2 is : ", (massAxB))
 
 
     def interpret(self, b, crossed_frame):
@@ -318,6 +334,8 @@ class Analysis:
         for key, value in crossed_frame.items():
             if 'Q' in key:
                 value1 = (value[0])
+                print ('here')
+                print (value1)
                 s1 = set(value1.split(' '))
                 for keys, values in b:
                     if 'PR' in keys:

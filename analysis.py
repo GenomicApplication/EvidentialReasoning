@@ -142,7 +142,7 @@ class Analysis:
                         temp_array.sort()
 
                         for item in temp_array:
-                            dprint("Itemd is :")
+                            dprint("Item is :")
                             dprint(item)
                             if comboString == '':
                                 comboString = item
@@ -237,7 +237,7 @@ class Analysis:
         print(self.translatedFrame2)
         print('\n')
 
-        self.fuse(self.translatedFrame1, self.translatedFrame2)
+        #self.fuse(self.translatedFrame1, self.translatedFrame2)
 
         return self.translatedFrame1, self.translatedFrame2, self.newFrame
 

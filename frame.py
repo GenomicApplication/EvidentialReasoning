@@ -1,6 +1,8 @@
 from analysis import *
 
 '''
+# Author Tami Hong Le
+
 def organize_frames organizes frames into a list with frame information and a list with all the propositions
 
 '''

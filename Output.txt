@@ -1,0 +1,84 @@
+The Question is : 
+
+	Is the experimental result credible and reliable?
+
+The answers to the question is : 
+
+	Credible and reliable
+	Acceptable credibility and reliability
+	Not credible nor reliable
+
+The frames are : 
+
+	EN =  Environment sterility and cleanliness
+	PA =  Accuracy & precision of equipments and experimenters
+	PR =  Procedure, quality of DNA extraction, titanium exposure time, and TiO2-DNA binding
+
+The propositions for "EN" frame is: 
+
+	EN1      Sterile environment and cleanliness 
+	EN2      Sterile environment and average cleanliness 
+	EN3      Sterile environment and poor cleanliness 
+	EN4      Moderately sterile environment and good cleanliness 
+	EN5      Moderately sterile environment and average cleanliness 
+	EN6      Moderately sterile environment and poor cleanliness 
+	EN7      Dirty environment and good cleanliness 
+	EN8      Dirty environment and average cleanliness 
+	EN9      Dirty environment and poor cleanliness 
+
+The propositions for "PA" frame is: 
+
+	PA1      Accurate & Precise Equipment and Experimenter 
+	PA2      Acceptable accuracy & precision equipment and accurate  & precise experimenter 
+	PA3      Bad accuracy & precision equipment and accurate  & precise experimenter 
+	PA4      Accurate & Precise Equipment and acceptable accuracy and precision experimenter 
+	PA5      Acceptable accuracy & precision equipment and Acceptable accurate and precise experimenter 
+	PA6      Bad accuracy & precision equipment and Acceptable accurate and precise experimenter 
+	PA7      Accurate & Precise Equipment and Bad accuracy and precision experimenter 
+	PA8      Acceptable accuracy & precision equipment and Bad accuracy and precision experimenter 
+	PA9      Bad accuracy & precision equipment and Bad accuracy and precision experimenter 
+
+The propositions for "PR" frame is: 
+
+	PR1      Effective procedure, Good DNA extraction method, good titanium exposure time, TiO2-DNA bounded 
+	PR2      Effective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA bounded 
+	PR3      Effective procedure, Good DNA extraction method, good titanium exposure time, TIO2-DNA not bounded 
+	PR4      Effective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA not bounded 
+	PR5      Effective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA bounded 
+	PR6      Effective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA bounded 
+	PR7      Effective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA not bounded 
+	PR8      Effective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA not bounded 
+	PR9      Ineffective procedure, Good DNA extraction method, good titanium exposure time, TiO2-DNA bounded 
+	PR10     Ineffective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA bounded 
+	PR11     Ineffective procedure, Good DNA extraction method, good titanium exposure time, TIO2-DNA not bounded 
+	PR12     Ineffective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA not bounded 
+	PR13     Ineffective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA bounded 
+	PR14     Ineffective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA bounded 
+	PR15     Ineffective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA not bounded 
+	PR16     Ineffective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA not bounded 
+
+The initial mass density assigned to the propositions are : 
+
+		Proposition                   Mass
+		___________________________________
+
+		theta for EN frame            0.20
+		EN1 U EN2                     0.70
+		EN3                           0.10
+		___________________________________
+		Total of mass is :            1
+
+
+		PA2                           0.10
+		theta for PA frame            0.40
+		PA1                           0.50
+		___________________________________
+		Total of mass is :            1
+
+
+		theta for PR frame            0.60
+		PR5                           0.40
+		___________________________________
+		Total of mass is :            1
+
+

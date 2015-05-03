@@ -1,3 +1,4 @@
+# Author Tami Hong Le
 '''
 This class takes in the parsed compatibility relations from parsedDataToClass.py
 and organizes it into a dictionary with the keys as the cross product frames and

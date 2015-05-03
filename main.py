@@ -30,8 +30,6 @@ def main():
             parse.FOD.remove(parse.FOD[0])
             parse.FOD.remove(parse.FOD[0])
             parse.FOD.insert(0, frames.insertFrame)
-            print("PRINTING INsERT FRAME")
-            print(frames.insertFrame)
 
         except IndexError:
             break

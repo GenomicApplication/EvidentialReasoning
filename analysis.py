@@ -25,6 +25,7 @@ class Analysis:
 
     #adjust the impact based on new evidence
     def discount(self, alpha, mass):
+
         try:
             #print("Entered discount operation")
             alpha = float(alpha)
@@ -237,7 +238,9 @@ class Analysis:
         print(self.translatedFrame2)
         print('\n')
 
-        self.fuse(self.translatedFrame1, self.translatedFrame2)
+
+        # THIS SECTIO
+        #self.fuse(self.translatedFrame1, self.translatedFrame2)
 
         return self.translatedFrame1, self.translatedFrame2, self.newFrame
 

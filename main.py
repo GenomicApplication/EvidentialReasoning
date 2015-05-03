@@ -5,6 +5,7 @@ from frame import *
 from analysis import *
 
 def main():
+
     parse = ParseDataToClass()
     parse.openInputFile()
 
@@ -103,7 +104,6 @@ def main():
     interpret = Analysis()
     #newDirectory = parse.dir_path.strip("Input.txt")
     #interpret.interpret(interpret.b, newDirectory)
-
 
 if __name__ == "__main__":
     main()

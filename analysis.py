@@ -243,11 +243,11 @@ class Analysis:
 
 
 
+     # Dempster's combination rule
     def fuse(self, massA, massB):
         print("Entered fuse operation")
         sum1 = []
         sumk = []
-        final_dic = []
         print ("\nFrames")
         print ('massA Frame: ', massA)
         print ('massB Frame: ', massB)
@@ -268,7 +268,7 @@ class Analysis:
                     sum1.append(result)
                     x = (key, result)
                     self.b.append(x)
-                    final_dic.append(x)
+                    self.final_dic.append(x)
                 elif key == "theta" and keys != "theta":
                     result = (value * values)
                     print ((key, keys), ": %.4f" % result)
@@ -299,11 +299,12 @@ class Analysis:
                         x = (key, result2)
                         self.b.append(x)
         print('Dictionary after orthogonal sum: ', self.b)
+        count = 0
         for keys, values in self.b:
             if "PR" in keys:
                 x = (keys, values)
-                final_dic.append(x)
-        print ("Final frame dictionary: ", final_dic)
+                self.final_dic.append(x)
+        print ("Final frame dictionary: ", self.final_dic)
         sum1 = sum(sum1)
         sum2 = 1
         for i in sumk:
@@ -324,101 +325,91 @@ class Analysis:
                 print("The mass of 1 and 2 is : ", (massAxB))
 
 
-    def interpret(self, b, crossed_frame):
-        #for line in crossed_frame:
-            #if 'Q' in line:
+    def interpret(self, b, crossed_frame, final_dic):
         val = []
-        for keys,values in b:
-            val.append(values)
-        val = sum(val)
         for key, value in crossed_frame.items():
             if 'Q' in key:
-                value1 = (value[0])
+                value0 = (value[0])
+                print (value0)
                 print ('here')
+                result0 = value0[:value0.find('/')]
+                print ('The experimental data is: ', result0)
+                props0 = value0[value0.find('/'):]
+                s0 = (re.split('[,/vU\s]+', props0))
+                print (s0)
+                value1 = (value[1])
                 print (value1)
-                s1 = set(value1.split(' '))
-                for keys, values in b:
-                    if 'PR' in keys:
-                        print (keys)
-                        s2 = set(keys.split(' '))
-                        counter = (Counter(keys) in b)
-                        print (keys)
-                        print (values)
-                        if counter == True:
-                            print ('sum all')
-                            support = sum(values)
-                            print ("Support : %.4f" % support)
-                            plausibility = abs((1-((val)-values)))
-                            print ("Plausibility: %.4f" % plausibility)
-                            EI = ["%.4f" % support, "%.4f" % plausibility]
-                            print ("EI:", EI)
-                        else:
-                            support = values
-                            print ("Support : %.4f" % support)
-                            plausibility = abs((1-((val)-values)))
-                            print ("Plausibility: %.4f" % plausibility)
-                            EI = ["%.4f" % support, "%.4f" % plausibility]
-                            print ("EI:", EI)
-                        if any(s1.intersection(s2)):
-                            value = value1[:value1.find('/')]
-                            print (value)
-                        elif any(s1.difference(s2)):
-                            for key, value in crossed_frame.items():
-                                if 'Q' in key:
-                                    value1 = (value[1])
-                                    s1 = set(value1.split(' '))
-                                    for keys, values in b:
-                                        if 'PR' in keys:
-                                            print (keys)
-                                            s2 = set(keys.split(' '))
-                                            counter = (Counter(keys) in b)
-                                            print (keys)
-                                            print (values)
-                                            if counter == True:
-                                                print ('sum all')
-                                                support = sum(values)
-                                                print ("Support : %.4f" % support)
-                                                plausibility = abs((1-((val)-values)))
-                                                print ("Plausibility: %.4f" % plausibility)
-                                                EI = ["%.4f" % support, "%.4f" % plausibility]
-                                                print ("EI:", EI)
-                                            else:
-                                                support = values
-                                                print ("Support : %.4f" % support)
-                                                plausibility = abs((1-((val)-values)))
-                                                print ("Plausibility: %.4f" % plausibility)
-                                                EI = ["%.4f" % support, "%.4f" % plausibility]
-                                                print ("EI:", EI)
-                                            if any(s1.intersection(s2)):
-                                                value = value1[:value1.find('/')]
-                                                print (value)
-                                            elif any(s1.intersection.s2):
-                                                for key, value in crossed_frame.items():
-                                                    if 'Q' in key:
-                                                        value1 = (value[2])
-                                                        s1 = set(value1.split(' '))
-                                                        for keys, values in b:
-                                                            if 'PR' in keys:
-                                                                print (keys)
-                                                                s2 = set(keys.split(' '))
-                                                                counter = (Counter(keys) in b)
-                                                                print (keys)
-                                                                print (values)
-                                                                if counter == True:
-                                                                    print ('sum all')
-                                                                    support = sum(values)
-                                                                    print ("Support : %.4f" % support)
-                                                                    plausibility = abs((1-((val)-values)))
-                                                                    print ("Plausibility: %.4f" % plausibility)
-                                                                    EI = ["%.4f" % support, "%.4f" % plausibility]
-                                                                    print ("EI:", EI)
-                                                                else:
-                                                                    support = values
-                                                                    print ("Support : %.4f" % support)
-                                                                    plausibility = abs((1-((val)-values)))
-                                                                    print ("Plausibility: %.4f" % plausibility)
-                                                                    EI = ["%.4f" % support, "%.4f" % plausibility]
-                                                                    print ("EI:", EI)
-                                                                if any(s1.intersection(s2)):
-                                                                    value = value1[:value1.find('/')]
-                                                                    print (value)
+                result1 = value1[:value1.find('/')]
+                print ('The experimental data is: ', result1)
+                props1 = value1[value1.find('/'):]
+                s1 = (re.split('[,/vU\s]+', props1))
+                print (s1)
+                value2 = (value[2])
+                print (value2)
+                result2 = value2[:value2.find('/')]
+                print ('The experimental data is: ', result2)
+                props2 = value2[value2.find('/'):]
+                s2 = (re.split('[,/vU\s]+', props2))
+        for keys, values in final_dic:
+            val.append(values)
+        val1 = sum(val)
+        for keys, values in final_dic:
+            print ('check')
+            s3 = (re.split('[,vU\s]+', keys))
+            print (s3)
+            s3s0 = set()
+            s3s1 = set()
+            s3s2 = set()
+            s3s0len = 1
+            s3s1len = 1
+            s3s2len = 1
+            support = 0
+            plausibility = 0
+            if set(s3).intersection(s0):
+                print ('s3s0')
+                print (set(s3).intersection(s0))
+                s3s0.update(set(s3).intersection(s0))
+                s3s0len = (len(s3s0))
+            if set(s3).intersection(s1):
+                print ('s3s1')
+                print (set(s3).intersection(s1))
+                s3s1.update(set(s3).intersection(s1))
+                s3s1len = (len(s3s1))
+            if set(s3).intersection(s2):
+                print ('s3s2')
+                print (set(s3).intersection(s2))
+                s3s2.update(set(s3).intersection(s2))
+                s3s2len = (len(s3s2))
+            if s3s0len >= s3s1len:
+                if s3s0len >= s3s2len:
+                    if set(s3).intersection(s0):
+                        print (set(s3).intersection(s0))
+                        support += values
+                        result0 = value0[:value0.find('/')]
+                        print ('The experimental data is: ', result0)
+                        print ('Support: %.4f' % support)
+                        plausibility = (1 - (val1 - support))
+                        print ('Plausibility: ', plausibility)
+            elif s3s1len >= s3s0len:
+                if s3s1len >= s3s2len:
+                    if set(s3).intersection(s1):
+                        print (set(s3).intersection(s1))
+                        support += values
+                        result1 = value1[:value1.find('/')]
+                        print ('The experimental data is: ', result1)
+                        print ('Support: %.4f' % support)
+                        plausibility = (1 - (val1 - support))
+                        print ('Plausibility: ', plausibility)
+            elif s3s2len >= s3s0len:
+                if s3s2len >= s3s1len:
+                    if set(s3).intersection(s2):
+                        print (set(s3).intersection(s2))
+                        support += values
+                        result2 = value2[:value2.find('/')]
+                        print ('The experimental data is: ', result2)
+                        print ('Support: %.4f' % support)
+                        plausibility = (1 - (val1 - support))
+                        print ('Plausibility: ', plausibility)
+
+
+

@@ -1,5 +1,4 @@
 import re
-from output import *
 from collections import Counter
 from utils import dprint
 
@@ -16,7 +15,6 @@ class Analysis:
 
     #adjust the impact based on new evidence
     def discount(self, alpha, mass):
-
         try:
             #print("Entered discount operation")
             alpha = float(alpha)

@@ -2,7 +2,6 @@ from frame import *
 from compatibilityRelation import *
 from analysis import *
 
-
 def output(questionFrame,frames,FODs,parsedCR):
 
     output_text_name = str(input("What would you like to name your output txt file? note you must end it with .txt:   "))
@@ -75,7 +74,7 @@ def output(questionFrame,frames,FODs,parsedCR):
         y = 4
         f = FOD.split(':')
         len_of_f = len(f) - 2
-        discounts = Analysis
+        discounts = Analysis()
         alpha = float(f[3])
 
         while y < len_of_f:
@@ -134,10 +133,6 @@ def output(questionFrame,frames,FODs,parsedCR):
             FODs.insert(0, frame.insertFrame)
         except IndexError:
             break
-
-def do_output(str):
-    output.write(str)
-    print(str)
 
 
 

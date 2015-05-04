@@ -5,6 +5,7 @@ from frame import *
 import output
 
 
+
 def main():
 
     parse = ParseDataToClass()
@@ -19,7 +20,7 @@ def main():
 
 
     output.output(parse.questionFrame,parse.frames,parse.FOD,parse.CR)
-    output.do_output("HELLLLLLLLLO)")
+    #output.do_output("HELLLLLLLLLO)")
 
     countFOD = len(parse.FOD)
     frames = Frames()

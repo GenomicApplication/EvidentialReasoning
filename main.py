@@ -1,7 +1,7 @@
-
-from parseDataToClass import *
 from compatibilityRelation import *
+from parseDataToClass import *
 from frame import *
+from utils import *
 import output
 
 
@@ -18,9 +18,7 @@ def main():
     print(parse.FOD)
     print('\n')
 
-
     output.output(parse.questionFrame,parse.frames,parse.FOD,parse.CR)
-    #output.do_output("HELLLLLLLLLO)")
 
     countFOD = len(parse.FOD)
     frames = Frames()

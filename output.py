@@ -1,6 +1,23 @@
 from frame import *
 from compatibilityRelation import *
 from analysis import *
+from utils import *
+
+OUTPUT_FILENAME = ''
+FILE_MODE = 'a'
+
+def get_filename():
+    global OUTPUT_FILENAME
+
+    if OUTPUT_FILENAME == '':
+        OUTPUT_FILENAME = input("What would you like to name your output txt file? ")
+
+    return OUTPUT_FILENAME
+
+def out_write(str):
+    output = open(get_filename(), FILE_MODE)
+    output.write(str)
+    output.close()
 
 def output(questionFrame,frames,FODs,parsedCR):
 
@@ -113,17 +130,17 @@ def output(questionFrame,frames,FODs,parsedCR):
             output.write('\tTranslate operation: \n')
             output.write('\t_____________________________________________________________\n\n')
             output.write('\t{0:10}{1}\n\n'.format("Frame:", frame_zero[1] + ' X ' + frame_one[1]))
-            output.write('\t{0:50}{1}\n'.format("Proposition","Begin Mass"))
+            output.write('\t{0:50}{1}\n\n'.format("Proposition","Begin Mass"))
 
             len_of_frame_zero = len(frame_zero) - 2
             len_of_frame_one = len(frame_one) - 2
 
             while x < len_of_frame_zero:
-                output.write('\t{0:50}{1}\n'.format(frame_zero[x+1].strip(),frame_zero[x].strip()))
+                output.write('\t{0:50}{1:1.3f}\n'.format(frame_zero[x+1].strip(),float(frame_zero[x].strip())))
                 x = x +2
 
             while y < len_of_frame_one:
-                output.write('\t{0:50}{1}\n'.format(frame_one[y+1].strip(),frame_one[y].strip()))
+                output.write('\t{0:50}{1:1.3f}\n'.format(frame_one[y+1].strip(),float(frame_one[y].strip())))
                 y = y +2
 
             frame.get_crossProductFrames(FODs[0], FODs[1], CR.crossed_frame)
@@ -134,6 +151,6 @@ def output(questionFrame,frames,FODs,parsedCR):
         except IndexError:
             break
 
-
+    output.close()
 
 

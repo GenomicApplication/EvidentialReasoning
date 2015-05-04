@@ -57,28 +57,73 @@ The propositions for "PR" frame is:
 	PR15     Ineffective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA not bounded 
 	PR16     Ineffective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA not bounded 
 
-The initial mass density assigned to the propositions are : 
+The initial mass density for each input node's proposition are: 
 
 		Proposition                   Mass
 		___________________________________
 
 		EN3                           0.10
-		theta for EN frame            0.20
 		EN1 U EN2                     0.70
+		theta for EN frame            0.20
 		___________________________________
 		Total of mass is :            1.00
 
 
-		PA2                           0.10
 		PA1                           0.50
+		PA2                           0.10
 		theta for PA frame            0.40
 		___________________________________
 		Total of mass is :            1.00
 
 
-		theta for PR frame            0.60
 		PR5                           0.40
+		theta for PR frame            0.60
 		___________________________________
 		Total of mass is :            1.00
 
 
+ENTERING ANALYSIS
+
+
+	Discount operation : 
+	___________________________________
+
+		Frame:              EN
+		Proposition:        EN1 U EN2
+		alpha #:            0.10000
+		Begin mass:         0.70000
+		End mass:           0.07000
+
+	Discount operation : 
+	___________________________________
+
+		Frame:              EN
+		Proposition:        EN3
+		alpha #:            0.10000
+		Begin mass:         0.10000
+		End mass:           0.01000
+
+	Discount was not detected for frame :   PA
+	Discount was not detected for frame :   PR
+
+
+
+	Translate operation: 
+	____________________________________
+
+	Frame:    EN X PA
+	Begin mass for proposition: 
+	EN1 U EN2
+	 EN3
+
+
+
+	Translate operation: 
+	____________________________________
+
+	Frame:    EN X PA X PR
+	Begin mass for proposition: 
+	EN3 v PA5,PA6,PA7,PA8,PA9
+	EN1 U EN2 v PA1,PA2,PA3,PA4,PA5,PA6
+	PA1 v EN1,EN2,EN4
+	PA2 v EN1,EN4,EN5

@@ -17,6 +17,9 @@ def main():
     print(parse.FOD)
     print('\n')
 
+    output.output(parse.questionFrame,parse.frames,parse.FOD,parse.CR)
+
+    '''
     countFOD = len(parse.FOD)
     frames = Frames()
     frames.organize_frames(parse.frames)
@@ -25,11 +28,8 @@ def main():
 
     CR = CompatibilityRelations()
     CR.get_relations(parse.CR)
-    crossedFrame = CR.crossed_frame
-    print("PRINTING CROSS FRAMES")
-    print(CR.crossed_frame)
 
-    output.output(parse.dir_path, parse.questionFrame,parse.frames,parse.FOD,crossedFrame)
+
 
     #crosses the frames and finds the new cross product frame
     while countFOD != 0:
@@ -43,7 +43,7 @@ def main():
             break
 
     print(parse.FOD)
-
+    '''
     interpret = Analysis()
     #newDirectory = parse.dir_path.strip("Input.txt")
     #interpret.interpret(interpret.b, newDirectory)

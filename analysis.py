@@ -1,6 +1,7 @@
 
 from collections import Counter
 from utils import dprint
+import re
 
 ''' This class serves as the four major operations of discount, translate, fuse, and interpret
 def discount needs an alpha and mass parameter to adjust the impact
@@ -238,7 +239,7 @@ class Analysis:
         print(self.translatedFrame2)
         print('\n')
 
-        self.fuse(self.translatedFrame1, self.translatedFrame2)
+        #self.fuse(self.translatedFrame1, self.translatedFrame2)
 
         return self.translatedFrame1, self.translatedFrame2, self.newFrame
 

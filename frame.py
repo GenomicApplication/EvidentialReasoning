@@ -29,7 +29,7 @@ class Frames:
 
     #to get the cross product frames after discount and translating operations
     def get_crossProductFrames(self, FOD1, FOD2, compatibilityRelationsDictionary):
-
+        print("ENTERED get_crossProductFrames from analysis.py")
         cross = Analysis()
         relations1 = []
         relations2 = []
@@ -46,9 +46,6 @@ class Frames:
         length_ofFOD1 = len(splitter1) - 2
         length_ofFOD2 = len(splitter2) - 2
 
-        prop = ''
-        newMass = ''
-
         x = 4
         y = 4
 
@@ -57,18 +54,12 @@ class Frames:
 
             #accounts for the discount operation before crossing the frames
             if discountOption1 == 'YES' and x < length_ofFOD1:
-                discount_string = splitter1[x+1]
                 mass1 = splitter1[x].strip()
                 discounts1 = Analysis()
-                newMass = discounts1.discount(alpha1, mass1)
-                splitter1[x] = newMass
+                splitter1[x] = discounts1.discount(alpha1, mass1)
                 splitter1[3] = 0
                 splitter1[2] = "NO"
-                print("NEW MASS")
-                print(newMass)
                 x = x + 2
-
-
 
             elif discountOption2 == 'YES' and y < length_ofFOD2:
                 mass2 = splitter2[y].strip()

@@ -1,17 +1,7 @@
-
+import re
+from output import *
 from collections import Counter
 from utils import dprint
-import re
-
-''' This class serves as the four major operations of discount, translate, fuse, and interpret
-def discount needs an alpha and mass parameter to adjust the impact
-def translate takes in 4 parameters, two frames at a time, with its relations = propositions
-def fuse uses the Dempster's combination rule to perform orthogonal sum to derive a new mass density
-across intersections and normalizes evidence that does not intersect
-def interpret uses the combined translated frame along with the mass densities derived from fuse
-to interpret the evidence pertaining to answers of the question frame
-'''
-
 
 class Analysis:
 
@@ -239,7 +229,7 @@ class Analysis:
         print(self.translatedFrame2)
         print('\n')
 
-        self.fuse(self.translatedFrame1, self.translatedFrame2)
+        #self.fuse(self.translatedFrame1, self.translatedFrame2)
 
         return self.translatedFrame1, self.translatedFrame2, self.newFrame
 

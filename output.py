@@ -1,12 +1,11 @@
-__author__ = 'Tami Hong Le'
-
-from analysis import *
-from compatibilityRelation import *
 from frame import *
+from compatibilityRelation import *
+from analysis import *
+
 
 def output(questionFrame,frames,FODs,parsedCR):
 
-    output_text_name = input("What would you like to name your output txt file? note you must end it with .txt:   ")
+    output_text_name = str(input("What would you like to name your output txt file? note you must end it with .txt:   "))
     output = open(output_text_name, 'w')
 
     output.write("The Question is : \n\n")
@@ -76,7 +75,7 @@ def output(questionFrame,frames,FODs,parsedCR):
         y = 4
         f = FOD.split(':')
         len_of_f = len(f) - 2
-        result = Analysis()
+        discounts = Analysis
         alpha = float(f[3])
 
         while y < len_of_f:
@@ -88,7 +87,7 @@ def output(questionFrame,frames,FODs,parsedCR):
                 output.write('\t\t{0:20}{1}\n'.format("Proposition:",f[y+1].strip()))
                 output.write('\t\t{0:20}{1:1.5f}\n'.format("alpha #:",alpha))
                 output.write('\t\t{0:20}{1:}\n'.format("Begin mass:",str(mass)))
-                newMass = format(result.discount(alpha,mass),'1.5f')
+                newMass = format(discounts.discount(alpha,mass),'1.5f')
                 output.write('\t\t{0:20}{1}\n\n'.format("End mass:",newMass))
                 y = y + 2
             else:
@@ -109,24 +108,24 @@ def output(questionFrame,frames,FODs,parsedCR):
             print(frame_zero)
             print(frame_one)
             x = 4
+            y = 4
 
             output.write('\n\n\n')
             output.write('\tTranslate operation: \n')
-            output.write('\t____________________________________\n\n')
-            output.write('\t{0:10}{1}\n'.format("Frame:", frame_zero[1] + ' X ' + frame_one[1]))
-            output.write('\t{0}\n'.format("Begin mass for proposition: "))
+            output.write('\t_____________________________________________________________\n\n')
+            output.write('\t{0:10}{1}\n\n'.format("Frame:", frame_zero[1] + ' X ' + frame_one[1]))
+            output.write('\t{0:50}{1}\n'.format("Proposition","Begin Mass"))
 
             len_of_frame_zero = len(frame_zero) - 2
-            len_of_frame_one = len(frame_one) -2
+            len_of_frame_one = len(frame_one) - 2
 
             while x < len_of_frame_zero:
-                print("ENTER WHILE LOOP")
-                print(frame_zero[x+1])
-                output.write('\t{0}\n'.format(frame_zero[x+1].strip()))
-
+                output.write('\t{0:50}{1}\n'.format(frame_zero[x+1].strip(),frame_zero[x].strip()))
                 x = x +2
 
-
+            while y < len_of_frame_one:
+                output.write('\t{0:50}{1}\n'.format(frame_one[y+1].strip(),frame_one[y].strip()))
+                y = y +2
 
             frame.get_crossProductFrames(FODs[0], FODs[1], CR.crossed_frame)
 
@@ -135,6 +134,11 @@ def output(questionFrame,frames,FODs,parsedCR):
             FODs.insert(0, frame.insertFrame)
         except IndexError:
             break
+
+def do_output(str):
+    output.write(str)
+    print(str)
+
 
 
 

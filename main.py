@@ -2,8 +2,8 @@
 from parseDataToClass import *
 from compatibilityRelation import *
 from frame import *
-from analysis import *
 import output
+
 
 def main():
 
@@ -17,9 +17,10 @@ def main():
     print(parse.FOD)
     print('\n')
 
-    output.output(parse.questionFrame,parse.frames,parse.FOD,parse.CR)
 
-    '''
+    output.output(parse.questionFrame,parse.frames,parse.FOD,parse.CR)
+    output.do_output("HELLLLLLLLLO)")
+
     countFOD = len(parse.FOD)
     frames = Frames()
     frames.organize_frames(parse.frames)
@@ -30,7 +31,7 @@ def main():
     CR.get_relations(parse.CR)
 
 
-
+    '''
     #crosses the frames and finds the new cross product frame
     while countFOD != 0:
         try:
@@ -44,7 +45,7 @@ def main():
 
     print(parse.FOD)
     '''
-    interpret = Analysis()
+    #interpret = Analysis()
     #newDirectory = parse.dir_path.strip("Input.txt")
     #interpret.interpret(interpret.b, newDirectory)
 

@@ -40,7 +40,7 @@ def main():
     frame.organize_frames(parse.frames,parse.FOD)
     #frame.get_crossProductFrames(parse.FOD,CR.crossed_frame)
 
-    file_write("ENTERING ANALYSIS\n\n")
+    file_write("ENTERING ANALYSIS\n\n\n")
 
     countFOD = len(parse.FOD)
 

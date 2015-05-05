@@ -62,16 +62,16 @@ The initial mass density for each input node's proposition are:
 		Proposition                   Mass
 		___________________________________
 
-		theta for EN frame            0.20
 		EN3                           0.10
+		theta for EN frame            0.20
 		EN1 U EN2                     0.70
 		___________________________________
 		Total of mass is :            1.00
 
 
-		theta for PA frame            0.40
-		PA2                           0.10
 		PA1                           0.50
+		PA2                           0.10
+		theta for PA frame            0.40
 		___________________________________
 		Total of mass is :            1.00
 
@@ -83,6 +83,7 @@ The initial mass density for each input node's proposition are:
 
 
 ENTERING ANALYSIS
+
 
 	Frame before translation 
 	_____________________________________________________________
@@ -137,11 +138,11 @@ ENTERING ANALYSIS
 
 	Cross Product Propositions                                                                               End Mass
 
-	EN1 U EN2 v PA1,PA2,PA3,PA4,PA5,PA6                                                                      0.0700
 	theta for frame EN                                                                                       0.9200
 	EN3 v PA5,PA6,PA7,PA8,PA9                                                                                0.0100
-	PA2 v EN1,EN4,EN5                                                                                        0.1000
+	EN1 U EN2 v PA1,PA2,PA3,PA4,PA5,PA6                                                                      0.0700
 	theta for frame PA                                                                                       0.4000
+	PA2 v EN1,EN4,EN5                                                                                        0.1000
 	PA1 v EN1,EN2,EN4                                                                                        0.5000
 
 
@@ -152,8 +153,8 @@ ENTERING ANALYSIS
 
 	Propositions before translating                   Begin Mass
 
-	EN3 v PA5,PA6,PA7,PA8,PA9                         0.010
 	EN1 U EN2 v PA1,PA2,PA3,PA4,PA5,PA6               0.070
+	EN3 v PA5,PA6,PA7,PA8,PA9                         0.010
 	PA1 v EN1,EN2,EN4                                 0.500
 	PA2 v EN1,EN4,EN5                                 0.100
 	PR5                                               0.400
@@ -184,11 +185,11 @@ ENTERING ANALYSIS
 
 	Cross Product Propositions                                                                               End Mass
 
-	EN1 U EN2 v PA1,PA2,PA3,PA4,PA5,PA6 v PR1,PR10,PR14,PR2,PR5,PR9                                          0.0700
 	EN3 v PA5,PA6,PA7,PA8,PA9 v PR1,PR13,PR14,PR2,PR3,PR4,PR7,PR8,PR9                                        0.0100
-	theta for frame EN X PA                                                                                  0.3200
-	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.5000
 	PA2 v EN1,EN4,EN5 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.1000
+	theta for frame EN X PA                                                                                  0.3200
+	EN1 U EN2 v PA1,PA2,PA3,PA4,PA5,PA6 v PR1,PR10,PR14,PR2,PR5,PR9                                          0.0700
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.5000
 	PR5 v EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA2,PA3,PA4,PA5,PA6,PA7    0.4000
 	theta for frame PR                                                                                       0.6000
 

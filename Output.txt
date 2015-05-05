@@ -62,8 +62,8 @@ The initial mass density for each input node's proposition are:
 		Proposition                   Mass
 		___________________________________
 
-		theta for EN frame            0.20
 		EN3                           0.10
+		theta for EN frame            0.20
 		EN1 U EN2                     0.70
 		___________________________________
 		Total of mass is :            1.00
@@ -84,12 +84,12 @@ The initial mass density for each input node's proposition are:
 
 ENTERING ANALYSIS
 
-	Translate operation: 
+	Translate operation 
 	_____________________________________________________________
 
 	Frame:    EN X PA
 
-	Proposition                                       Begin Mass
+	Propositions before translating                   Begin Mass
 
 	EN1 U EN2                                         0.700
 	EN3                                               0.100
@@ -128,15 +128,17 @@ ENTERING ANALYSIS
 
 
 
-	Translate operation: 
+	Propositions after translating                    End Mass
+
+	Translate operation 
 	_____________________________________________________________
 
 	Frame:    EN X PA X PR
 
-	Proposition                                       Begin Mass
+	Propositions before translating                   Begin Mass
 
-	EN1 U EN2 v PA1,PA2,PA3,PA4,PA5,PA6               0.070
 	EN3 v PA5,PA6,PA7,PA8,PA9                         0.010
+	EN1 U EN2 v PA1,PA2,PA3,PA4,PA5,PA6               0.070
 	PA1 v EN1,EN2,EN4                                 0.500
 	PA2 v EN1,EN4,EN5                                 0.100
 	PR5                                               0.400
@@ -159,4 +161,6 @@ ENTERING ANALYSIS
 
 
 
+
+	Propositions after translating                    End Mass
 

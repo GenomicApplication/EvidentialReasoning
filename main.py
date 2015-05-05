@@ -85,9 +85,9 @@ def main():
 
     print(parse.FOD)
 
-    #interpret = Analysis()
-    #newDirectory = parse.dir_path.strip("Input.txt")
-    #interpret.interpret(interpret.b, newDirectory)
+    interpret = Analysis()
+    newDirectory = parse.dir_path.strip("Input.txt")
+    interpret.interpret(interpret.b, newDirectory)
 
 
 

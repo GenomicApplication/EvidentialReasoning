@@ -194,3 +194,299 @@ ENTERING ANALYSIS
 	theta for frame PR                                                                                       0.6000
 
 
+The Question is : 
+
+	Is the experimental result credible and reliable?
+
+The answers to the question is : 
+
+	Credible and reliable
+	Acceptable credibility and reliability
+	Not credible nor reliable
+
+The frames are : 
+
+	EN =  Environment sterility and cleanliness
+	PA =  Accuracy & precision of equipments and experimenters
+	PR =  Procedure, quality of DNA extraction, titanium exposure time, and TiO2-DNA binding
+
+The propositions for "EN" frame is: 
+
+	EN1      Sterile environment and cleanliness 
+	EN2      Sterile environment and average cleanliness 
+	EN3      Sterile environment and poor cleanliness 
+	EN4      Moderately sterile environment and good cleanliness 
+	EN5      Moderately sterile environment and average cleanliness 
+	EN6      Moderately sterile environment and poor cleanliness 
+	EN7      Dirty environment and good cleanliness 
+	EN8      Dirty environment and average cleanliness 
+	EN9      Dirty environment and poor cleanliness 
+
+The propositions for "PA" frame is: 
+
+	PA1      Accurate & Precise Equipment and Experimenter 
+	PA2      Acceptable accuracy & precision equipment and accurate  & precise experimenter 
+	PA3      Bad accuracy & precision equipment and accurate  & precise experimenter 
+	PA4      Accurate & Precise Equipment and acceptable accuracy and precision experimenter 
+	PA5      Acceptable accuracy & precision equipment and Acceptable accurate and precise experimenter 
+	PA6      Bad accuracy & precision equipment and Acceptable accurate and precise experimenter 
+	PA7      Accurate & Precise Equipment and Bad accuracy and precision experimenter 
+	PA8      Acceptable accuracy & precision equipment and Bad accuracy and precision experimenter 
+	PA9      Bad accuracy & precision equipment and Bad accuracy and precision experimenter 
+
+The propositions for "PR" frame is: 
+
+	PR1      Effective procedure, Good DNA extraction method, good titanium exposure time, TiO2-DNA bounded 
+	PR2      Effective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA bounded 
+	PR3      Effective procedure, Good DNA extraction method, good titanium exposure time, TIO2-DNA not bounded 
+	PR4      Effective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA not bounded 
+	PR5      Effective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA bounded 
+	PR6      Effective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA bounded 
+	PR7      Effective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA not bounded 
+	PR8      Effective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA not bounded 
+	PR9      Ineffective procedure, Good DNA extraction method, good titanium exposure time, TiO2-DNA bounded 
+	PR10     Ineffective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA bounded 
+	PR11     Ineffective procedure, Good DNA extraction method, good titanium exposure time, TIO2-DNA not bounded 
+	PR12     Ineffective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA not bounded 
+	PR13     Ineffective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA bounded 
+	PR14     Ineffective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA bounded 
+	PR15     Ineffective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA not bounded 
+	PR16     Ineffective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA not bounded 
+
+The initial mass density for each input node's proposition are: 
+
+		Proposition                   Mass
+		___________________________________
+
+		EN3                           0.10
+		theta for EN frame            0.20
+		EN1 U EN2                     0.70
+		___________________________________
+		Total of mass is :            1.00
+
+
+		theta for PA frame            0.40
+		PA1                           0.50
+		PA2                           0.10
+		___________________________________
+		Total of mass is :            1.00
+
+
+		PR5                           0.40
+		theta for PR frame            0.60
+		___________________________________
+		Total of mass is :            1.00
+
+
+ENTERING ANALYSIS
+
+
+	Frame before translation 
+	_____________________________________________________________
+
+	Frame:    EN and PA
+
+	Propositions before translating                   Begin Mass
+
+	EN1 U EN2                                         0.700
+	EN3                                               0.100
+	PA1                                               0.500
+	PA2                                               0.100
+
+
+
+
+	Discount Operation
+	___________________________________
+
+		Frame:              EN
+		Proposition:        EN1 U EN2
+		alpha #:            0.10000
+		Begin mass:         0.7000
+		End mass:           0.0700
+
+
+
+	Discount Operation
+	___________________________________
+
+		Frame:              EN
+		Proposition:        EN3
+		alpha #:            0.10000
+		Begin mass:         0.1000
+		End mass:           0.0100
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             PA
+		Discount was not detected
+
+
+
+
+
+	Translated Frame
+	____________________________________________________________________________________________________________________
+
+	Frame:    EN X PA
+
+	Cross Product Propositions                                                                               End Mass
+
+	theta for frame EN                                                                                       0.9200
+	EN1 U EN2 v PA1,PA2,PA3,PA4,PA5,PA6                                                                      0.0700
+	EN3 v PA5,PA6,PA7,PA8,PA9                                                                                0.0100
+	theta for frame PA                                                                                       0.4000
+	PA1 v EN1,EN2,EN4                                                                                        0.5000
+	PA2 v EN1,EN4,EN5                                                                                        0.1000
+
+
+The Question is : 
+
+	Is the experimental result credible and reliable?
+
+The answers to the question is : 
+
+	Credible and reliable
+	Acceptable credibility and reliability
+	Not credible nor reliable
+
+The frames are : 
+
+	EN =  Environment sterility and cleanliness
+	PA =  Accuracy & precision of equipments and experimenters
+	PR =  Procedure, quality of DNA extraction, titanium exposure time, and TiO2-DNA binding
+
+The propositions for "EN" frame is: 
+
+	EN1      Sterile environment and cleanliness 
+	EN2      Sterile environment and average cleanliness 
+	EN3      Sterile environment and poor cleanliness 
+	EN4      Moderately sterile environment and good cleanliness 
+	EN5      Moderately sterile environment and average cleanliness 
+	EN6      Moderately sterile environment and poor cleanliness 
+	EN7      Dirty environment and good cleanliness 
+	EN8      Dirty environment and average cleanliness 
+	EN9      Dirty environment and poor cleanliness 
+
+The propositions for "PA" frame is: 
+
+	PA1      Accurate & Precise Equipment and Experimenter 
+	PA2      Acceptable accuracy & precision equipment and accurate  & precise experimenter 
+	PA3      Bad accuracy & precision equipment and accurate  & precise experimenter 
+	PA4      Accurate & Precise Equipment and acceptable accuracy and precision experimenter 
+	PA5      Acceptable accuracy & precision equipment and Acceptable accurate and precise experimenter 
+	PA6      Bad accuracy & precision equipment and Acceptable accurate and precise experimenter 
+	PA7      Accurate & Precise Equipment and Bad accuracy and precision experimenter 
+	PA8      Acceptable accuracy & precision equipment and Bad accuracy and precision experimenter 
+	PA9      Bad accuracy & precision equipment and Bad accuracy and precision experimenter 
+
+The propositions for "PR" frame is: 
+
+	PR1      Effective procedure, Good DNA extraction method, good titanium exposure time, TiO2-DNA bounded 
+	PR2      Effective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA bounded 
+	PR3      Effective procedure, Good DNA extraction method, good titanium exposure time, TIO2-DNA not bounded 
+	PR4      Effective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA not bounded 
+	PR5      Effective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA bounded 
+	PR6      Effective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA bounded 
+	PR7      Effective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA not bounded 
+	PR8      Effective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA not bounded 
+	PR9      Ineffective procedure, Good DNA extraction method, good titanium exposure time, TiO2-DNA bounded 
+	PR10     Ineffective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA bounded 
+	PR11     Ineffective procedure, Good DNA extraction method, good titanium exposure time, TIO2-DNA not bounded 
+	PR12     Ineffective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA not bounded 
+	PR13     Ineffective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA bounded 
+	PR14     Ineffective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA bounded 
+	PR15     Ineffective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA not bounded 
+	PR16     Ineffective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA not bounded 
+
+The initial mass density for each input node's proposition are: 
+
+		Proposition                   Mass
+		___________________________________
+
+		EN3                           0.10
+		EN1 U EN2                     0.70
+		theta for EN frame            0.20
+		___________________________________
+		Total of mass is :            1.00
+
+
+		PA1                           0.50
+		PA2                           0.10
+		theta for PA frame            0.40
+		___________________________________
+		Total of mass is :            1.00
+
+
+		PR5                           0.40
+		theta for PR frame            0.60
+		___________________________________
+		Total of mass is :            1.00
+
+
+ENTERING ANALYSIS
+
+
+	Frame before translation 
+	_____________________________________________________________
+
+	Frame:    EN and PA
+
+	Propositions before translating                   Begin Mass
+
+	EN1 U EN2                                         0.700
+	EN3                                               0.100
+	PA1                                               0.500
+	PA2                                               0.100
+
+
+
+
+	Discount Operation
+	___________________________________
+
+		Frame:              EN
+		Proposition:        EN1 U EN2
+		alpha #:            0.10000
+		Begin mass:         0.7000
+		End mass:           0.0700
+
+
+
+	Discount Operation
+	___________________________________
+
+		Frame:              EN
+		Proposition:        EN3
+		alpha #:            0.10000
+		Begin mass:         0.1000
+		End mass:           0.0100
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             PA
+		Discount was not detected
+
+
+
+
+
+	Translated Frame
+	____________________________________________________________________________________________________________________
+
+	Frame:    EN X PA
+
+	Cross Product Propositions                                                                               End Mass
+
+	theta for frame EN                                                                                       0.9200
+	EN3 v PA5,PA6,PA7,PA8,PA9                                                                                0.0100
+	EN1 U EN2 v PA1,PA2,PA3,PA4,PA5,PA6                                                                      0.0700
+	theta for frame PA                                                                                       0.4000
+	PA2 v EN1,EN4,EN5                                                                                        0.1000
+	PA1 v EN1,EN2,EN4                                                                                        0.5000
+
+

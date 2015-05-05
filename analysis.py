@@ -1,7 +1,7 @@
 import re
 from collections import Counter
 from utils import dprint
-#from output import *
+from output import *
 
 class Analysis:
 
@@ -17,7 +17,9 @@ class Analysis:
     #adjust the impact based on new evidence
     def discount(self, alpha, mass):
         try:
-            #print("Entered discount operation")
+            print("Entered discount operation")
+            file_write('\tDiscount Operation\n')
+            file_write('\t___________________________________\n\n')
             alpha = float(alpha)
             mass = float(mass)
 
@@ -60,6 +62,8 @@ class Analysis:
 
         #Iterate through an unknown length of the Frame 1, and collect all the belief values
         #Finally, record the translated frame in a dictionary
+
+
         while x < length_ofFrame1:
             try:
                 proposition = frame1[x+1]
@@ -151,9 +155,9 @@ class Analysis:
             except:
                 break
 
-
         #Iterate through an unknown length of Frame 2 and collect all the belief values.
         #Then, record the translated frame in a dictionary
+
         while y < length_ofFrame2:
             try:
                 proposition2 = frame2[y + 1]
@@ -223,10 +227,13 @@ class Analysis:
 
         self.newFrame = 'FOD:' + strToMatch1x2 + ':NO: 0:' + propForNewFrame1 + ':' + propForNewFrame2
 
+        file_write('\n\n\n')
+
         print("Translated frames are: ")
         print(self.translatedFrame1)
         print(self.translatedFrame2)
         print('\n')
+
 
         #self.fuse(self.translatedFrame1, self.translatedFrame2)
 

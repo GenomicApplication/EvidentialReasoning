@@ -43,7 +43,6 @@ def main():
     file_write("ENTERING ANALYSIS\n\n")
 
     countFOD = len(parse.FOD)
-    translated_frame = Analysis()
 
     while countFOD != 0:
         try:
@@ -57,9 +56,9 @@ def main():
             x = 4
             y = 4
 
-            file_write('\tTranslate operation \n')
+            file_write('\tFrame before translation \n')
             file_write('\t_____________________________________________________________\n\n')
-            file_write('\t{0:10}{1}\n\n'.format("Frame:", frame_zero[1] + ' X ' + frame_one[1]))
+            file_write('\t{0:10}{1}\n\n'.format("Frame:", frame_zero[1] + ' and ' + frame_one[1]))
             file_write('\t{0:50}{1}\n\n'.format("Propositions before translating","Begin Mass"))
 
             len_of_frame_zero = len(frame_zero) - 2
@@ -73,13 +72,13 @@ def main():
                 file_write('\t{0:50}{1:1.3f}\n'.format(frame_one[y+1].strip(),float(frame_one[y].strip())))
                 y = y +2
 
+            file_write('\n\n\n')
             frame.get_crossProductFrames(parse.FOD[0], parse.FOD[1], CR.crossed_frame)
-
-            file_write('\t{0:50}{1}\n\n'.format("Propositions after translating","End Mass"))
 
             parse.FOD.remove(parse.FOD[0])
             parse.FOD.remove(parse.FOD[0])
             parse.FOD.insert(0,frame.insertFrame)
+
         except IndexError:
 
             break

@@ -100,7 +100,7 @@ class Frames:
         x = 4
         y = 4
 
-        file_write('\n\n\n')
+
         #iterates through the FOD list and check for discounting operation
         while  x < length_ofFOD1:
             #accounts for the discount operation before crossing the frames

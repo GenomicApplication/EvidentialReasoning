@@ -18,6 +18,7 @@ class Analysis:
     def discount(self, alpha, mass):
         try:
             print("Entered discount operation")
+            file_write('\n')
             file_write('\tDiscount Operation\n')
             file_write('\t___________________________________\n\n')
             alpha = float(alpha)
@@ -234,6 +235,24 @@ class Analysis:
         print(self.translatedFrame2)
         print('\n')
 
+        file_write('\t{0}\n'.format("Translated Frame"))
+        file_write('\t{0}\n\n'.format("____________________________________________________________________________________________________________________"))
+        file_write('\t{0:10}{1}\n\n'.format("Frame:", strToMatch1x2))
+        file_write('\t{0:105}{1}\n\n'.format("Cross Product Propositions","End Mass"))
+
+        for k,v in self.translatedFrame1.items():
+            if k == 'theta':
+                file_write('\t{0:105}{1:1.4f}\n'.format(k + " for frame " + frame1[0],v))
+            else:
+                file_write('\t{0:105}{1:1.4f}\n'.format(k,v))
+
+        for k,v in self.translatedFrame2.items():
+            if k =='theta':
+                file_write('\t{0:105}{1:1.4f}\n'.format(k + " for frame " + frame2[0],v))
+            else:
+                file_write('\t{0:105}{1:1.4f}\n'.format(k,v))
+
+        file_write('\n\n')
 
         #self.fuse(self.translatedFrame1, self.translatedFrame2)
 

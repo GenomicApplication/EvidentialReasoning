@@ -254,7 +254,7 @@ class Analysis:
 
         file_write('\n\n')
 
-        #self.fuse(self.translatedFrame1, self.translatedFrame2)
+        self.fuse(self.translatedFrame1, self.translatedFrame2)
 
         return self.translatedFrame1, self.translatedFrame2, self.newFrame
 

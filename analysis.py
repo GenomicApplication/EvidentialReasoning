@@ -258,7 +258,7 @@ class Analysis:
 
         return self.translatedFrame1, self.translatedFrame2, self.newFrame
 
-      # Dempster's combination rule
+    # Dempster's combination rule
     def fuse(self, translatedFrame1, translatedFrame2, frame1, frame2):
         print("Entered fuse operation")
         file_write('\n')
@@ -365,6 +365,18 @@ class Analysis:
 
     def interpret(self, b, crossed_frame, final_dic):
         val = []
+        countresult0 = 0
+        countresult1 = 0
+        countresult2 = 0
+        support0 = 0
+        plausibility0 = 0
+        support1 = 0
+        plausibility1 = 0
+        support2 = 0
+        plausibility2 = 0
+        result3 = ()
+        result4 = ()
+        result5 = ()
         file_write('\n')
         file_write('\tInterpret Operation\n')
         file_write('\t___________________________________\n\n')
@@ -388,7 +400,8 @@ class Analysis:
         val1 = sum(val)
         for keys, values in final_dic:
             s3 = (re.split('[,vU\s]+', keys))
-            file_write('\t{0:}'.format(s3))
+            #file_write('\t{0:}'.format(s3))
+            #file_write('\n\n')
             s3s0 = set()
             s3s1 = set()
             s3s2 = set()
@@ -412,6 +425,8 @@ class Analysis:
                         file_write('\n\n')
                         support += values
                         result0 = value0[:value0.find('/')]
+                        file_write('\t{0:}'.format(s3))
+                        file_write('\n')
                         file_write('\tThe experimental data has: {0:}'.format(result0))
                         file_write('\n')
                         #file_write('The experimental data is:\t{0:105}{1:1.4f}\n'.format(result0))
@@ -419,12 +434,19 @@ class Analysis:
                         file_write('\n')
                         plausibility = (1 - (val1 - support))
                         file_write('\tPlausibility: {0:.4f}'.format(plausibility))
-            elif s3s1len >= s3s0len:
+                        file_write('\n')
+                        countresult0 = countresult0 + 1
+                        result3 = repr(result0)
+                        support0 += support
+                        plausibility0 += plausibility
+            if s3s1len >= s3s0len:
                 if s3s1len >= s3s2len:
                     if set(s3).intersection(s1):
                         file_write('\n\n')
                         support += values
                         result1 = value1[:value1.find('/')]
+                        file_write('\t{0:}'.format(s3))
+                        file_write('\n')
                         file_write('\tThe experimental data has: {0:}'.format(result1))
                         file_write('\n')
                         file_write('\tSupport: {0:.4f}'.format(support))
@@ -432,25 +454,62 @@ class Analysis:
                         plausibility = (1 - (val1 - support))
                         file_write('\tPlausibility: {0:.4f}'.format(plausibility))
                         file_write('\n')
-            elif s3s2len >= s3s0len:
+                        countresult1 = countresult1 + 1
+                        result4 = repr(result1)
+                        support1 += support
+                        plausibility1 += plausibility
+            if s3s2len >= s3s0len:
                 if s3s2len >= s3s1len:
                     if set(s3).intersection(s2):
                         file_write('\n\n')
                         support += values
                         result2 = value2[:value2.find('/')]
+                        file_write('\t{0:}'.format(s3))
+                        file_write('\n')
                         file_write('\tThe experimental data has: {0:}'.format(result2))
-                        file_write('/n')
+                        file_write('\n')
                         file_write('\tSupport: {0:.4f}'.format(support))
                         file_write('\n')
                         plausibility = (1 - (val1 - support))
                         file_write('\tPlausibility: {0:.4f}'.format(plausibility))
-                        file_write('\n')
+                        file_write('\n\n')
+                        countresult2 = countresult2 + 1
+                        result5 = repr(result2)
+                        support2 += support
+                        plausibility2 += plausibility
 
-   
-                        print ('The experimental data is: ', result2)
-                        print ('Support: %.4f' % support)
-                        plausibility = (1 - (val1 - support))
-                        print ('Plausibility: ', plausibility)
+        if countresult0 >= countresult1:
+            if countresult0 >= countresult2:
+                file_write('\tOverall the experiment has: {0:}'.format(result3))
+                file_write('\n')
+                file_write('\t Support: {0:.4f}'.format(support0))
+                file_write('\n')
+                file_write('\t Plausibility: {0:.4f}'.format(plausibility0))
+                file_write('\n')
+                file_write('\tEI = [{0:.4f}, {1:.4f}]'.format(support0, plausibility0))
+                file_write('\n\n')
+        if countresult1 >= countresult0:
+            if countresult1 >= countresult2:
+                file_write('\tOverall the experiment has: {0:}'.format(result4))
+                file_write('\n')
+                file_write('\t Support: {0:.4f}'.format(support1))
+                file_write('\n')
+                file_write('\t Plausibility: {0:.4f}'.format(plausibility1))
+                file_write('\n')
+                file_write('\tEI = [{0:.4f}, {1:.4f}]'.format(support0, plausibility0))
+                file_write('\n\n')
+        if countresult2 >= countresult0:
+            if countresult2 >= countresult1:
+                file_write('\tOverall the experiment has: {0:}'.format(result5))
+                file_write('\n')
+                file_write('\t Support: {0:.4f}'.format(support2))
+                file_write('\n')
+                file_write('\t Plausibility: {0:.4f}'.format(plausibility2))
+                file_write('\n')
+                file_write('\tEI = [{0:.4f}, {1:.4f}]'.format(support0, plausibility0))
+                file_write('\n\n')
+
+        file_write('\n\n')
 
 
 

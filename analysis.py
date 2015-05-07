@@ -508,7 +508,7 @@ class Analysis:
                 file_write('\n')
                 file_write('\tEI = [{0:.4f}, {1:.4f}]'.format(support0, plausibility0))
                 file_write('\n\n')
-        if countresult1 >= countresult0:
+        elif countresult1 >= countresult0:
             if countresult1 >= countresult2:
                 file_write('\tOverall the experiment has: {0:}'.format(result4))
                 file_write('\n')
@@ -518,7 +518,7 @@ class Analysis:
                 file_write('\n')
                 file_write('\tEI = [{0:.4f}, {1:.4f}]'.format(support0, plausibility0))
                 file_write('\n\n')
-        if countresult2 >= countresult0:
+        elif countresult2 >= countresult0:
             if countresult2 >= countresult1:
                 file_write('\tOverall the experiment has: {0:}'.format(result5))
                 file_write('\n')

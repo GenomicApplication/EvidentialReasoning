@@ -46,6 +46,8 @@ class Analysis:
         x = 3
         y = 3
 
+        print("COUNT IS : " + str(count))
+
         if count == 1:
             mass = 0
             mass2 = 0
@@ -78,10 +80,8 @@ class Analysis:
                     mass = float(mass) + float(value)
                     theta = float(1 - float(mass))
 
-                elif count > 1:
-                    print(" > 1 first")
+                if count > 1:
                     mass = float(mass) * float(value)
-                    print("PRINT MASS : " + str(mass))
                     theta = float(1- float(mass))
 
                 for key1,value1 in compatibilityRelations.items():
@@ -100,6 +100,7 @@ class Analysis:
                         comboString = ''
 
                         dprint("Splitter length: " + str(length_of_splitter))
+
                         while i < length_of_splitter:
                             string = splitter[i].strip()
                             string = string.split('v')
@@ -180,7 +181,7 @@ class Analysis:
                     mass2 = float(mass2) + float(value2)
                     theta2 = float(1- mass2)
 
-                elif count > 1:
+                if count > 1:
                     mass2 = float(mass2)* float(value2)
                     theta2 = float(1-mass2)
 
@@ -400,7 +401,7 @@ class Analysis:
         file_write('\tInterpret Operation\n')
         file_write('\t___________________________________\n\n')
 
-        for key, value in crossed_frame.items():
+        for key,value in crossed_frame.items():
             if 'Q' in key:
                 value0 = (value[0])
                 result0 = value0[:value0.find('/')]

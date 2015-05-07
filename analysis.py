@@ -73,14 +73,9 @@ class Analysis:
             try:
                 proposition = frame1[x+1]
                 value = float(frame1[x])
-                print("RPINT VALUE 1")
-                print(value)
-                print("PRINT COUNT IS :"  + str(count))
 
                 if count == 1:
-                    print(" = 1 first")
                     mass = float(mass) + float(value)
-                    print("MASS IS :  " + str(mass))
                     theta = float(1 - float(mass))
 
                 elif count > 1:
@@ -180,20 +175,13 @@ class Analysis:
             try:
                 proposition2 = frame2[y + 1]
                 value2 = float(frame2[y])
-                print("PRINT VALUE2")
-                print(value2)
-                print("PRINT COUNT IS :"  + str(count))
 
                 if count == 1:
-                    print(" = 1")
                     mass2 = float(mass2) + float(value2)
-                    print("MASS IS :  " + str(mass))
                     theta2 = float(1- mass2)
 
                 elif count > 1:
-                    print(" > 1")
                     mass2 = float(mass2)* float(value2)
-                    print("PRINT MASS : " + str(mass2))
                     theta2 = float(1-mass2)
 
                 for key2,value3 in compatibilityRelations.items():

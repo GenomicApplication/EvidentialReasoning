@@ -62,22 +62,20 @@ The initial mass density for each input node's proposition are:
 		Proposition                   Mass
 		___________________________________
 
-		EN3                           0.10
-		theta for EN frame            0.20
-		EN1 U EN2                     0.70
+		EN1                           0.90
+		theta for EN frame            0.10
 		___________________________________
 		Total of mass is :            1.00
 
 
-		PA1                           0.50
-		PA2                           0.10
-		theta for PA frame            0.40
+		PA1                           0.90
+		theta for PA frame            0.10
 		___________________________________
 		Total of mass is :            1.00
 
 
-		PR5                           0.40
-		theta for PR frame            0.60
+		PR1                           0.90
+		theta for PR frame            0.10
 		___________________________________
 		Total of mass is :            1.00
 
@@ -92,33 +90,16 @@ ENTERING ANALYSIS
 
 	Propositions before translating                   Begin Mass
 
-	EN1 U EN2                                         0.700
-	EN3                                               0.100
-	PA1                                               0.500
-	PA2                                               0.100
-
-
-
-
-	Discount Operation
-	___________________________________
-
-		Frame:              EN
-		Proposition:        EN1 U EN2
-		alpha #:            0.10000
-		Begin mass:         0.7000
-		End mass:           0.0700
+	EN1                                               0.900
+	PA1                                               0.900
 
 
 
 	Discount Operation
 	___________________________________
 
-		Frame:              EN
-		Proposition:        EN3
-		alpha #:            0.10000
-		Begin mass:         0.1000
-		End mass:           0.0100
+		Frame :             EN
+		Discount was detected
 
 
 	Discount Operation
@@ -138,26 +119,47 @@ ENTERING ANALYSIS
 
 	Cross Product Propositions                                                                               End Mass
 
-	theta for frame EN                                                                                       0.9200
-	EN3 v PA5,PA6,PA7,PA8,PA9                                                                                0.0100
-	EN1 U EN2 v PA1,PA2,PA3,PA4,PA5,PA6                                                                      0.0700
-	theta for frame PA                                                                                       0.4000
-	PA2 v EN1,EN4,EN5                                                                                        0.1000
-	PA1 v EN1,EN2,EN4                                                                                        0.5000
+	theta for frame EN                                                                                       0.1000
+	EN1 v PA1,PA2,PA4,PA5,PA6                                                                                0.9000
+	theta for frame PA                                                                                       0.1000
+	PA1 v EN1,EN2,EN4                                                                                        0.9000
 
 
-	Frame before translation 
+
+	FUSE Operation
+	___________________________________
+
+	Cross Product Propositions                                                                               End Mass
+
+	Frame1
+	theta for frame EN                                                                                       0.1000
+	EN1 v PA1,PA2,PA4,PA5,PA6                                                                                0.9000
+
+	Frame2
+	theta for frame PA                                                                                       0.1000
+	PA1 v EN1,EN2,EN4                                                                                        0.9000
+
+
+	Orthogonal Sum begins here for Frame1 and Frame2
+
+	theta, 0.0100
+	EN1 v PA1,PA2,PA4,PA5,PA6, 0.0900
+	PA1 v EN1,EN2,EN4, 0.0900
+	{'PA1', 'EN1'}
+	{'PA1', 'EN1'}, 0.8100
+	Dictionary after orthogonal sum: [('theta', 0.009999999999999995), ('EN1 v PA1,PA2,PA4,PA5,PA6', 0.08999999999999998), ('PA1 v EN1,EN2,EN4', 0.08999999999999998), ("{'PA1', 'EN1'}", 0.81)] 
+	Final frame dictionary: []
+	K = 1.0000
+	The mass of 1 and 2 is : 1.0000	Frame before translation 
 	_____________________________________________________________
 
 	Frame:    EN X PA and PR
 
 	Propositions before translating                   Begin Mass
 
-	EN1 U EN2 v PA1,PA2,PA3,PA4,PA5,PA6               0.070
-	EN3 v PA5,PA6,PA7,PA8,PA9                         0.010
-	PA1 v EN1,EN2,EN4                                 0.500
-	PA2 v EN1,EN4,EN5                                 0.100
-	PR5                                               0.400
+	EN1 v PA1,PA2,PA4,PA5,PA6                         0.900
+	PA1 v EN1,EN2,EN4                                 0.900
+	PR1                                               0.900
 
 
 
@@ -185,13 +187,87 @@ ENTERING ANALYSIS
 
 	Cross Product Propositions                                                                               End Mass
 
-	EN3 v PA5,PA6,PA7,PA8,PA9 v PR1,PR13,PR14,PR2,PR3,PR4,PR7,PR8,PR9                                        0.0100
-	PA2 v EN1,EN4,EN5 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.1000
-	theta for frame EN X PA                                                                                  0.3200
-	EN1 U EN2 v PA1,PA2,PA3,PA4,PA5,PA6 v PR1,PR10,PR14,PR2,PR5,PR9                                          0.0700
-	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.5000
-	PR5 v EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA2,PA3,PA4,PA5,PA6,PA7    0.4000
-	theta for frame PR                                                                                       0.6000
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.9000
+	theta for frame EN X PA                                                                                  1.0000
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9                                                                  0.9000
+	theta for frame PR                                                                                       1.0000
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA90.9000
+
+
+
+	FUSE Operation
+	___________________________________
+
+	Cross Product Propositions                                                                               End Mass
+
+	Frame1
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.9000
+	theta for frame EN X PA                                                                                  1.0000
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9                                                                  0.9000
+
+	Frame2
+	theta for frame PR                                                                                       1.0000
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA90.9000
+
+
+	Orthogonal Sum begins here for Frame1 and Frame2
+
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9, 0.9000
+	theta, 1.0000
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9, 0.9000
+	{'EN4', 'PA1', 'EN1', 'PR1', 'EN2'}
+	{'EN4', 'PA1', 'EN1', 'PR1', 'EN2'}, 0.8100
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9, 0.9000
+	{'PA1', 'PA4', 'PA5', 'EN1', 'PR1', 'PA6', 'PA2'}
+	{'PA1', 'PA4', 'PA5', 'EN1', 'PR1', 'PA6', 'PA2'}, 0.8100
+	Dictionary after orthogonal sum: [('theta', 0.009999999999999995), ('EN1 v PA1,PA2,PA4,PA5,PA6', 0.08999999999999998), ('PA1 v EN1,EN2,EN4', 0.08999999999999998), ("{'PA1', 'EN1'}", 0.81), ('PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9', 0.9), ('theta', 1.0), ('EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9', 0.9), ("{'EN4', 'PA1', 'EN1', 'PR1', 'EN2'}", 0.81), ('PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9', 0.9), ("{'PA1', 'PA4', 'PA5', 'EN1', 'PR1', 'PA6', 'PA2'}", 0.81)] 
+	Final frame dictionary: [('PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9', 0.9), ('EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9', 0.9), ("{'EN4', 'PA1', 'EN1', 'PR1', 'EN2'}", 0.81), ('PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9', 0.9), ("{'PA1', 'PA4', 'PA5', 'EN1', 'PR1', 'PA6', 'PA2'}", 0.81)]
+	K = 1.0000
+	The mass of 1 and 2 is : 5.3200
+	Interpret Operation
+	___________________________________
+
+
+
+	['PA1', 'EN1', 'EN2', 'EN4', 'PR1', 'PR10', 'PR13', 'PR14', 'PR2', 'PR3', 'PR4', 'PR5', 'PR6', 'PR9']
+	The experimental data has: Acceptable credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PR1', 'PR2', 'PR9']
+	The experimental data has: Good credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Good credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Acceptable credibility and reliability
+	Support: 1.8000
+	Plausibility: -1.5200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Poor credibility and reliability
+	Support: 2.7000
+	Plausibility: -0.6200
+
+	Overall the experiment has: 'Good credibility and reliability'
+	 Support: 1.8000
+	 Plausibility: -4.8400
+	EI = [1.8000, -4.8400]
+
+	Overall the experiment has: 'Acceptable credibility and reliability'
+	 Support: 2.7000
+	 Plausibility: -3.9400
+	EI = [1.8000, -4.8400]
+
 
 
 The Question is : 
@@ -258,22 +334,20 @@ The initial mass density for each input node's proposition are:
 		Proposition                   Mass
 		___________________________________
 
-		EN3                           0.10
-		theta for EN frame            0.20
-		EN1 U EN2                     0.70
+		EN1                           0.90
+		theta for EN frame            0.10
 		___________________________________
 		Total of mass is :            1.00
 
 
-		theta for PA frame            0.40
-		PA1                           0.50
-		PA2                           0.10
+		theta for PA frame            0.10
+		PA1                           0.90
 		___________________________________
 		Total of mass is :            1.00
 
 
-		PR5                           0.40
-		theta for PR frame            0.60
+		PR1                           0.90
+		theta for PR frame            0.10
 		___________________________________
 		Total of mass is :            1.00
 
@@ -288,33 +362,16 @@ ENTERING ANALYSIS
 
 	Propositions before translating                   Begin Mass
 
-	EN1 U EN2                                         0.700
-	EN3                                               0.100
-	PA1                                               0.500
-	PA2                                               0.100
-
-
-
-
-	Discount Operation
-	___________________________________
-
-		Frame:              EN
-		Proposition:        EN1 U EN2
-		alpha #:            0.10000
-		Begin mass:         0.7000
-		End mass:           0.0700
+	EN1                                               0.900
+	PA1                                               0.900
 
 
 
 	Discount Operation
 	___________________________________
 
-		Frame:              EN
-		Proposition:        EN3
-		alpha #:            0.10000
-		Begin mass:         0.1000
-		End mass:           0.0100
+		Frame :             EN
+		Discount was detected
 
 
 	Discount Operation
@@ -334,12 +391,155 @@ ENTERING ANALYSIS
 
 	Cross Product Propositions                                                                               End Mass
 
-	theta for frame EN                                                                                       0.9200
-	EN1 U EN2 v PA1,PA2,PA3,PA4,PA5,PA6                                                                      0.0700
-	EN3 v PA5,PA6,PA7,PA8,PA9                                                                                0.0100
-	theta for frame PA                                                                                       0.4000
-	PA1 v EN1,EN2,EN4                                                                                        0.5000
-	PA2 v EN1,EN4,EN5                                                                                        0.1000
+	EN1 v PA1,PA2,PA4,PA5,PA6                                                                                0.9000
+	theta for frame EN                                                                                       0.1000
+	theta for frame PA                                                                                       0.1000
+	PA1 v EN1,EN2,EN4                                                                                        0.9000
+
+
+
+	FUSE Operation
+	___________________________________
+
+	Cross Product Propositions                                                                               End Mass
+
+	Frame1
+	EN1 v PA1,PA2,PA4,PA5,PA6                                                                                0.9000
+	theta for frame EN                                                                                       0.1000
+
+	Frame2
+	theta for frame PA                                                                                       0.1000
+	PA1 v EN1,EN2,EN4                                                                                        0.9000
+
+
+	Orthogonal Sum begins here for Frame1 and Frame2
+
+	EN1 v PA1,PA2,PA4,PA5,PA6, 0.0900
+	theta, 0.0100
+	{'EN1', 'PA1'}
+	{'EN1', 'PA1'}, 0.8100
+	PA1 v EN1,EN2,EN4, 0.0900
+	Dictionary after orthogonal sum: [('EN1 v PA1,PA2,PA4,PA5,PA6', 0.08999999999999998), ('theta', 0.009999999999999995), ("{'EN1', 'PA1'}", 0.81), ('PA1 v EN1,EN2,EN4', 0.08999999999999998)] 
+	Final frame dictionary: []
+	K = 1.0000
+	The mass of 1 and 2 is : 1.0000	Frame before translation 
+	_____________________________________________________________
+
+	Frame:    EN X PA and PR
+
+	Propositions before translating                   Begin Mass
+
+	EN1 v PA1,PA2,PA4,PA5,PA6                         0.900
+	PA1 v EN1,EN2,EN4                                 0.900
+	PR1                                               0.900
+
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             EN X PA
+		Discount was detected
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             PR
+		Discount was not detected
+
+
+
+
+
+	Translated Frame
+	____________________________________________________________________________________________________________________
+
+	Frame:    EN X PA X PR
+
+	Cross Product Propositions                                                                               End Mass
+
+	theta for frame EN X PA                                                                                  1.0000
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.9000
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9                                                                  0.9000
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA90.9000
+	theta for frame PR                                                                                       1.0000
+
+
+
+	FUSE Operation
+	___________________________________
+
+	Cross Product Propositions                                                                               End Mass
+
+	Frame1
+	theta for frame EN X PA                                                                                  1.0000
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.9000
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9                                                                  0.9000
+
+	Frame2
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA90.9000
+	theta for frame PR                                                                                       1.0000
+
+
+	Orthogonal Sum begins here for Frame1 and Frame2
+
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9, 0.9000
+	{'PR1', 'PA1', 'EN1', 'EN2', 'EN4'}
+	{'PR1', 'PA1', 'EN1', 'EN2', 'EN4'}, 0.8100
+	{'EN1', 'PA5', 'PA2', 'PA4', 'PR1', 'PA6', 'PA1'}
+	{'EN1', 'PA5', 'PA2', 'PA4', 'PR1', 'PA6', 'PA1'}, 0.8100
+	theta, 1.0000
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9, 0.9000
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9, 0.9000
+	Dictionary after orthogonal sum: [('EN1 v PA1,PA2,PA4,PA5,PA6', 0.08999999999999998), ('theta', 0.009999999999999995), ("{'EN1', 'PA1'}", 0.81), ('PA1 v EN1,EN2,EN4', 0.08999999999999998), ('PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9', 0.9), ("{'PR1', 'PA1', 'EN1', 'EN2', 'EN4'}", 0.81), ("{'EN1', 'PA5', 'PA2', 'PA4', 'PR1', 'PA6', 'PA1'}", 0.81), ('theta', 1.0), ('PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9', 0.9), ('EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9', 0.9)] 
+	Final frame dictionary: [('PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9', 0.9), ("{'PR1', 'PA1', 'EN1', 'EN2', 'EN4'}", 0.81), ("{'EN1', 'PA5', 'PA2', 'PA4', 'PR1', 'PA6', 'PA1'}", 0.81), ('PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9', 0.9), ('EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9', 0.9)]
+	K = 1.0000
+	The mass of 1 and 2 is : 5.3200
+	Interpret Operation
+	___________________________________
+
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Good credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Acceptable credibility and reliability
+	Support: 1.8000
+	Plausibility: -1.5200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Poor credibility and reliability
+	Support: 2.7000
+	Plausibility: -0.6200
+
+
+
+	['PA1', 'EN1', 'EN2', 'EN4', 'PR1', 'PR10', 'PR13', 'PR14', 'PR2', 'PR3', 'PR4', 'PR5', 'PR6', 'PR9']
+	The experimental data has: Acceptable credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PR1', 'PR2', 'PR9']
+	The experimental data has: Good credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+	Overall the experiment has: 'Good credibility and reliability'
+	 Support: 1.8000
+	 Plausibility: -4.8400
+	EI = [1.8000, -4.8400]
+
+	Overall the experiment has: 'Acceptable credibility and reliability'
+	 Support: 2.7000
+	 Plausibility: -3.9400
+	EI = [1.8000, -4.8400]
+
 
 
 The Question is : 
@@ -406,22 +606,20 @@ The initial mass density for each input node's proposition are:
 		Proposition                   Mass
 		___________________________________
 
-		EN3                           0.10
-		EN1 U EN2                     0.70
-		theta for EN frame            0.20
+		theta for EN frame            0.10
+		EN1                           0.90
 		___________________________________
 		Total of mass is :            1.00
 
 
-		PA1                           0.50
-		PA2                           0.10
-		theta for PA frame            0.40
+		theta for PA frame            0.10
+		PA1                           0.90
 		___________________________________
 		Total of mass is :            1.00
 
 
-		PR5                           0.40
-		theta for PR frame            0.60
+		PR1                           0.90
+		theta for PR frame            0.10
 		___________________________________
 		Total of mass is :            1.00
 
@@ -436,33 +634,16 @@ ENTERING ANALYSIS
 
 	Propositions before translating                   Begin Mass
 
-	EN1 U EN2                                         0.700
-	EN3                                               0.100
-	PA1                                               0.500
-	PA2                                               0.100
-
-
-
-
-	Discount Operation
-	___________________________________
-
-		Frame:              EN
-		Proposition:        EN1 U EN2
-		alpha #:            0.10000
-		Begin mass:         0.7000
-		End mass:           0.0700
+	EN1                                               0.900
+	PA1                                               0.900
 
 
 
 	Discount Operation
 	___________________________________
 
-		Frame:              EN
-		Proposition:        EN3
-		alpha #:            0.10000
-		Begin mass:         0.1000
-		End mass:           0.0100
+		Frame :             EN
+		Discount was detected
 
 
 	Discount Operation
@@ -482,11 +663,2058 @@ ENTERING ANALYSIS
 
 	Cross Product Propositions                                                                               End Mass
 
-	theta for frame EN                                                                                       0.9200
-	EN3 v PA5,PA6,PA7,PA8,PA9                                                                                0.0100
-	EN1 U EN2 v PA1,PA2,PA3,PA4,PA5,PA6                                                                      0.0700
-	theta for frame PA                                                                                       0.4000
-	PA2 v EN1,EN4,EN5                                                                                        0.1000
-	PA1 v EN1,EN2,EN4                                                                                        0.5000
+	theta for frame EN                                                                                       0.1000
+	EN1 v PA1,PA2,PA4,PA5,PA6                                                                                0.9000
+	PA1 v EN1,EN2,EN4                                                                                        0.9000
+	theta for frame PA                                                                                       0.1000
+
+
+
+	FUSE Operation
+	___________________________________
+
+	Cross Product Propositions                                                                               End Mass
+
+	Frame1
+	theta for frame EN                                                                                       0.1000
+	EN1 v PA1,PA2,PA4,PA5,PA6                                                                                0.9000
+
+	Frame2
+	PA1 v EN1,EN2,EN4                                                                                        0.9000
+	theta for frame PA                                                                                       0.1000
+
+
+	Orthogonal Sum begins here for Frame1 and Frame2
+
+	PA1 v EN1,EN2,EN4, 0.0900
+	{'EN1', 'PA1'}
+	{'EN1', 'PA1'}, 0.8100
+	theta, 0.0100
+	EN1 v PA1,PA2,PA4,PA5,PA6, 0.0900
+	Dictionary after orthogonal sum: [('PA1 v EN1,EN2,EN4', 0.08999999999999998), ("{'EN1', 'PA1'}", 0.81), ('theta', 0.009999999999999995), ('EN1 v PA1,PA2,PA4,PA5,PA6', 0.08999999999999998)] 
+	Final frame dictionary: []
+	K = 1.0000
+	The mass of 1 and 2 is : 1.0000	Frame before translation 
+	_____________________________________________________________
+
+	Frame:    EN X PA and PR
+
+	Propositions before translating                   Begin Mass
+
+	EN1 v PA1,PA2,PA4,PA5,PA6                         0.900
+	PA1 v EN1,EN2,EN4                                 0.900
+	PR1                                               0.900
+
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             EN X PA
+		Discount was detected
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             PR
+		Discount was not detected
+
+
+
+
+
+	Translated Frame
+	____________________________________________________________________________________________________________________
+
+	Frame:    EN X PA X PR
+
+	Cross Product Propositions                                                                               End Mass
+
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.9000
+	theta for frame EN X PA                                                                                  1.0000
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9                                                                  0.9000
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA90.9000
+	theta for frame PR                                                                                       1.0000
+
+
+
+	FUSE Operation
+	___________________________________
+
+	Cross Product Propositions                                                                               End Mass
+
+	Frame1
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.9000
+	theta for frame EN X PA                                                                                  1.0000
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9                                                                  0.9000
+
+	Frame2
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA90.9000
+	theta for frame PR                                                                                       1.0000
+
+
+	Orthogonal Sum begins here for Frame1 and Frame2
+
+	{'EN2', 'EN4', 'PR1', 'EN1', 'PA1'}
+	{'EN2', 'EN4', 'PR1', 'EN1', 'PA1'}, 0.8100
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9, 0.9000
+	{'PR1', 'EN1', 'PA1', 'PA5', 'PA2', 'PA4', 'PA6'}
+	{'PR1', 'EN1', 'PA1', 'PA5', 'PA2', 'PA4', 'PA6'}, 0.8100
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9, 0.9000
+	theta, 1.0000
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9, 0.9000
+	Dictionary after orthogonal sum: [('PA1 v EN1,EN2,EN4', 0.08999999999999998), ("{'EN1', 'PA1'}", 0.81), ('theta', 0.009999999999999995), ('EN1 v PA1,PA2,PA4,PA5,PA6', 0.08999999999999998), ("{'EN2', 'EN4', 'PR1', 'EN1', 'PA1'}", 0.81), ('PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9', 0.9), ("{'PR1', 'EN1', 'PA1', 'PA5', 'PA2', 'PA4', 'PA6'}", 0.81), ('PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9', 0.9), ('theta', 1.0), ('EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9', 0.9)] 
+	Final frame dictionary: [("{'EN2', 'EN4', 'PR1', 'EN1', 'PA1'}", 0.81), ('PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9', 0.9), ("{'PR1', 'EN1', 'PA1', 'PA5', 'PA2', 'PA4', 'PA6'}", 0.81), ('PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9', 0.9), ('EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9', 0.9)]
+	K = 1.0000
+	The mass of 1 and 2 is : 5.3200
+	Interpret Operation
+	___________________________________
+
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Good credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Acceptable credibility and reliability
+	Support: 1.8000
+	Plausibility: -1.5200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Poor credibility and reliability
+	Support: 2.7000
+	Plausibility: -0.6200
+
+
+
+	['PA1', 'EN1', 'EN2', 'EN4', 'PR1', 'PR10', 'PR13', 'PR14', 'PR2', 'PR3', 'PR4', 'PR5', 'PR6', 'PR9']
+	The experimental data has: Acceptable credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PR1', 'PR2', 'PR9']
+	The experimental data has: Good credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+	Overall the experiment has: 'Good credibility and reliability'
+	 Support: 1.8000
+	 Plausibility: -4.8400
+	EI = [1.8000, -4.8400]
+
+	Overall the experiment has: 'Acceptable credibility and reliability'
+	 Support: 2.7000
+	 Plausibility: -3.9400
+	EI = [1.8000, -4.8400]
+
+
+
+The Question is : 
+
+	Is the experimental result credible and reliable?
+
+The answers to the question is : 
+
+	Credible and reliable
+	Acceptable credibility and reliability
+	Not credible nor reliable
+
+The frames are : 
+
+	EN =  Environment sterility and cleanliness
+	PA =  Accuracy & precision of equipments and experimenters
+	PR =  Procedure, quality of DNA extraction, titanium exposure time, and TiO2-DNA binding
+
+The propositions for "EN" frame is: 
+
+	EN1      Sterile environment and cleanliness 
+	EN2      Sterile environment and average cleanliness 
+	EN3      Sterile environment and poor cleanliness 
+	EN4      Moderately sterile environment and good cleanliness 
+	EN5      Moderately sterile environment and average cleanliness 
+	EN6      Moderately sterile environment and poor cleanliness 
+	EN7      Dirty environment and good cleanliness 
+	EN8      Dirty environment and average cleanliness 
+	EN9      Dirty environment and poor cleanliness 
+
+The propositions for "PA" frame is: 
+
+	PA1      Accurate & Precise Equipment and Experimenter 
+	PA2      Acceptable accuracy & precision equipment and accurate  & precise experimenter 
+	PA3      Bad accuracy & precision equipment and accurate  & precise experimenter 
+	PA4      Accurate & Precise Equipment and acceptable accuracy and precision experimenter 
+	PA5      Acceptable accuracy & precision equipment and Acceptable accurate and precise experimenter 
+	PA6      Bad accuracy & precision equipment and Acceptable accurate and precise experimenter 
+	PA7      Accurate & Precise Equipment and Bad accuracy and precision experimenter 
+	PA8      Acceptable accuracy & precision equipment and Bad accuracy and precision experimenter 
+	PA9      Bad accuracy & precision equipment and Bad accuracy and precision experimenter 
+
+The propositions for "PR" frame is: 
+
+	PR1      Effective procedure, Good DNA extraction method, good titanium exposure time, TiO2-DNA bounded 
+	PR2      Effective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA bounded 
+	PR3      Effective procedure, Good DNA extraction method, good titanium exposure time, TIO2-DNA not bounded 
+	PR4      Effective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA not bounded 
+	PR5      Effective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA bounded 
+	PR6      Effective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA bounded 
+	PR7      Effective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA not bounded 
+	PR8      Effective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA not bounded 
+	PR9      Ineffective procedure, Good DNA extraction method, good titanium exposure time, TiO2-DNA bounded 
+	PR10     Ineffective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA bounded 
+	PR11     Ineffective procedure, Good DNA extraction method, good titanium exposure time, TIO2-DNA not bounded 
+	PR12     Ineffective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA not bounded 
+	PR13     Ineffective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA bounded 
+	PR14     Ineffective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA bounded 
+	PR15     Ineffective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA not bounded 
+	PR16     Ineffective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA not bounded 
+
+The initial mass density for each input node's proposition are: 
+
+		Proposition                   Mass
+		___________________________________
+
+		theta for EN frame            0.10
+		EN1                           0.90
+		___________________________________
+		Total of mass is :            1.00
+
+
+		theta for PA frame            0.10
+		PA1                           0.90
+		___________________________________
+		Total of mass is :            1.00
+
+
+		PR1                           0.90
+		theta for PR frame            0.10
+		___________________________________
+		Total of mass is :            1.00
+
+
+ENTERING ANALYSIS
+
+
+	Frame before translation 
+	_____________________________________________________________
+
+	Frame:    EN and PA
+
+	Propositions before translating                   Begin Mass
+
+	EN1                                               0.900
+	PA1                                               0.900
+
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             EN
+		Discount was detected
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             PA
+		Discount was not detected
+
+
+
+
+
+	Translated Frame
+	____________________________________________________________________________________________________________________
+
+	Frame:    EN X PA
+
+	Cross Product Propositions                                                                               End Mass
+
+	EN1 v PA1,PA2,PA4,PA5,PA6                                                                                0.9000
+	theta for frame EN                                                                                       0.1000
+	theta for frame PA                                                                                       0.1000
+	PA1 v EN1,EN2,EN4                                                                                        0.9000
+
+
+
+	FUSE Operation
+	___________________________________
+
+	Cross Product Propositions                                                                               End Mass
+
+	Frame1
+	EN1 v PA1,PA2,PA4,PA5,PA6                                                                                0.9000
+	theta for frame EN                                                                                       0.1000
+
+	Frame2
+	theta for frame PA                                                                                       0.1000
+	PA1 v EN1,EN2,EN4                                                                                        0.9000
+
+
+	Orthogonal Sum begins here for Frame1 and Frame2
+
+	EN1 v PA1,PA2,PA4,PA5,PA6, 0.0900
+	theta, 0.0100
+	{'EN1', 'PA1'}
+	{'EN1', 'PA1'}, 0.8100
+	PA1 v EN1,EN2,EN4, 0.0900
+	Dictionary after orthogonal sum: [('EN1 v PA1,PA2,PA4,PA5,PA6', 0.08999999999999998), ('theta', 0.009999999999999995), ("{'EN1', 'PA1'}", 0.81), ('PA1 v EN1,EN2,EN4', 0.08999999999999998)] 
+	Final frame dictionary: []
+	K = 1.0000
+	The mass of 1 and 2 is : 1.0000	Frame before translation 
+	_____________________________________________________________
+
+	Frame:    EN X PA and PR
+
+	Propositions before translating                   Begin Mass
+
+	EN1 v PA1,PA2,PA4,PA5,PA6                         0.900
+	PA1 v EN1,EN2,EN4                                 0.900
+	PR1                                               0.900
+
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             EN X PA
+		Discount was detected
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             PR
+		Discount was not detected
+
+
+
+
+
+	Translated Frame
+	____________________________________________________________________________________________________________________
+
+	Frame:    EN X PA X PR
+
+	Cross Product Propositions                                                                               End Mass
+
+	theta for frame EN X PA                                                                                  1.0000
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9                                                                  0.9000
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.9000
+	theta for frame PR                                                                                       1.0000
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA90.9000
+
+
+
+	FUSE Operation
+	___________________________________
+
+	Cross Product Propositions                                                                               End Mass
+
+	Frame1
+	theta for frame EN X PA                                                                                  1.0000
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9                                                                  0.9000
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.9000
+
+	Frame2
+	theta for frame PR                                                                                       1.0000
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA90.9000
+
+
+	Orthogonal Sum begins here for Frame1 and Frame2
+
+	theta, 1.0000
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9, 0.9000
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9, 0.9000
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9, 0.9000
+	{'PA2', 'PA1', 'PR1', 'PA6', 'PA4', 'PA5', 'EN1'}
+	{'PA2', 'PA1', 'PR1', 'PA6', 'PA4', 'PA5', 'EN1'}, 0.8100
+	{'EN4', 'PR1', 'EN1', 'EN2', 'PA1'}
+	{'EN4', 'PR1', 'EN1', 'EN2', 'PA1'}, 0.8100
+	Dictionary after orthogonal sum: [('EN1 v PA1,PA2,PA4,PA5,PA6', 0.08999999999999998), ('theta', 0.009999999999999995), ("{'EN1', 'PA1'}", 0.81), ('PA1 v EN1,EN2,EN4', 0.08999999999999998), ('theta', 1.0), ('EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9', 0.9), ('PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9', 0.9), ('PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9', 0.9), ("{'PA2', 'PA1', 'PR1', 'PA6', 'PA4', 'PA5', 'EN1'}", 0.81), ("{'EN4', 'PR1', 'EN1', 'EN2', 'PA1'}", 0.81)] 
+	Final frame dictionary: [('EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9', 0.9), ('PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9', 0.9), ('PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9', 0.9), ("{'PA2', 'PA1', 'PR1', 'PA6', 'PA4', 'PA5', 'EN1'}", 0.81), ("{'EN4', 'PR1', 'EN1', 'EN2', 'PA1'}", 0.81)]
+	K = 1.0000
+	The mass of 1 and 2 is : 5.3200
+	Interpret Operation
+	___________________________________
+
+
+
+	['EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PR1', 'PR2', 'PR9']
+	The experimental data has: Good credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['PA1', 'EN1', 'EN2', 'EN4', 'PR1', 'PR10', 'PR13', 'PR14', 'PR2', 'PR3', 'PR4', 'PR5', 'PR6', 'PR9']
+	The experimental data has: Acceptable credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Good credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Acceptable credibility and reliability
+	Support: 1.8000
+	Plausibility: -1.5200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Poor credibility and reliability
+	Support: 2.7000
+	Plausibility: -0.6200
+
+	Overall the experiment has: 'Good credibility and reliability'
+	 Support: 1.8000
+	 Plausibility: -4.8400
+	EI = [1.8000, -4.8400]
+
+	Overall the experiment has: 'Acceptable credibility and reliability'
+	 Support: 2.7000
+	 Plausibility: -3.9400
+	EI = [1.8000, -4.8400]
+
+
+
+The Question is : 
+
+	Is the experimental result credible and reliable?
+
+The answers to the question is : 
+
+	Credible and reliable
+	Acceptable credibility and reliability
+	Not credible nor reliable
+
+The frames are : 
+
+	EN =  Environment sterility and cleanliness
+	PA =  Accuracy & precision of equipments and experimenters
+	PR =  Procedure, quality of DNA extraction, titanium exposure time, and TiO2-DNA binding
+
+The propositions for "EN" frame is: 
+
+	EN1      Sterile environment and cleanliness 
+	EN2      Sterile environment and average cleanliness 
+	EN3      Sterile environment and poor cleanliness 
+	EN4      Moderately sterile environment and good cleanliness 
+	EN5      Moderately sterile environment and average cleanliness 
+	EN6      Moderately sterile environment and poor cleanliness 
+	EN7      Dirty environment and good cleanliness 
+	EN8      Dirty environment and average cleanliness 
+	EN9      Dirty environment and poor cleanliness 
+
+The propositions for "PA" frame is: 
+
+	PA1      Accurate & Precise Equipment and Experimenter 
+	PA2      Acceptable accuracy & precision equipment and accurate  & precise experimenter 
+	PA3      Bad accuracy & precision equipment and accurate  & precise experimenter 
+	PA4      Accurate & Precise Equipment and acceptable accuracy and precision experimenter 
+	PA5      Acceptable accuracy & precision equipment and Acceptable accurate and precise experimenter 
+	PA6      Bad accuracy & precision equipment and Acceptable accurate and precise experimenter 
+	PA7      Accurate & Precise Equipment and Bad accuracy and precision experimenter 
+	PA8      Acceptable accuracy & precision equipment and Bad accuracy and precision experimenter 
+	PA9      Bad accuracy & precision equipment and Bad accuracy and precision experimenter 
+
+The propositions for "PR" frame is: 
+
+	PR1      Effective procedure, Good DNA extraction method, good titanium exposure time, TiO2-DNA bounded 
+	PR2      Effective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA bounded 
+	PR3      Effective procedure, Good DNA extraction method, good titanium exposure time, TIO2-DNA not bounded 
+	PR4      Effective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA not bounded 
+	PR5      Effective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA bounded 
+	PR6      Effective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA bounded 
+	PR7      Effective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA not bounded 
+	PR8      Effective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA not bounded 
+	PR9      Ineffective procedure, Good DNA extraction method, good titanium exposure time, TiO2-DNA bounded 
+	PR10     Ineffective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA bounded 
+	PR11     Ineffective procedure, Good DNA extraction method, good titanium exposure time, TIO2-DNA not bounded 
+	PR12     Ineffective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA not bounded 
+	PR13     Ineffective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA bounded 
+	PR14     Ineffective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA bounded 
+	PR15     Ineffective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA not bounded 
+	PR16     Ineffective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA not bounded 
+
+The initial mass density for each input node's proposition are: 
+
+		Proposition                   Mass
+		___________________________________
+
+		theta for EN frame            0.10
+		EN1                           0.90
+		___________________________________
+		Total of mass is :            1.00
+
+
+		PA1                           0.90
+		theta for PA frame            0.10
+		___________________________________
+		Total of mass is :            1.00
+
+
+		theta for PR frame            0.10
+		PR1                           0.90
+		___________________________________
+		Total of mass is :            1.00
+
+
+ENTERING ANALYSIS
+
+
+	Frame before translation 
+	_____________________________________________________________
+
+	Frame:    EN and PA
+
+	Propositions before translating                   Begin Mass
+
+	EN1                                               0.900
+	PA1                                               0.900
+
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             EN
+		Discount was detected
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             PA
+		Discount was not detected
+
+
+
+
+
+	Translated Frame
+	____________________________________________________________________________________________________________________
+
+	Frame:    EN X PA
+
+	Cross Product Propositions                                                                               End Mass
+
+	theta for frame EN                                                                                       0.1000
+	EN1 v PA1,PA2,PA4,PA5,PA6                                                                                0.9000
+	theta for frame PA                                                                                       0.1000
+	PA1 v EN1,EN2,EN4                                                                                        0.9000
+
+
+
+	FUSE Operation
+	___________________________________
+
+	Cross Product Propositions                                                                               End Mass
+
+	Frame1
+	theta for frame EN                                                                                       0.1000
+	EN1 v PA1,PA2,PA4,PA5,PA6                                                                                0.9000
+
+	Frame2
+	theta for frame PA                                                                                       0.1000
+	PA1 v EN1,EN2,EN4                                                                                        0.9000
+
+
+	Orthogonal Sum begins here for Frame1 and Frame2
+
+	theta, 0.0100
+	EN1 v PA1,PA2,PA4,PA5,PA6, 0.0900
+	PA1 v EN1,EN2,EN4, 0.0900
+	{'EN1', 'PA1'}
+	{'EN1', 'PA1'}, 0.8100
+	Dictionary after orthogonal sum: [('theta', 0.009999999999999995), ('EN1 v PA1,PA2,PA4,PA5,PA6', 0.08999999999999998), ('PA1 v EN1,EN2,EN4', 0.08999999999999998), ("{'EN1', 'PA1'}", 0.81)] 
+	Final frame dictionary: []
+	K = 1.0000
+	The mass of 1 and 2 is : 1.0000	Frame before translation 
+	_____________________________________________________________
+
+	Frame:    EN X PA and PR
+
+	Propositions before translating                   Begin Mass
+
+	EN1 v PA1,PA2,PA4,PA5,PA6                         0.900
+	PA1 v EN1,EN2,EN4                                 0.900
+	PR1                                               0.900
+
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             EN X PA
+		Discount was detected
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             PR
+		Discount was not detected
+
+
+
+
+
+	Translated Frame
+	____________________________________________________________________________________________________________________
+
+	Frame:    EN X PA X PR
+
+	Cross Product Propositions                                                                               End Mass
+
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.9000
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9                                                                  0.9000
+	theta for frame EN X PA                                                                                  1.0000
+	theta for frame PR                                                                                       1.0000
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA90.9000
+
+
+
+	FUSE Operation
+	___________________________________
+
+	Cross Product Propositions                                                                               End Mass
+
+	Frame1
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.9000
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9                                                                  0.9000
+	theta for frame EN X PA                                                                                  1.0000
+
+	Frame2
+	theta for frame PR                                                                                       1.0000
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA90.9000
+
+
+	Orthogonal Sum begins here for Frame1 and Frame2
+
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9, 0.9000
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9, 0.9000
+	theta, 1.0000
+	{'EN1', 'PA1', 'EN2', 'EN4', 'PR1'}
+	{'EN1', 'PA1', 'EN2', 'EN4', 'PR1'}, 0.8100
+	{'PA4', 'EN1', 'PR1', 'PA1', 'PA2', 'PA5', 'PA6'}
+	{'PA4', 'EN1', 'PR1', 'PA1', 'PA2', 'PA5', 'PA6'}, 0.8100
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9, 0.9000
+	Dictionary after orthogonal sum: [('theta', 0.009999999999999995), ('EN1 v PA1,PA2,PA4,PA5,PA6', 0.08999999999999998), ('PA1 v EN1,EN2,EN4', 0.08999999999999998), ("{'EN1', 'PA1'}", 0.81), ('PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9', 0.9), ('EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9', 0.9), ('theta', 1.0), ("{'EN1', 'PA1', 'EN2', 'EN4', 'PR1'}", 0.81), ("{'PA4', 'EN1', 'PR1', 'PA1', 'PA2', 'PA5', 'PA6'}", 0.81), ('PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9', 0.9)] 
+	Final frame dictionary: [('PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9', 0.9), ('EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9', 0.9), ("{'EN1', 'PA1', 'EN2', 'EN4', 'PR1'}", 0.81), ("{'PA4', 'EN1', 'PR1', 'PA1', 'PA2', 'PA5', 'PA6'}", 0.81), ('PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9', 0.9)]
+	K = 1.0000
+	The mass of 1 and 2 is : 5.3200
+	Interpret Operation
+	___________________________________
+
+
+
+	['PA1', 'EN1', 'EN2', 'EN4', 'PR1', 'PR10', 'PR13', 'PR14', 'PR2', 'PR3', 'PR4', 'PR5', 'PR6', 'PR9']
+	The experimental data has: Acceptable credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PR1', 'PR2', 'PR9']
+	The experimental data has: Good credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Good credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Acceptable credibility and reliability
+	Support: 1.8000
+	Plausibility: -1.5200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Poor credibility and reliability
+	Support: 2.7000
+	Plausibility: -0.6200
+
+	Overall the experiment has: 'Good credibility and reliability'
+	 Support: 1.8000
+	 Plausibility: -4.8400
+	EI = [1.8000, -4.8400]
+
+	Overall the experiment has: 'Acceptable credibility and reliability'
+	 Support: 2.7000
+	 Plausibility: -3.9400
+	EI = [1.8000, -4.8400]
+
+
+
+The Question is : 
+
+	Is the experimental result credible and reliable?
+
+The answers to the question is : 
+
+	Credible and reliable
+	Acceptable credibility and reliability
+	Not credible nor reliable
+
+The frames are : 
+
+	EN =  Environment sterility and cleanliness
+	PA =  Accuracy & precision of equipments and experimenters
+	PR =  Procedure, quality of DNA extraction, titanium exposure time, and TiO2-DNA binding
+
+The propositions for "EN" frame is: 
+
+	EN1      Sterile environment and cleanliness 
+	EN2      Sterile environment and average cleanliness 
+	EN3      Sterile environment and poor cleanliness 
+	EN4      Moderately sterile environment and good cleanliness 
+	EN5      Moderately sterile environment and average cleanliness 
+	EN6      Moderately sterile environment and poor cleanliness 
+	EN7      Dirty environment and good cleanliness 
+	EN8      Dirty environment and average cleanliness 
+	EN9      Dirty environment and poor cleanliness 
+
+The propositions for "PA" frame is: 
+
+	PA1      Accurate & Precise Equipment and Experimenter 
+	PA2      Acceptable accuracy & precision equipment and accurate  & precise experimenter 
+	PA3      Bad accuracy & precision equipment and accurate  & precise experimenter 
+	PA4      Accurate & Precise Equipment and acceptable accuracy and precision experimenter 
+	PA5      Acceptable accuracy & precision equipment and Acceptable accurate and precise experimenter 
+	PA6      Bad accuracy & precision equipment and Acceptable accurate and precise experimenter 
+	PA7      Accurate & Precise Equipment and Bad accuracy and precision experimenter 
+	PA8      Acceptable accuracy & precision equipment and Bad accuracy and precision experimenter 
+	PA9      Bad accuracy & precision equipment and Bad accuracy and precision experimenter 
+
+The propositions for "PR" frame is: 
+
+	PR1      Effective procedure, Good DNA extraction method, good titanium exposure time, TiO2-DNA bounded 
+	PR2      Effective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA bounded 
+	PR3      Effective procedure, Good DNA extraction method, good titanium exposure time, TIO2-DNA not bounded 
+	PR4      Effective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA not bounded 
+	PR5      Effective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA bounded 
+	PR6      Effective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA bounded 
+	PR7      Effective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA not bounded 
+	PR8      Effective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA not bounded 
+	PR9      Ineffective procedure, Good DNA extraction method, good titanium exposure time, TiO2-DNA bounded 
+	PR10     Ineffective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA bounded 
+	PR11     Ineffective procedure, Good DNA extraction method, good titanium exposure time, TIO2-DNA not bounded 
+	PR12     Ineffective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA not bounded 
+	PR13     Ineffective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA bounded 
+	PR14     Ineffective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA bounded 
+	PR15     Ineffective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA not bounded 
+	PR16     Ineffective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA not bounded 
+
+The initial mass density for each input node's proposition are: 
+
+		Proposition                   Mass
+		___________________________________
+
+		EN1                           0.90
+		theta for EN frame            0.10
+		___________________________________
+		Total of mass is :            1.00
+
+
+		PA1                           0.90
+		theta for PA frame            0.10
+		___________________________________
+		Total of mass is :            1.00
+
+
+		theta for PR frame            0.10
+		PR1                           0.90
+		___________________________________
+		Total of mass is :            1.00
+
+
+ENTERING ANALYSIS
+
+
+	Frame before translation 
+	_____________________________________________________________
+
+	Frame:    EN and PA
+
+	Propositions before translating                   Begin Mass
+
+	EN1                                               0.900
+	PA1                                               0.900
+
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             EN
+		Discount was detected
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             PA
+		Discount was not detected
+
+
+
+
+
+	Translated Frame
+	____________________________________________________________________________________________________________________
+
+	Frame:    EN X PA
+
+	Cross Product Propositions                                                                               End Mass
+
+	EN1 v PA1,PA2,PA4,PA5,PA6                                                                                0.9000
+	theta for frame EN                                                                                       0.1000
+	theta for frame PA                                                                                       0.1000
+	PA1 v EN1,EN2,EN4                                                                                        0.9000
+
+
+
+	FUSE Operation
+	___________________________________
+
+	Cross Product Propositions                                                                               End Mass
+
+	Frame1
+	EN1 v PA1,PA2,PA4,PA5,PA6                                                                                0.9000
+	theta for frame EN                                                                                       0.1000
+
+	Frame2
+	theta for frame PA                                                                                       0.1000
+	PA1 v EN1,EN2,EN4                                                                                        0.9000
+
+
+	Orthogonal Sum begins here for Frame1 and Frame2
+
+	EN1 v PA1,PA2,PA4,PA5,PA6, 0.0900
+	theta, 0.0100
+	{'PA1', 'EN1'}
+	{'PA1', 'EN1'}, 0.8100
+	PA1 v EN1,EN2,EN4, 0.0900
+	Dictionary after orthogonal sum: [('EN1 v PA1,PA2,PA4,PA5,PA6', 0.08999999999999998), ('theta', 0.009999999999999995), ("{'PA1', 'EN1'}", 0.81), ('PA1 v EN1,EN2,EN4', 0.08999999999999998)] 
+	Final frame dictionary: []
+	K = 1.0000
+	The mass of 1 and 2 is : 1.0000	Frame before translation 
+	_____________________________________________________________
+
+	Frame:    EN X PA and PR
+
+	Propositions before translating                   Begin Mass
+
+	EN1 v PA1,PA2,PA4,PA5,PA6                         0.900
+	PA1 v EN1,EN2,EN4                                 0.900
+	PR1                                               0.900
+
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             EN X PA
+		Discount was detected
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             PR
+		Discount was not detected
+
+
+
+
+
+	Translated Frame
+	____________________________________________________________________________________________________________________
+
+	Frame:    EN X PA X PR
+
+	Cross Product Propositions                                                                               End Mass
+
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9                                                                  0.9000
+	theta for frame EN X PA                                                                                  1.0000
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.9000
+	theta for frame PR                                                                                       1.0000
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA90.9000
+
+
+
+	FUSE Operation
+	___________________________________
+
+	Cross Product Propositions                                                                               End Mass
+
+	Frame1
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9                                                                  0.9000
+	theta for frame EN X PA                                                                                  1.0000
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.9000
+
+	Frame2
+	theta for frame PR                                                                                       1.0000
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA90.9000
+
+
+	Orthogonal Sum begins here for Frame1 and Frame2
+
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9, 0.9000
+	theta, 1.0000
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9, 0.9000
+	{'EN1', 'PA2', 'PR1', 'PA1', 'PA6', 'PA4', 'PA5'}
+	{'EN1', 'PA2', 'PR1', 'PA1', 'PA6', 'PA4', 'PA5'}, 0.8100
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9, 0.9000
+	{'PA1', 'EN1', 'EN4', 'PR1', 'EN2'}
+	{'PA1', 'EN1', 'EN4', 'PR1', 'EN2'}, 0.8100
+	Dictionary after orthogonal sum: [('EN1 v PA1,PA2,PA4,PA5,PA6', 0.08999999999999998), ('theta', 0.009999999999999995), ("{'PA1', 'EN1'}", 0.81), ('PA1 v EN1,EN2,EN4', 0.08999999999999998), ('EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9', 0.9), ('theta', 1.0), ('PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9', 0.9), ("{'EN1', 'PA2', 'PR1', 'PA1', 'PA6', 'PA4', 'PA5'}", 0.81), ('PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9', 0.9), ("{'PA1', 'EN1', 'EN4', 'PR1', 'EN2'}", 0.81)] 
+	Final frame dictionary: [('EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9', 0.9), ('PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9', 0.9), ("{'EN1', 'PA2', 'PR1', 'PA1', 'PA6', 'PA4', 'PA5'}", 0.81), ('PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9', 0.9), ("{'PA1', 'EN1', 'EN4', 'PR1', 'EN2'}", 0.81)]
+	K = 1.0000
+	The mass of 1 and 2 is : 5.3200
+	Interpret Operation
+	___________________________________
+
+
+
+	['EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PR1', 'PR2', 'PR9']
+	The experimental data has: Good credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['PA1', 'EN1', 'EN2', 'EN4', 'PR1', 'PR10', 'PR13', 'PR14', 'PR2', 'PR3', 'PR4', 'PR5', 'PR6', 'PR9']
+	The experimental data has: Acceptable credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Good credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Acceptable credibility and reliability
+	Support: 1.8000
+	Plausibility: -1.5200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Poor credibility and reliability
+	Support: 2.7000
+	Plausibility: -0.6200
+
+	Overall the experiment has: 'Good credibility and reliability'
+	 Support: 1.8000
+	 Plausibility: -4.8400
+	EI = [1.8000, -4.8400]
+
+	Overall the experiment has: 'Acceptable credibility and reliability'
+	 Support: 2.7000
+	 Plausibility: -3.9400
+	EI = [1.8000, -4.8400]
+
+
+
+The Question is : 
+
+	Is the experimental result credible and reliable?
+
+The answers to the question is : 
+
+	Credible and reliable
+	Acceptable credibility and reliability
+	Not credible nor reliable
+
+The frames are : 
+
+	EN =  Environment sterility and cleanliness
+	PA =  Accuracy & precision of equipments and experimenters
+	PR =  Procedure, quality of DNA extraction, titanium exposure time, and TiO2-DNA binding
+
+The propositions for "EN" frame is: 
+
+	EN1      Sterile environment and cleanliness 
+	EN2      Sterile environment and average cleanliness 
+	EN3      Sterile environment and poor cleanliness 
+	EN4      Moderately sterile environment and good cleanliness 
+	EN5      Moderately sterile environment and average cleanliness 
+	EN6      Moderately sterile environment and poor cleanliness 
+	EN7      Dirty environment and good cleanliness 
+	EN8      Dirty environment and average cleanliness 
+	EN9      Dirty environment and poor cleanliness 
+
+The propositions for "PA" frame is: 
+
+	PA1      Accurate & Precise Equipment and Experimenter 
+	PA2      Acceptable accuracy & precision equipment and accurate  & precise experimenter 
+	PA3      Bad accuracy & precision equipment and accurate  & precise experimenter 
+	PA4      Accurate & Precise Equipment and acceptable accuracy and precision experimenter 
+	PA5      Acceptable accuracy & precision equipment and Acceptable accurate and precise experimenter 
+	PA6      Bad accuracy & precision equipment and Acceptable accurate and precise experimenter 
+	PA7      Accurate & Precise Equipment and Bad accuracy and precision experimenter 
+	PA8      Acceptable accuracy & precision equipment and Bad accuracy and precision experimenter 
+	PA9      Bad accuracy & precision equipment and Bad accuracy and precision experimenter 
+
+The propositions for "PR" frame is: 
+
+	PR1      Effective procedure, Good DNA extraction method, good titanium exposure time, TiO2-DNA bounded 
+	PR2      Effective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA bounded 
+	PR3      Effective procedure, Good DNA extraction method, good titanium exposure time, TIO2-DNA not bounded 
+	PR4      Effective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA not bounded 
+	PR5      Effective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA bounded 
+	PR6      Effective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA bounded 
+	PR7      Effective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA not bounded 
+	PR8      Effective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA not bounded 
+	PR9      Ineffective procedure, Good DNA extraction method, good titanium exposure time, TiO2-DNA bounded 
+	PR10     Ineffective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA bounded 
+	PR11     Ineffective procedure, Good DNA extraction method, good titanium exposure time, TIO2-DNA not bounded 
+	PR12     Ineffective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA not bounded 
+	PR13     Ineffective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA bounded 
+	PR14     Ineffective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA bounded 
+	PR15     Ineffective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA not bounded 
+	PR16     Ineffective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA not bounded 
+
+The initial mass density for each input node's proposition are: 
+
+		Proposition                   Mass
+		___________________________________
+
+		theta for EN frame            0.10
+		EN1                           0.90
+		___________________________________
+		Total of mass is :            1.00
+
+
+		theta for PA frame            0.10
+		PA1                           0.90
+		___________________________________
+		Total of mass is :            1.00
+
+
+		PR1                           0.90
+		theta for PR frame            0.10
+		___________________________________
+		Total of mass is :            1.00
+
+
+ENTERING ANALYSIS
+
+
+	Frame before translation 
+	_____________________________________________________________
+
+	Frame:    EN and PA
+
+	Propositions before translating                   Begin Mass
+
+	EN1                                               0.900
+	PA1                                               0.900
+
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             EN
+		Discount was detected
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             PA
+		Discount was not detected
+
+
+
+
+
+	Translated Frame
+	____________________________________________________________________________________________________________________
+
+	Frame:    EN X PA
+
+	Cross Product Propositions                                                                               End Mass
+
+	EN1 v PA1,PA2,PA4,PA5,PA6                                                                                0.9000
+	theta for frame EN                                                                                       0.1000
+	PA1 v EN1,EN2,EN4                                                                                        0.9000
+	theta for frame PA                                                                                       0.1000
+
+
+
+	FUSE Operation
+	___________________________________
+
+	Cross Product Propositions                                                                               End Mass
+
+	Frame1
+	EN1 v PA1,PA2,PA4,PA5,PA6                                                                                0.9000
+	theta for frame EN                                                                                       0.1000
+
+	Frame2
+	PA1 v EN1,EN2,EN4                                                                                        0.9000
+	theta for frame PA                                                                                       0.1000
+
+
+	Orthogonal Sum begins here for Frame1 and Frame2
+
+	{'EN1', 'PA1'}
+	{'EN1', 'PA1'}, 0.8100
+	PA1 v EN1,EN2,EN4, 0.0900
+	EN1 v PA1,PA2,PA4,PA5,PA6, 0.0900
+	theta, 0.0100
+	Dictionary after orthogonal sum: [("{'EN1', 'PA1'}", 0.81), ('PA1 v EN1,EN2,EN4', 0.08999999999999998), ('EN1 v PA1,PA2,PA4,PA5,PA6', 0.08999999999999998), ('theta', 0.009999999999999995)] 
+	Final frame dictionary: []
+	K = 1.0000
+	The mass of 1 and 2 is : 1.0000	Frame before translation 
+	_____________________________________________________________
+
+	Frame:    EN X PA and PR
+
+	Propositions before translating                   Begin Mass
+
+	EN1 v PA1,PA2,PA4,PA5,PA6                         0.900
+	PA1 v EN1,EN2,EN4                                 0.900
+	PR1                                               0.900
+
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             EN X PA
+		Discount was detected
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             PR
+		Discount was not detected
+
+
+
+
+
+	Translated Frame
+	____________________________________________________________________________________________________________________
+
+	Frame:    EN X PA X PR
+
+	Cross Product Propositions                                                                               End Mass
+
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9                                                                  0.9000
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.9000
+	theta for frame EN X PA                                                                                  1.0000
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA90.9000
+	theta for frame PR                                                                                       1.0000
+
+
+
+	FUSE Operation
+	___________________________________
+
+	Cross Product Propositions                                                                               End Mass
+
+	Frame1
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9                                                                  0.9000
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.9000
+	theta for frame EN X PA                                                                                  1.0000
+
+	Frame2
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA90.9000
+	theta for frame PR                                                                                       1.0000
+
+
+	Orthogonal Sum begins here for Frame1 and Frame2
+
+	{'PA1', 'PR1', 'PA2', 'PA6', 'PA4', 'PA5', 'EN1'}
+	{'PA1', 'PR1', 'PA2', 'PA6', 'PA4', 'PA5', 'EN1'}, 0.8100
+	{'PR1', 'EN1', 'EN4', 'EN2', 'PA1'}
+	{'PR1', 'EN1', 'EN4', 'EN2', 'PA1'}, 0.8100
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9, 0.9000
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9, 0.9000
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9, 0.9000
+	theta, 1.0000
+	Dictionary after orthogonal sum: [("{'EN1', 'PA1'}", 0.81), ('PA1 v EN1,EN2,EN4', 0.08999999999999998), ('EN1 v PA1,PA2,PA4,PA5,PA6', 0.08999999999999998), ('theta', 0.009999999999999995), ("{'PA1', 'PR1', 'PA2', 'PA6', 'PA4', 'PA5', 'EN1'}", 0.81), ("{'PR1', 'EN1', 'EN4', 'EN2', 'PA1'}", 0.81), ('PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9', 0.9), ('EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9', 0.9), ('PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9', 0.9), ('theta', 1.0)] 
+	Final frame dictionary: [("{'PA1', 'PR1', 'PA2', 'PA6', 'PA4', 'PA5', 'EN1'}", 0.81), ("{'PR1', 'EN1', 'EN4', 'EN2', 'PA1'}", 0.81), ('PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9', 0.9), ('EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9', 0.9), ('PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9', 0.9)]
+	K = 1.0000
+	The mass of 1 and 2 is : 5.3200
+	Interpret Operation
+	___________________________________
+
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Good credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Acceptable credibility and reliability
+	Support: 1.8000
+	Plausibility: -1.5200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Poor credibility and reliability
+	Support: 2.7000
+	Plausibility: -0.6200
+
+
+
+	['EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PR1', 'PR2', 'PR9']
+	The experimental data has: Good credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['PA1', 'EN1', 'EN2', 'EN4', 'PR1', 'PR10', 'PR13', 'PR14', 'PR2', 'PR3', 'PR4', 'PR5', 'PR6', 'PR9']
+	The experimental data has: Acceptable credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+	Overall the experiment has: 'Good credibility and reliability'
+	 Support: 1.8000
+	 Plausibility: -4.8400
+	EI = [1.8000, -4.8400]
+
+	Overall the experiment has: 'Acceptable credibility and reliability'
+	 Support: 2.7000
+	 Plausibility: -3.9400
+	EI = [1.8000, -4.8400]
+
+
+
+The Question is : 
+
+	Is the experimental result credible and reliable?
+
+The answers to the question is : 
+
+	Credible and reliable
+	Acceptable credibility and reliability
+	Not credible nor reliable
+
+The frames are : 
+
+	EN =  Environment sterility and cleanliness
+	PA =  Accuracy & precision of equipments and experimenters
+	PR =  Procedure, quality of DNA extraction, titanium exposure time, and TiO2-DNA binding
+
+The propositions for "EN" frame is: 
+
+	EN1      Sterile environment and cleanliness 
+	EN2      Sterile environment and average cleanliness 
+	EN3      Sterile environment and poor cleanliness 
+	EN4      Moderately sterile environment and good cleanliness 
+	EN5      Moderately sterile environment and average cleanliness 
+	EN6      Moderately sterile environment and poor cleanliness 
+	EN7      Dirty environment and good cleanliness 
+	EN8      Dirty environment and average cleanliness 
+	EN9      Dirty environment and poor cleanliness 
+
+The propositions for "PA" frame is: 
+
+	PA1      Accurate & Precise Equipment and Experimenter 
+	PA2      Acceptable accuracy & precision equipment and accurate  & precise experimenter 
+	PA3      Bad accuracy & precision equipment and accurate  & precise experimenter 
+	PA4      Accurate & Precise Equipment and acceptable accuracy and precision experimenter 
+	PA5      Acceptable accuracy & precision equipment and Acceptable accurate and precise experimenter 
+	PA6      Bad accuracy & precision equipment and Acceptable accurate and precise experimenter 
+	PA7      Accurate & Precise Equipment and Bad accuracy and precision experimenter 
+	PA8      Acceptable accuracy & precision equipment and Bad accuracy and precision experimenter 
+	PA9      Bad accuracy & precision equipment and Bad accuracy and precision experimenter 
+
+The propositions for "PR" frame is: 
+
+	PR1      Effective procedure, Good DNA extraction method, good titanium exposure time, TiO2-DNA bounded 
+	PR2      Effective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA bounded 
+	PR3      Effective procedure, Good DNA extraction method, good titanium exposure time, TIO2-DNA not bounded 
+	PR4      Effective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA not bounded 
+	PR5      Effective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA bounded 
+	PR6      Effective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA bounded 
+	PR7      Effective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA not bounded 
+	PR8      Effective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA not bounded 
+	PR9      Ineffective procedure, Good DNA extraction method, good titanium exposure time, TiO2-DNA bounded 
+	PR10     Ineffective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA bounded 
+	PR11     Ineffective procedure, Good DNA extraction method, good titanium exposure time, TIO2-DNA not bounded 
+	PR12     Ineffective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA not bounded 
+	PR13     Ineffective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA bounded 
+	PR14     Ineffective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA bounded 
+	PR15     Ineffective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA not bounded 
+	PR16     Ineffective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA not bounded 
+
+The initial mass density for each input node's proposition are: 
+
+		Proposition                   Mass
+		___________________________________
+
+		theta for EN frame            0.10
+		EN1                           0.90
+		___________________________________
+		Total of mass is :            1.00
+
+
+		PA1                           0.90
+		theta for PA frame            0.10
+		___________________________________
+		Total of mass is :            1.00
+
+
+		PR1                           0.90
+		theta for PR frame            0.10
+		___________________________________
+		Total of mass is :            1.00
+
+
+ENTERING ANALYSIS
+
+
+	Frame before translation 
+	_____________________________________________________________
+
+	Frame:    EN and PA
+
+	Propositions before translating                   Begin Mass
+
+	EN1                                               0.900
+	PA1                                               0.900
+
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             EN
+		Discount was detected
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             PA
+		Discount was not detected
+
+
+
+
+
+	Translated Frame
+	____________________________________________________________________________________________________________________
+
+	Frame:    EN X PA
+
+	Cross Product Propositions                                                                               End Mass
+
+	theta for frame EN                                                                                       0.1000
+	EN1 v PA1,PA2,PA4,PA5,PA6                                                                                0.9000
+	PA1 v EN1,EN2,EN4                                                                                        0.9000
+	theta for frame PA                                                                                       0.1000
+
+
+
+	FUSE Operation
+	___________________________________
+
+	Cross Product Propositions                                                                               End Mass
+
+	Frame1
+	theta for frame EN                                                                                       0.1000
+	EN1 v PA1,PA2,PA4,PA5,PA6                                                                                0.9000
+
+	Frame2
+	PA1 v EN1,EN2,EN4                                                                                        0.9000
+	theta for frame PA                                                                                       0.1000
+
+
+	Orthogonal Sum begins here for Frame1 and Frame2
+
+	PA1 v EN1,EN2,EN4, 0.0900
+	{'PA1', 'EN1'}
+	{'PA1', 'EN1'}, 0.8100
+	theta, 0.0100
+	EN1 v PA1,PA2,PA4,PA5,PA6, 0.0900
+	Dictionary after orthogonal sum: [('PA1 v EN1,EN2,EN4', 0.08999999999999998), ("{'PA1', 'EN1'}", 0.81), ('theta', 0.009999999999999995), ('EN1 v PA1,PA2,PA4,PA5,PA6', 0.08999999999999998)] 
+	Final frame dictionary: []
+	K = 1.0000
+	The mass of 1 and 2 is : 1.0000	Frame before translation 
+	_____________________________________________________________
+
+	Frame:    EN X PA and PR
+
+	Propositions before translating                   Begin Mass
+
+	EN1 v PA1,PA2,PA4,PA5,PA6                         0.900
+	PA1 v EN1,EN2,EN4                                 0.900
+	PR1                                               0.900
+
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             EN X PA
+		Discount was detected
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             PR
+		Discount was not detected
+
+
+
+
+
+	Translated Frame
+	____________________________________________________________________________________________________________________
+
+	Frame:    EN X PA X PR
+
+	Cross Product Propositions                                                                               End Mass
+
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.9000
+	theta for frame EN X PA                                                                                  1.0000
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9                                                                  0.9000
+	theta for frame PR                                                                                       1.0000
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA90.9000
+
+
+
+	FUSE Operation
+	___________________________________
+
+	Cross Product Propositions                                                                               End Mass
+
+	Frame1
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.9000
+	theta for frame EN X PA                                                                                  1.0000
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9                                                                  0.9000
+
+	Frame2
+	theta for frame PR                                                                                       1.0000
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA90.9000
+
+
+	Orthogonal Sum begins here for Frame1 and Frame2
+
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9, 0.9000
+	theta, 1.0000
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9, 0.9000
+	{'PR1', 'PA1', 'EN2', 'EN4', 'EN1'}
+	{'PR1', 'PA1', 'EN2', 'EN4', 'EN1'}, 0.8100
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9, 0.9000
+	{'PR1', 'PA4', 'PA6', 'PA5', 'PA1', 'PA2', 'EN1'}
+	{'PR1', 'PA4', 'PA6', 'PA5', 'PA1', 'PA2', 'EN1'}, 0.8100
+	Dictionary after orthogonal sum: [('PA1 v EN1,EN2,EN4', 0.08999999999999998), ("{'PA1', 'EN1'}", 0.81), ('theta', 0.009999999999999995), ('EN1 v PA1,PA2,PA4,PA5,PA6', 0.08999999999999998), ('PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9', 0.9), ('theta', 1.0), ('EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9', 0.9), ("{'PR1', 'PA1', 'EN2', 'EN4', 'EN1'}", 0.81), ('PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9', 0.9), ("{'PR1', 'PA4', 'PA6', 'PA5', 'PA1', 'PA2', 'EN1'}", 0.81)] 
+	Final frame dictionary: [('PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9', 0.9), ('EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9', 0.9), ("{'PR1', 'PA1', 'EN2', 'EN4', 'EN1'}", 0.81), ('PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9', 0.9), ("{'PR1', 'PA4', 'PA6', 'PA5', 'PA1', 'PA2', 'EN1'}", 0.81)]
+	K = 1.0000
+	The mass of 1 and 2 is : 5.3200
+	Interpret Operation
+	___________________________________
+
+
+
+	['PA1', 'EN1', 'EN2', 'EN4', 'PR1', 'PR10', 'PR13', 'PR14', 'PR2', 'PR3', 'PR4', 'PR5', 'PR6', 'PR9']
+	The experimental data has: Acceptable credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PR1', 'PR2', 'PR9']
+	The experimental data has: Good credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Good credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Acceptable credibility and reliability
+	Support: 1.8000
+	Plausibility: -1.5200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Poor credibility and reliability
+	Support: 2.7000
+	Plausibility: -0.6200
+
+	Overall the experiment has: 'Good credibility and reliability'
+	 Support: 1.8000
+	 Plausibility: -4.8400
+	EI = [1.8000, -4.8400]
+
+	Overall the experiment has: 'Acceptable credibility and reliability'
+	 Support: 2.7000
+	 Plausibility: -3.9400
+	EI = [1.8000, -4.8400]
+
+
+
+The Question is : 
+
+	Is the experimental result credible and reliable?
+
+The answers to the question is : 
+
+	Credible and reliable
+	Acceptable credibility and reliability
+	Not credible nor reliable
+
+The frames are : 
+
+	EN =  Environment sterility and cleanliness
+	PA =  Accuracy & precision of equipments and experimenters
+	PR =  Procedure, quality of DNA extraction, titanium exposure time, and TiO2-DNA binding
+
+The propositions for "EN" frame is: 
+
+	EN1      Sterile environment and cleanliness 
+	EN2      Sterile environment and average cleanliness 
+	EN3      Sterile environment and poor cleanliness 
+	EN4      Moderately sterile environment and good cleanliness 
+	EN5      Moderately sterile environment and average cleanliness 
+	EN6      Moderately sterile environment and poor cleanliness 
+	EN7      Dirty environment and good cleanliness 
+	EN8      Dirty environment and average cleanliness 
+	EN9      Dirty environment and poor cleanliness 
+
+The propositions for "PA" frame is: 
+
+	PA1      Accurate & Precise Equipment and Experimenter 
+	PA2      Acceptable accuracy & precision equipment and accurate  & precise experimenter 
+	PA3      Bad accuracy & precision equipment and accurate  & precise experimenter 
+	PA4      Accurate & Precise Equipment and acceptable accuracy and precision experimenter 
+	PA5      Acceptable accuracy & precision equipment and Acceptable accurate and precise experimenter 
+	PA6      Bad accuracy & precision equipment and Acceptable accurate and precise experimenter 
+	PA7      Accurate & Precise Equipment and Bad accuracy and precision experimenter 
+	PA8      Acceptable accuracy & precision equipment and Bad accuracy and precision experimenter 
+	PA9      Bad accuracy & precision equipment and Bad accuracy and precision experimenter 
+
+The propositions for "PR" frame is: 
+
+	PR1      Effective procedure, Good DNA extraction method, good titanium exposure time, TiO2-DNA bounded 
+	PR2      Effective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA bounded 
+	PR3      Effective procedure, Good DNA extraction method, good titanium exposure time, TIO2-DNA not bounded 
+	PR4      Effective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA not bounded 
+	PR5      Effective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA bounded 
+	PR6      Effective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA bounded 
+	PR7      Effective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA not bounded 
+	PR8      Effective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA not bounded 
+	PR9      Ineffective procedure, Good DNA extraction method, good titanium exposure time, TiO2-DNA bounded 
+	PR10     Ineffective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA bounded 
+	PR11     Ineffective procedure, Good DNA extraction method, good titanium exposure time, TIO2-DNA not bounded 
+	PR12     Ineffective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA not bounded 
+	PR13     Ineffective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA bounded 
+	PR14     Ineffective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA bounded 
+	PR15     Ineffective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA not bounded 
+	PR16     Ineffective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA not bounded 
+
+The initial mass density for each input node's proposition are: 
+
+		Proposition                   Mass
+		___________________________________
+
+		theta for EN frame            0.10
+		EN1                           0.90
+		___________________________________
+		Total of mass is :            1.00
+
+
+		PA1                           0.90
+		theta for PA frame            0.10
+		___________________________________
+		Total of mass is :            1.00
+
+
+		theta for PR frame            0.10
+		PR1                           0.90
+		___________________________________
+		Total of mass is :            1.00
+
+
+ENTERING ANALYSIS
+
+
+	Frame before translation 
+	_____________________________________________________________
+
+	Frame:    EN and PA
+
+	Propositions before translating                   Begin Mass
+
+	EN1                                               0.900
+	PA1                                               0.900
+
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             EN
+		Discount was detected
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             PA
+		Discount was not detected
+
+
+
+
+
+	Translated Frame
+	____________________________________________________________________________________________________________________
+
+	Frame:    EN X PA
+
+	Cross Product Propositions                                                                               End Mass
+
+	theta for frame EN                                                                                       0.1000
+	EN1 v PA1,PA2,PA4,PA5,PA6                                                                                0.9000
+	PA1 v EN1,EN2,EN4                                                                                        0.9000
+	theta for frame PA                                                                                       0.1000
+
+
+
+	FUSE Operation
+	___________________________________
+
+	Cross Product Propositions                                                                               End Mass
+
+	Frame1
+	theta for frame EN                                                                                       0.1000
+	EN1 v PA1,PA2,PA4,PA5,PA6                                                                                0.9000
+
+	Frame2
+	PA1 v EN1,EN2,EN4                                                                                        0.9000
+	theta for frame PA                                                                                       0.1000
+
+
+	Orthogonal Sum begins here for Frame1 and Frame2
+
+	PA1 v EN1,EN2,EN4, 0.0900
+	{'PA1', 'EN1'}
+	{'PA1', 'EN1'}, 0.8100
+	theta, 0.0100
+	EN1 v PA1,PA2,PA4,PA5,PA6, 0.0900
+	Dictionary after orthogonal sum: [('PA1 v EN1,EN2,EN4', 0.08999999999999998), ("{'PA1', 'EN1'}", 0.81), ('theta', 0.009999999999999995), ('EN1 v PA1,PA2,PA4,PA5,PA6', 0.08999999999999998)] 
+	Final frame dictionary: []
+	K = 1.0000
+	The mass of 1 and 2 is : 1.0000	Frame before translation 
+	_____________________________________________________________
+
+	Frame:    EN X PA and PR
+
+	Propositions before translating                   Begin Mass
+
+	EN1 v PA1,PA2,PA4,PA5,PA6                         0.900
+	PA1 v EN1,EN2,EN4                                 0.900
+	PR1                                               0.900
+
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             EN X PA
+		Discount was detected
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             PR
+		Discount was not detected
+
+
+
+
+
+	Translated Frame
+	____________________________________________________________________________________________________________________
+
+	Frame:    EN X PA X PR
+
+	Cross Product Propositions                                                                               End Mass
+
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9                                                                  0.9000
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.9000
+	theta for frame EN X PA                                                                                  1.0000
+	theta for frame PR                                                                                       1.0000
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA90.9000
+
+
+
+	FUSE Operation
+	___________________________________
+
+	Cross Product Propositions                                                                               End Mass
+
+	Frame1
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9                                                                  0.9000
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.9000
+	theta for frame EN X PA                                                                                  1.0000
+
+	Frame2
+	theta for frame PR                                                                                       1.0000
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA90.9000
+
+
+	Orthogonal Sum begins here for Frame1 and Frame2
+
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9, 0.9000
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9, 0.9000
+	theta, 1.0000
+	{'PR1', 'PA2', 'PA5', 'EN1', 'PA4', 'PA1', 'PA6'}
+	{'PR1', 'PA2', 'PA5', 'EN1', 'PA4', 'PA1', 'PA6'}, 0.8100
+	{'EN4', 'PA1', 'PR1', 'EN1', 'EN2'}
+	{'EN4', 'PA1', 'PR1', 'EN1', 'EN2'}, 0.8100
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9, 0.9000
+	Dictionary after orthogonal sum: [('PA1 v EN1,EN2,EN4', 0.08999999999999998), ("{'PA1', 'EN1'}", 0.81), ('theta', 0.009999999999999995), ('EN1 v PA1,PA2,PA4,PA5,PA6', 0.08999999999999998), ('EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9', 0.9), ('PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9', 0.9), ('theta', 1.0), ("{'PR1', 'PA2', 'PA5', 'EN1', 'PA4', 'PA1', 'PA6'}", 0.81), ("{'EN4', 'PA1', 'PR1', 'EN1', 'EN2'}", 0.81), ('PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9', 0.9)] 
+	Final frame dictionary: [('EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9', 0.9), ('PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9', 0.9), ("{'PR1', 'PA2', 'PA5', 'EN1', 'PA4', 'PA1', 'PA6'}", 0.81), ("{'EN4', 'PA1', 'PR1', 'EN1', 'EN2'}", 0.81), ('PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9', 0.9)]
+	K = 1.0000
+	The mass of 1 and 2 is : 5.3200
+	Interpret Operation
+	___________________________________
+
+
+
+	['EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PR1', 'PR2', 'PR9']
+	The experimental data has: Good credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['PA1', 'EN1', 'EN2', 'EN4', 'PR1', 'PR10', 'PR13', 'PR14', 'PR2', 'PR3', 'PR4', 'PR5', 'PR6', 'PR9']
+	The experimental data has: Acceptable credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Good credibility and reliability
+	Support: 0.9000
+	Plausibility: -2.4200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Acceptable credibility and reliability
+	Support: 1.8000
+	Plausibility: -1.5200
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Poor credibility and reliability
+	Support: 2.7000
+	Plausibility: -0.6200
+
+	Overall the experiment has: 'Good credibility and reliability'
+	 Support: 1.8000
+	 Plausibility: -4.8400
+	EI = [1.8000, -4.8400]
+
+	Overall the experiment has: 'Acceptable credibility and reliability'
+	 Support: 2.7000
+	 Plausibility: -3.9400
+	EI = [1.8000, -4.8400]
+
+
+
+The Question is : 
+
+	Is the experimental result credible and reliable?
+
+The answers to the question is : 
+
+	Credible and reliable
+	Acceptable credibility and reliability
+	Not credible nor reliable
+
+The frames are : 
+
+	EN =  Environment sterility and cleanliness
+	PA =  Accuracy & precision of equipments and experimenters
+	PR =  Procedure, quality of DNA extraction, titanium exposure time, and TiO2-DNA binding
+
+The propositions for "EN" frame is: 
+
+	EN1      Sterile environment and cleanliness 
+	EN2      Sterile environment and average cleanliness 
+	EN3      Sterile environment and poor cleanliness 
+	EN4      Moderately sterile environment and good cleanliness 
+	EN5      Moderately sterile environment and average cleanliness 
+	EN6      Moderately sterile environment and poor cleanliness 
+	EN7      Dirty environment and good cleanliness 
+	EN8      Dirty environment and average cleanliness 
+	EN9      Dirty environment and poor cleanliness 
+
+The propositions for "PA" frame is: 
+
+	PA1      Accurate & Precise Equipment and Experimenter 
+	PA2      Acceptable accuracy & precision equipment and accurate  & precise experimenter 
+	PA3      Bad accuracy & precision equipment and accurate  & precise experimenter 
+	PA4      Accurate & Precise Equipment and acceptable accuracy and precision experimenter 
+	PA5      Acceptable accuracy & precision equipment and Acceptable accurate and precise experimenter 
+	PA6      Bad accuracy & precision equipment and Acceptable accurate and precise experimenter 
+	PA7      Accurate & Precise Equipment and Bad accuracy and precision experimenter 
+	PA8      Acceptable accuracy & precision equipment and Bad accuracy and precision experimenter 
+	PA9      Bad accuracy & precision equipment and Bad accuracy and precision experimenter 
+
+The propositions for "PR" frame is: 
+
+	PR1      Effective procedure, Good DNA extraction method, good titanium exposure time, TiO2-DNA bounded 
+	PR2      Effective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA bounded 
+	PR3      Effective procedure, Good DNA extraction method, good titanium exposure time, TIO2-DNA not bounded 
+	PR4      Effective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA not bounded 
+	PR5      Effective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA bounded 
+	PR6      Effective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA bounded 
+	PR7      Effective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA not bounded 
+	PR8      Effective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA not bounded 
+	PR9      Ineffective procedure, Good DNA extraction method, good titanium exposure time, TiO2-DNA bounded 
+	PR10     Ineffective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA bounded 
+	PR11     Ineffective procedure, Good DNA extraction method, good titanium exposure time, TIO2-DNA not bounded 
+	PR12     Ineffective procedure, Good DNA extraction method, bad titanium exposure time, TIO2-DNA not bounded 
+	PR13     Ineffective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA bounded 
+	PR14     Ineffective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA bounded 
+	PR15     Ineffective procedure, poor DNA extraction method, good titanium exposure time,TiO2-DNA not bounded 
+	PR16     Ineffective procedure, poor DNA extraction method, bad titanium exposure time,TiO2-DNA not bounded 
+
+The initial mass density for each input node's proposition are: 
+
+		Proposition                   Mass
+		___________________________________
+
+		theta for EN frame            0.10
+		EN1                           0.90
+		___________________________________
+		Total of mass is :            1.00
+
+
+		PA1                           0.90
+		theta for PA frame            0.10
+		___________________________________
+		Total of mass is :            1.00
+
+
+		PR1                           0.90
+		theta for PR frame            0.10
+		___________________________________
+		Total of mass is :            1.00
+
+
+ENTERING ANALYSIS
+
+
+	Frame before translation 
+	_____________________________________________________________
+
+	Frame:    EN and PA
+
+	Propositions before translating                   Begin Mass
+
+	EN1                                               0.900
+	PA1                                               0.900
+
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             EN
+		Discount was detected
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             PA
+		Discount was not detected
+
+
+
+
+
+	Translated Frame
+	____________________________________________________________________________________________________________________
+
+	Frame:    EN X PA
+
+	Cross Product Propositions                                                                               End Mass
+
+	theta for frame EN                                                                                       0.1000
+	EN1 v PA1,PA2,PA4,PA5,PA6                                                                                0.9000
+	PA1 v EN1,EN2,EN4                                                                                        0.9000
+	theta for frame PA                                                                                       0.1000
+
+
+
+	FUSE Operation
+	___________________________________
+
+	Cross Product Propositions                                                                               End Mass
+
+	Frame1
+	theta for frame EN                                                                                       0.1000
+	EN1 v PA1,PA2,PA4,PA5,PA6                                                                                0.9000
+
+	Frame2
+	PA1 v EN1,EN2,EN4                                                                                        0.9000
+	theta for frame PA                                                                                       0.1000
+
+
+	Orthogonal Sum begins here for Frame1 and Frame2
+
+	PA1 v EN1,EN2,EN4, 0.0900
+	{'PA1', 'EN1'}
+	{'PA1', 'EN1'}, 0.8100
+	theta, 0.0100
+	EN1 v PA1,PA2,PA4,PA5,PA6, 0.0900
+	Dictionary after orthogonal sum: [('PA1 v EN1,EN2,EN4', 0.08999999999999998), ("{'PA1', 'EN1'}", 0.81), ('theta', 0.009999999999999995), ('EN1 v PA1,PA2,PA4,PA5,PA6', 0.08999999999999998)] 
+	Final frame dictionary: []
+	K = 1.0000
+	The mass of 1 and 2 is : 1.0000	Frame before translation 
+	_____________________________________________________________
+
+	Frame:    EN X PA and PR
+
+	Propositions before translating                   Begin Mass
+
+	EN1 v PA1,PA2,PA4,PA5,PA6                         0.900
+	PA1 v EN1,EN2,EN4                                 0.900
+	PR1                                               0.900
+
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             EN X PA
+		Discount was detected
+
+
+	Discount Operation
+	___________________________________
+
+		Frame :             PR
+		Discount was not detected
+
+
+
+
+
+	Translated Frame
+	____________________________________________________________________________________________________________________
+
+	Frame:    EN X PA X PR
+
+	Cross Product Propositions                                                                               End Mass
+
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.9000
+	theta for frame EN X PA                                                                                  0.1900
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9                                                                  0.9000
+	theta for frame PR                                                                                       0.1000
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA90.9000
+
+
+
+	FUSE Operation
+	___________________________________
+
+	Cross Product Propositions                                                                               End Mass
+
+	Frame1
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9                                           0.9000
+	theta for frame EN X PA                                                                                  0.1900
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9                                                                  0.9000
+
+	Frame2
+	theta for frame PR                                                                                       0.1000
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA90.9000
+
+
+	Orthogonal Sum begins here for Frame1 and Frame2
+
+	PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9, 0.0900
+	theta, 0.0190
+	EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9, 0.0900
+	{'PA1', 'PR1', 'EN2', 'EN4', 'EN1'}
+	{'PA1', 'PR1', 'EN2', 'EN4', 'EN1'}, 0.8100
+	PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9, 0.1710
+	{'PA2', 'PA4', 'PA5', 'PA6', 'PR1', 'EN1', 'PA1'}
+	{'PA2', 'PA4', 'PA5', 'PA6', 'PR1', 'EN1', 'PA1'}, 0.8100
+	Dictionary after orthogonal sum: [('PA1 v EN1,EN2,EN4', 0.08999999999999998), ("{'PA1', 'EN1'}", 0.81), ('theta', 0.009999999999999995), ('EN1 v PA1,PA2,PA4,PA5,PA6', 0.08999999999999998), ('PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9', 0.08999999999999998), ('theta', 0.01899999999999999), ('EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9', 0.08999999999999998), ("{'PA1', 'PR1', 'EN2', 'EN4', 'EN1'}", 0.81), ('PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9', 0.17099999999999996), ("{'PA2', 'PA4', 'PA5', 'PA6', 'PR1', 'EN1', 'PA1'}", 0.81)] 
+	Final frame dictionary: [('PA1 v EN1,EN2,EN4 v PR1,PR10,PR13,PR14,PR2,PR3,PR4,PR5,PR6,PR9', 0.08999999999999998), ('EN1 v PA1,PA2,PA4,PA5,PA6 v PR1,PR2,PR9', 0.08999999999999998), ("{'PA1', 'PR1', 'EN2', 'EN4', 'EN1'}", 0.81), ('PR1 v EN1 v PA1,PA2,PA4,PA5,PA6, EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN3 v PA5,PA6,PA7,PA8,PA9, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN2 v PA1,PA2,PA3,PA4,PA5,PA6, EN4 v PA1,PA2,PA4,PA5,PA6,PA7,PA8, EN5 v PA1,PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9,EN3 v PA5,PA6,PA7,PA8,PA9, EN5 v PA2,PA3,PA4,PA5,PA6,PA7, EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8,PA9,EN6 v PA6,PA7,PA8,PA9, EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN7 v PA3,PA6,PA7,PA8, EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9,EN8 v PA7,PA8,PA9, EN9 v PA6,PA7,PA8,PA9', 0.17099999999999996), ("{'PA2', 'PA4', 'PA5', 'PA6', 'PR1', 'EN1', 'PA1'}", 0.81)]
+	K = 1.0000
+	The mass of 1 and 2 is : 1.9900
+	Interpret Operation
+	___________________________________
+
+
+
+	['PA1', 'EN1', 'EN2', 'EN4', 'PR1', 'PR10', 'PR13', 'PR14', 'PR2', 'PR3', 'PR4', 'PR5', 'PR6', 'PR9']
+	The experimental data has: Acceptable credibility and reliability
+	Support: 0.0900
+	Plausibility: -0.8810
+
+
+	['EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PR1', 'PR2', 'PR9']
+	The experimental data has: Good credibility and reliability
+	Support: 0.0900
+	Plausibility: -0.8810
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Good credibility and reliability
+	Support: 0.1710
+	Plausibility: -0.8000
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Acceptable credibility and reliability
+	Support: 0.3420
+	Plausibility: -0.6290
+
+
+	['PR1', 'EN1', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN2', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'EN4', 'PA1', 'PA2', 'PA4', 'PA5', 'PA6', 'PA7', 'PA8', 'EN5', 'PA1', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN3', 'PA5', 'PA6', 'PA7', 'PA8', 'PA9', 'EN5', 'PA2', 'PA3', 'PA4', 'PA5', 'PA6', 'PA7', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'PA9', 'EN6', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN7', 'PA3', 'PA6', 'PA7', 'PA8', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9', 'EN8', 'PA7', 'PA8', 'PA9', 'EN9', 'PA6', 'PA7', 'PA8', 'PA9']
+	The experimental data has: Poor credibility and reliability
+	Support: 0.5130
+	Plausibility: -0.4580
+
+	Overall the experiment has: 'Good credibility and reliability'
+	 Support: 0.2610
+	 Plausibility: -1.6810
+	EI = [0.2610, -1.6810]
+
+	Overall the experiment has: 'Acceptable credibility and reliability'
+	 Support: 0.4320
+	 Plausibility: -1.5100
+	EI = [0.2610, -1.6810]
+
 
 

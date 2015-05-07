@@ -9,7 +9,7 @@ class Analysis:
     translatedFrame2 = {}
     newFrame = ''
     b = []
-
+    final_dic = []
 
     def __init__(self):
         pass
@@ -37,7 +37,7 @@ class Analysis:
 
 
     # combines the two frames to arrive at a new cross product frame
-    def translate(self, frame1, frame2, compatibilityRelations):
+    def translate(self, frame1, frame2, compatibilityRelations,count):
         print("Entered Translate Operation\n")
         dprint("PRINTING FRAMES 1 AND 2")
         dprint(frame1)
@@ -46,8 +46,12 @@ class Analysis:
         x = 3
         y = 3
 
-        mass = 0
-        mass2 = 0
+        if count == 1:
+            mass = 0
+            mass2 = 0
+        if count > 1:
+            mass = 1
+            mass2 = 1
 
         theta = 0
         theta2 = 0
@@ -69,8 +73,21 @@ class Analysis:
             try:
                 proposition = frame1[x+1]
                 value = float(frame1[x])
-                mass = float(mass) + value
-                theta = float(1 - mass)
+                print("RPINT VALUE 1")
+                print(value)
+                print("PRINT COUNT IS :"  + str(count))
+
+                if count == 1:
+                    print(" = 1 first")
+                    mass = float(mass) + float(value)
+                    print("MASS IS :  " + str(mass))
+                    theta = float(1 - float(mass))
+
+                elif count > 1:
+                    print(" > 1 first")
+                    mass = float(mass) * float(value)
+                    print("PRINT MASS : " + str(mass))
+                    theta = float(1- float(mass))
 
                 for key1,value1 in compatibilityRelations.items():
                     dprint("Printing key 1")
@@ -163,8 +180,21 @@ class Analysis:
             try:
                 proposition2 = frame2[y + 1]
                 value2 = float(frame2[y])
-                mass2 = float(mass2) + value2
-                theta2 = float(1 - mass2)
+                print("PRINT VALUE2")
+                print(value2)
+                print("PRINT COUNT IS :"  + str(count))
+
+                if count == 1:
+                    print(" = 1")
+                    mass2 = float(mass2) + float(value2)
+                    print("MASS IS :  " + str(mass))
+                    theta2 = float(1- mass2)
+
+                elif count > 1:
+                    print(" > 1")
+                    mass2 = float(mass2)* float(value2)
+                    print("PRINT MASS : " + str(mass2))
+                    theta2 = float(1-mass2)
 
                 for key2,value3 in compatibilityRelations.items():
                     if key2 == strToMatch2x1:
@@ -254,47 +284,58 @@ class Analysis:
 
         file_write('\n\n')
 
-        self.fuse(self.translatedFrame1, self.translatedFrame2)
+        self.fuse(self.translatedFrame1, self.translatedFrame2, frame1, frame2)
 
         return self.translatedFrame1, self.translatedFrame2, self.newFrame
 
 
-
      # Dempster's combination rule
-    def fuse(self, massA, massB):
+    def fuse(self, translatedFrame1, translatedFrame2, frame1, frame2):
         print("Entered fuse operation")
+        file_write('\n')
+        file_write('\tFUSE Operation\n')
+        file_write('\t___________________________________\n\n')
         sum1 = []
         sumk = []
-        print ("\nFrames")
-        print ('massA Frame: ', massA)
-        print ('massB Frame: ', massB)
+        file_write('\t{0:105}{1}\n\n'.format("Cross Product Propositions","End Mass"))
+        file_write('\tFrame1')
+        file_write('\n')
+        for k,v in translatedFrame1.items():
+            if k == 'theta':
+                file_write('\t{0:105}{1:1.4f}\n'.format(k + " for frame " + frame1[0],v))
+            else:
+                file_write('\t{0:105}{1:1.4f}\n'.format(k,v))
+        file_write('\n')
+        file_write('\tFrame2')
+        file_write('\n')
+        for k,v in translatedFrame2.items():
+            if k == 'theta':
+                file_write('\t{0:105}{1:1.4f}\n'.format(k + " for frame " + frame2[0],v))
+            else:
+                file_write('\t{0:105}{1:1.4f}\n'.format(k,v))
 
-        print ('\nOrthogonal Sum begins here for massA and massB:')
-        for key, value in massB.items():
-            for keys, values in massA.items():
-                print(((keys)), ((key)))
-                if keys == 'theta' or key == 'theta':
+        file_write('\n\n')
+
+
+        file_write('\tOrthogonal Sum begins here for Frame1 and Frame2')
+        file_write('\n\n')
+        for key, value in translatedFrame2.items():
+            for keys, values in translatedFrame1.items():
+                if key == "theta" and keys == "theta":
                     result = (value * values)
-                    x = (key, result)
-                    print ((key, keys), ": %.4f" % result)
-                    sum1.append(result)
-                    self.b.append(x)
-                elif key == "theta" and keys == "theta":
-                    result = (value * values)
-                    print ((key, keys), ": %.4f" % result)
+                    file_write('\t{0:1}, {1:.4f}\n'.format(keys, result))
                     sum1.append(result)
                     x = (key, result)
                     self.b.append(x)
-                    self.final_dic.append(x)
                 elif key == "theta" and keys != "theta":
                     result = (value * values)
-                    print ((key, keys), ": %.4f" % result)
+                    file_write('\t{0:1}, {1:.4f}\n'.format(keys, result))
                     sum1.append(result)
-                    x = (key, result)
+                    x = (keys, result)
                     self.b.append(x)
                 elif key != "theta" and keys == "theta":
                     result = (value * values)
-                    print ((key, keys), ": %.4f" % result)
+                    file_write('\t{0:1}, {1:.4f}\n'.format(key, result))
                     sum1.append(result)
                     x = (key, result)
                     self.b.append(x)
@@ -302,26 +343,35 @@ class Analysis:
                     s1 = (re.split('[,vU\s]+', key))
                     s2 = (re.split('[,vU\s]+', keys))
                     if any(set(s1).intersection(s2)):
-                        intersect = (set(s1).intersection(s2))
+                        intersect = ((set(s1).intersection(s2)))
+                        intersect = repr(intersect)
+                        file_write('\t{0:1}\n'.format(intersect))
                         result1 = (value * values)
-                        print(intersect, ': %.4f' % result1)
+                        file_write('\t{0:1}, {1:.4f}\n'.format(intersect, result1))
                         sum1.append(result1)
-                        x = (key, result1)
+                        x = (intersect, result1)
                         self.b.append(x)
-                    elif set(s1).difference(s2):
-                        diff = (set(s1).difference(s2))
-                        result2 = (value * values)
-                        print(diff, ": %.4f" % result2)
-                        sumk.append(result2)
-                        x = (key, result2)
-                        self.b.append(x)
-        print('Dictionary after orthogonal sum: ', self.b)
+                        if not intersect :
+                            if (set(s1).difference(s2)):
+                                diff = (set(s1).difference(s2))
+                                diff = repr(diff)
+                                file_write('{0:1}\n'.format(diff))
+                                result2 = (value * values)
+                                file_write('\t{0:1}, {1:2}, {2:.4f}\n'.format(key, keys, result2))
+                                sumk.append(result2)
+                                x = ((key,keys), result2)
+                                self.b.append(x)
+        b = repr(self.b)
+        file_write('\tDictionary after orthogonal sum: {0:1} '.format(b))
+        file_write('\n')
         count = 0
         for keys, values in self.b:
             if "PR" in keys:
                 x = (keys, values)
                 self.final_dic.append(x)
-        print ("Final frame dictionary: ", self.final_dic)
+        final_dic = repr(self.final_dic)
+        file_write("\tFinal frame dictionary: {0:1}".format(final_dic))
+        file_write('\n')
         sum1 = sum(sum1)
         sum2 = 1
         for i in sumk:
@@ -329,51 +379,60 @@ class Analysis:
             return sum2
         if sum2 != 0:
             sum3 = (float(1)-(float(sum2)))
-            print (sum3)
             if sum3 == 0:
                 K = 1
-                print ('K = ', K)
+                file_write('\tK = {0:.4f}'.format(K))
+                file_write('\n')
                 massAxB = K * sum1
-                print("The mass of 1 and 2 is : ", (massAxB))
+                file_write("\tThe mass of 1 and 2 is : {0:.4f}".format(massAxB))
             if sum3 != 0:
                 K = float(1)/float(sum3)
-                print("K = ", K)
+                file_write("\tK = {0:.4f}".format(K))
+                file_write('\n')
                 massAxB = K * sum1
-                print("The mass of 1 and 2 is : ", (massAxB))
+                file_write("\tThe mass of 1 and 2 is : {0:.4f}".format(massAxB))
+                file_write('\n\n')
 
 
     def interpret(self, b, crossed_frame, final_dic):
         val = []
+        countresult0 = 0
+        countresult1 = 0
+        countresult2 = 0
+        support0 = 0
+        plausibility0 = 0
+        support1 = 0
+        plausibility1 = 0
+        support2 = 0
+        plausibility2 = 0
+        result3 = ()
+        result4 = ()
+        result5 = ()
+        file_write('\n')
+        file_write('\tInterpret Operation\n')
+        file_write('\t___________________________________\n\n')
+
         for key, value in crossed_frame.items():
             if 'Q' in key:
                 value0 = (value[0])
-                print (value0)
-                print ('here')
                 result0 = value0[:value0.find('/')]
-                print ('The experimental data is: ', result0)
                 props0 = value0[value0.find('/'):]
                 s0 = (re.split('[,/vU\s]+', props0))
-                print (s0)
                 value1 = (value[1])
-                print (value1)
                 result1 = value1[:value1.find('/')]
-                print ('The experimental data is: ', result1)
                 props1 = value1[value1.find('/'):]
                 s1 = (re.split('[,/vU\s]+', props1))
-                print (s1)
                 value2 = (value[2])
-                print (value2)
                 result2 = value2[:value2.find('/')]
-                print ('The experimental data is: ', result2)
                 props2 = value2[value2.find('/'):]
                 s2 = (re.split('[,/vU\s]+', props2))
         for keys, values in final_dic:
             val.append(values)
         val1 = sum(val)
         for keys, values in final_dic:
-            print ('check')
             s3 = (re.split('[,vU\s]+', keys))
-            print (s3)
+            #file_write('\t{0:}'.format(s3))
+            #file_write('\n\n')
             s3s0 = set()
             s3s1 = set()
             s3s2 = set()
@@ -383,50 +442,102 @@ class Analysis:
             support = 0
             plausibility = 0
             if set(s3).intersection(s0):
-                print ('s3s0')
-                print (set(s3).intersection(s0))
                 s3s0.update(set(s3).intersection(s0))
                 s3s0len = (len(s3s0))
             if set(s3).intersection(s1):
-                print ('s3s1')
-                print (set(s3).intersection(s1))
                 s3s1.update(set(s3).intersection(s1))
                 s3s1len = (len(s3s1))
             if set(s3).intersection(s2):
-                print ('s3s2')
-                print (set(s3).intersection(s2))
                 s3s2.update(set(s3).intersection(s2))
                 s3s2len = (len(s3s2))
             if s3s0len >= s3s1len:
                 if s3s0len >= s3s2len:
                     if set(s3).intersection(s0):
-                        print (set(s3).intersection(s0))
+                        file_write('\n\n')
                         support += values
                         result0 = value0[:value0.find('/')]
-                        print ('The experimental data is: ', result0)
-                        print ('Support: %.4f' % support)
+                        file_write('\t{0:}'.format(s3))
+                        file_write('\n')
+                        file_write('\tThe experimental data has: {0:}'.format(result0))
+                        file_write('\n')
+                        #file_write('The experimental data is:\t{0:105}{1:1.4f}\n'.format(result0))
+                        file_write('\tSupport: {0:.4f}'.format(support))
+                        file_write('\n')
                         plausibility = (1 - (val1 - support))
-                        print ('Plausibility: ', plausibility)
-            elif s3s1len >= s3s0len:
+                        file_write('\tPlausibility: {0:.4f}'.format(plausibility))
+                        file_write('\n')
+                        countresult0 = countresult0 + 1
+                        result3 = repr(result0)
+                        support0 += support
+                        plausibility0 += plausibility
+            if s3s1len >= s3s0len:
                 if s3s1len >= s3s2len:
                     if set(s3).intersection(s1):
-                        print (set(s3).intersection(s1))
+                        file_write('\n\n')
                         support += values
                         result1 = value1[:value1.find('/')]
-                        print ('The experimental data is: ', result1)
-                        print ('Support: %.4f' % support)
+                        file_write('\t{0:}'.format(s3))
+                        file_write('\n')
+                        file_write('\tThe experimental data has: {0:}'.format(result1))
+                        file_write('\n')
+                        file_write('\tSupport: {0:.4f}'.format(support))
+                        file_write('\n')
                         plausibility = (1 - (val1 - support))
-                        print ('Plausibility: ', plausibility)
-            elif s3s2len >= s3s0len:
+                        file_write('\tPlausibility: {0:.4f}'.format(plausibility))
+                        file_write('\n')
+                        countresult1 = countresult1 + 1
+                        result4 = repr(result1)
+                        support1 += support
+                        plausibility1 += plausibility
+            if s3s2len >= s3s0len:
                 if s3s2len >= s3s1len:
                     if set(s3).intersection(s2):
-                        print (set(s3).intersection(s2))
+                        file_write('\n\n')
                         support += values
                         result2 = value2[:value2.find('/')]
-                        print ('The experimental data is: ', result2)
-                        print ('Support: %.4f' % support)
+                        file_write('\t{0:}'.format(s3))
+                        file_write('\n')
+                        file_write('\tThe experimental data has: {0:}'.format(result2))
+                        file_write('\n')
+                        file_write('\tSupport: {0:.4f}'.format(support))
+                        file_write('\n')
                         plausibility = (1 - (val1 - support))
-                        print ('Plausibility: ', plausibility)
+                        file_write('\tPlausibility: {0:.4f}'.format(plausibility))
+                        file_write('\n\n')
+                        countresult2 = countresult2 + 1
+                        result5 = repr(result2)
+                        support2 += support
+                        plausibility2 += plausibility
 
+        if countresult0 >= countresult1:
+            if countresult0 >= countresult2:
+                file_write('\tOverall the experiment has: {0:}'.format(result3))
+                file_write('\n')
+                file_write('\t Support: {0:.4f}'.format(support0))
+                file_write('\n')
+                file_write('\t Plausibility: {0:.4f}'.format(plausibility0))
+                file_write('\n')
+                file_write('\tEI = [{0:.4f}, {1:.4f}]'.format(support0, plausibility0))
+                file_write('\n\n')
+        if countresult1 >= countresult0:
+            if countresult1 >= countresult2:
+                file_write('\tOverall the experiment has: {0:}'.format(result4))
+                file_write('\n')
+                file_write('\t Support: {0:.4f}'.format(support1))
+                file_write('\n')
+                file_write('\t Plausibility: {0:.4f}'.format(plausibility1))
+                file_write('\n')
+                file_write('\tEI = [{0:.4f}, {1:.4f}]'.format(support0, plausibility0))
+                file_write('\n\n')
+        if countresult2 >= countresult0:
+            if countresult2 >= countresult1:
+                file_write('\tOverall the experiment has: {0:}'.format(result5))
+                file_write('\n')
+                file_write('\t Support: {0:.4f}'.format(support2))
+                file_write('\n')
+                file_write('\t Plausibility: {0:.4f}'.format(plausibility2))
+                file_write('\n')
+                file_write('\tEI = [{0:.4f}, {1:.4f}]'.format(support0, plausibility0))
+                file_write('\n\n')
 
-
+        file_write('\n\n')

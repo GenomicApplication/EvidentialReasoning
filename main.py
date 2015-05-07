@@ -43,6 +43,7 @@ def main():
     file_write("ENTERING ANALYSIS\n\n\n")
 
     countFOD = len(parse.FOD)
+    count = 1
 
     while countFOD != 0:
         try:
@@ -55,6 +56,8 @@ def main():
 
             x = 4
             y = 4
+
+
 
             file_write('\tFrame before translation \n')
             file_write('\t_____________________________________________________________\n\n')
@@ -73,11 +76,13 @@ def main():
                 y = y +2
 
             file_write('\n\n\n')
-            frame.get_crossProductFrames(parse.FOD[0], parse.FOD[1], CR.crossed_frame)
+            frame.get_crossProductFrames(parse.FOD[0], parse.FOD[1], CR.crossed_frame, count)
 
             parse.FOD.remove(parse.FOD[0])
             parse.FOD.remove(parse.FOD[0])
             parse.FOD.insert(0,frame.insertFrame)
+
+            count = count +1
 
         except IndexError:
 
@@ -86,8 +91,7 @@ def main():
     print(parse.FOD)
 
     interpret = Analysis()
-    newDirectory = parse.dir_path.strip("Input.txt")
-    interpret.interpret(interpret.b, newDirectory)
+    interpret.interpret(interpret.b,CR.crossed_frame, interpret.final_dic )
 
 
 

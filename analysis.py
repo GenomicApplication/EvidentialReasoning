@@ -46,11 +46,10 @@ class Analysis:
         x = 3
         y = 3
 
-        print("COUNT IS : " + str(count))
-
         if count == 1:
             mass = 0
             mass2 = 0
+
         if count > 1:
             mass = 1
             mass2 = 1
@@ -114,12 +113,14 @@ class Analysis:
 
                                 if elements.find(string) != -1:
                                     dprint("FOUND  a matching proposition")
+                                    print("FOUND A MATCH FOR STRING 1 : " + string + ' in ' + elements)
+
                                     temp = elements.split('/')
                                     dprint("printing temp")
                                     dprint(temp)
 
                                     if elements.find('v') != -1:
-                                        dprint("Found the v in the string so do not split")
+                                        dprint("Found the v in the string so split , ")
 
                                         for j in temp[1].split(','):
                                             temp_dic[j.strip()] = 1
@@ -196,8 +197,12 @@ class Analysis:
 
                         while l < length_of_splitter2:
                             string2 = splitter2[l].strip()
+                            print("PRINT STRING 2")
+                            print(string2)
+
                             for elements2 in value3:
-                                if elements2.find(string2) != -1:
+                                if elements2.find(string2+'/') != -1:
+                                    print("FOUND A MATCH FOR STRING 2 : " + string2 + ' in ' + elements2)
                                     temp2 = elements2.split('/')
 
                                     if elements2.find('v') != -1:
@@ -207,6 +212,7 @@ class Analysis:
                                         prop2 =  temp2[1].split(',')
                                         for each2 in prop2:
                                             temp_dic2[each2.strip()] = 1
+
                             l = l + 1
 
                         for k2,v2 in temp_dic2.items():
@@ -219,6 +225,7 @@ class Analysis:
                                 comboString2 = item2
                             else:
                                 comboString2 = comboString2 + ',' + item2
+
                         finalString2 =  proposition2.strip() + ' v ' + comboString2
                         dprint("Final string2: " + finalString2)
                         self.translatedFrame2[finalString2] = value2
@@ -280,23 +287,30 @@ class Analysis:
 
      # Dempster's combination rule
     def fuse(self, translatedFrame1, translatedFrame2, frame1, frame2):
+        sum1 = []
+        sumk = []
+        normalization = 0
+        print("PRINTING TRANSLATED FRAMES In FUSE")
+        print(translatedFrame1)
+        print(translatedFrame2)
         print("Entered fuse operation")
         file_write('\n')
         file_write('\tFUSE Operation\n')
         file_write('\t___________________________________\n\n')
-        sum1 = []
-        sumk = []
         file_write('\t{0:105}{1}\n\n'.format("Cross Product Propositions","End Mass"))
         file_write('\tFrame1')
         file_write('\n')
+
         for k,v in translatedFrame1.items():
             if k == 'theta':
                 file_write('\t{0:105}{1:1.4f}\n'.format(k + " for frame " + frame1[0],v))
             else:
                 file_write('\t{0:105}{1:1.4f}\n'.format(k,v))
+
         file_write('\n')
         file_write('\tFrame2')
         file_write('\n')
+
         for k,v in translatedFrame2.items():
             if k == 'theta':
                 file_write('\t{0:105}{1:1.4f}\n'.format(k + " for frame " + frame2[0],v))
@@ -304,18 +318,17 @@ class Analysis:
                 file_write('\t{0:105}{1:1.4f}\n'.format(k,v))
 
         file_write('\n\n')
-
-
         file_write('\tOrthogonal Sum begins here for Frame1 and Frame2')
         file_write('\n\n')
+
         for key, value in translatedFrame2.items():
             for keys, values in translatedFrame1.items():
                 if key == "theta" and keys == "theta":
-                    result = (value * values)
-                    file_write('\t{0:1}, {1:.4f}\n'.format(keys, result))
-                    sum1.append(result)
-                    x = (key, result)
-                    self.b.append(x)
+                    normalization = (value * values)
+                    #file_write('\t{0:1}, {1:.4f}\n'.format(keys, result))
+                    #sum1.append(result)
+                    #x = (key, result)
+                    #self.b.append(x)
                 elif key == "theta" and keys != "theta":
                     result = (value * values)
                     file_write('\t{0:1}, {1:.4f}\n'.format(keys, result))
@@ -331,15 +344,20 @@ class Analysis:
                 elif keys != "theta" and key != "theta":
                     s1 = (re.split('[,vU\s]+', key))
                     s2 = (re.split('[,vU\s]+', keys))
+
                     if any(set(s1).intersection(s2)):
                         intersect = ((set(s1).intersection(s2)))
+                        print("PRINTING INTERSECT BEFORE REPR()")
+                        print(intersect)
                         intersect = repr(intersect)
+                        print("PRINTING INTERSECT AFTER REPR()")
                         file_write('\t{0:1}\n'.format(intersect))
                         result1 = (value * values)
                         file_write('\t{0:1}, {1:.4f}\n'.format(intersect, result1))
                         sum1.append(result1)
                         x = (intersect, result1)
                         self.b.append(x)
+
                         if not intersect :
                             if (set(s1).difference(s2)):
                                 diff = (set(s1).difference(s2))
@@ -348,24 +366,35 @@ class Analysis:
                                 result2 = (value * values)
                                 file_write('\t{0:1}, {1:2}, {2:.4f}\n'.format(key, keys, result2))
                                 sumk.append(result2)
+                                print("PRINTING SUMK")
+                                print(sumk)
                                 x = ((key,keys), result2)
                                 self.b.append(x)
         b = repr(self.b)
         file_write('\tDictionary after orthogonal sum: {0:1} '.format(b))
         file_write('\n')
+
         count = 0
+
         for keys, values in self.b:
             if "PR" in keys:
                 x = (keys, values)
                 self.final_dic.append(x)
+
         final_dic = repr(self.final_dic)
         file_write("\tFinal frame dictionary: {0:1}".format(final_dic))
         file_write('\n')
+
         sum1 = sum(sum1)
         sum2 = 1
+
         for i in sumk:
+            print("I IN SUMK")
+            print(i)
             sum2 *= i
+            print(sum2)
             return sum2
+
         if sum2 != 0:
             sum3 = (float(1)-(float(sum2)))
             if sum3 == 0:
@@ -374,6 +403,7 @@ class Analysis:
                 file_write('\n')
                 massAxB = K * sum1
                 file_write("\tThe mass of 1 and 2 is : {0:.4f}".format(massAxB))
+
             if sum3 != 0:
                 K = float(1)/float(sum3)
                 file_write("\tK = {0:.4f}".format(K))
@@ -508,7 +538,7 @@ class Analysis:
                 file_write('\n')
                 file_write('\tEI = [{0:.4f}, {1:.4f}]'.format(support0, plausibility0))
                 file_write('\n\n')
-        if countresult1 >= countresult0:
+        elif countresult1 >= countresult0:
             if countresult1 >= countresult2:
                 file_write('\tOverall the experiment has: {0:}'.format(result4))
                 file_write('\n')
@@ -518,7 +548,7 @@ class Analysis:
                 file_write('\n')
                 file_write('\tEI = [{0:.4f}, {1:.4f}]'.format(support0, plausibility0))
                 file_write('\n\n')
-        if countresult2 >= countresult0:
+        elif countresult2 >= countresult0:
             if countresult2 >= countresult1:
                 file_write('\tOverall the experiment has: {0:}'.format(result5))
                 file_write('\n')
